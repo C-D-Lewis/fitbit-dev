@@ -1,0 +1,9 @@
+{
+  "fitbit": {
+    "appUUID": "aeaed21f-3dc2-4f48-ac17-fbd7f18dc753",
+    "appType": "app",
+    "appDisplayName": "Elemental",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#607d8b"
+  }
+}

@@ -1,0 +1,20 @@
+<svg viewport-fill="black">
+  <text id="time" 
+        x="50%" y="50%+30"
+        fill="white" 
+        font-size="180" 
+        font-family="Tungsten-Medium"
+        text-anchor="middle" 
+        text-length="5">
+    00:00
+  </text>
+  <text id="date" 
+        x="50%" y="50%+90"
+        fill="fb-dark-gray" 
+        font-size="55" 
+        font-family="Tungsten-Medium"
+        text-anchor="middle" 
+        text-length="20">
+    September 25
+  </text>
+</svg>
