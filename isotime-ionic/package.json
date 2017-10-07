@@ -1,0 +1,10 @@
+{
+  "fitbit": {
+    "appUUID": "233e8017-dc32-4c98-a754-d65c96dc4d8e",
+    "appType": "clockface",
+    "appDisplayName": "Isotime for Ionic",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#607d8b",
+    "requestedPermissions": []
+  }
+}
