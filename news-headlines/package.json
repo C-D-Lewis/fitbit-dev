@@ -1,0 +1,10 @@
+{
+  "fitbit": {
+    "appUUID": "7452645d-8cd1-43d4-83fb-6a2bf8d7f55e",
+    "appType": "app",
+    "appDisplayName": "News Headlines",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#f44336",
+    "requestedPermissions": []
+  }
+}
