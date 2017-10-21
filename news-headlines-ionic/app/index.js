@@ -71,11 +71,15 @@ function setupButtons() {
     switch(e.key) {
       case 'up': 
         if(currentStory === 0) return;
+        
         currentStory--; 
+        ui.get('main-card').animate = true;
         break;
       case 'down': 
         if(currentStory === stories.length - 1) return;
+        
         currentStory++; 
+        ui.get('main-card').animate = true;
         break;
       default: break;
     }
