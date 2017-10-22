@@ -5,6 +5,7 @@ import * as ui from '../common/ui';
 import * as db from '../common/db';
 
 const APP_NAME = 'Isotime';
+const KEY_COLOR = 'color';
 
 const SETS = {
   white: '#ffffff',
@@ -22,21 +23,25 @@ const SETS = {
 
 const digits = [ ui.get('h0'), ui.get('h1'), ui.get('m0'), ui.get('m1') ];
 
-const KEY_COLOR = 'color';
-
-let chosenColor = 'white';
+var chosenColor = '';
 
 function getImagePath(value) { return `${value}.png`; }
 
 function loadColor() {
   let color = '';
-  if(db.contains(KEY_COLOR)) {
-    color = SETS.white;
-    db.set(KEY_COLOR, chosenColor);
-    console.log(`Defaulted chosenColor=${chosenColor}`);
+  if(!db.contains(KEY_COLOR)) {
+    color = SETS.green;
+    db.set(KEY_COLOR, color);
+    console.log(`Defaulted ${color}`);
   } else {
     color = db.get(KEY_COLOR);
-    console.log(`Read chosenColor=${chosenColor}`);
+    console.log(`Read ${color}`);
+    
+    if(!color) {
+      color = SETS.green;
+      db.set(KEY_COLOR, color);
+      console.log(`Recovered ${color}`);
+    }
   }
 
   return color;
@@ -69,10 +74,10 @@ function update(date) {
   update(new Date());
   
   messaging.peerSocket.onmessage = (evt) => {
+    console.log(JSON.stringify(evt.data));
     chosenColor = SETS[evt.data.color];
     db.set(KEY_COLOR, chosenColor);
     console.log(`Chosen color: ${chosenColor}`);
     update(new Date());
   };
-
 })();
