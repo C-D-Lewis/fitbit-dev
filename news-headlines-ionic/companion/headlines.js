@@ -1,9 +1,9 @@
 import * as log from '../common/log';
 
 function decode(str) {
-  str = str.split(/&amp;/g).join('&');
-  str = str.split('<![CDATA[').join('');
-  return str.split(']]>').join('');
+  return str.split(/&amp;/g).join('&')
+            .split('<![CDATA[').join('')
+            .split(']]>').join('');
 }
 
 function scrape(text, beforeArr, after) {
@@ -32,10 +32,6 @@ function getStories(xml) {
   log.info(`Extracted ${items.length} items.`);
   return items;
 };
-
-function extract(response) {
-  
-}
 
 export function download(cb) {
   fetch('http://feeds.bbci.co.uk/news/rss.xml').then((response) => {

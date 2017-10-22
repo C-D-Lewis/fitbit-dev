@@ -7,41 +7,50 @@ import * as ui from '../common/ui';
 const TIMEOUT_MS = 10000;
 
 const stories = [];
-let loadingWindow, mainWindow, detailWindow;
+let loadingWindow, mainWindow;
 let currentStory = 0;
 let buttonsEnabled = false;
 let timeoutHandle;
 
 function setupUI() {
-  loadingWindow = new ui.Window('loading-window');
+  loadingWindow = new ui.Window({
+    id: 'loading-window'
+  });
   loadingWindow.show();
   ui.setVisible('loading-text', false);
   
-  mainWindow = new ui.Window('main-window', () => {
-    ui.get('main-title').onclick = () => {
-      mainWindow.hide();
-      detailWindow.show();
-      detailWindow.update();
-      ui.animate('detail-window-symbol-instance');
-      buttonsEnabled = false;
-    };
-  }, () => {
-    const story = stories[currentStory];
-    ui.get('main-progress').innerText = `${currentStory + 1}/${stories.length}`;
-    ui.get('main-title').innerText = story.title;
+  mainWindow = new ui.Window({
+    id: 'main-window', 
+    setup: () => {
+      ui.get('main-title').onclick = () => {
+        // mainWindow.hide();
+        detailWindow.show();
+        detailWindow.update();
+        ui.animate('detail-card-instance');
+        buttonsEnabled = false;
+      };
+    }, 
+    update: () => {
+      const story = stories[currentStory];
+      ui.setText('main-progress', `${currentStory + 1}/${stories.length}`);
+      ui.setText('main-title', story.title);
+    }
   });
   
-  const detailWindow = new ui.Window('detail-window', null, () => {
-    const story = stories[currentStory];
-    ui.get('detail-title').innerText = story.title;
-    
-    const textView = ui.get('detail-text');
-    textView.innerText = story.description;
-    textView.onclick = () => {
-      detailWindow.hide();
-      mainWindow.show();
-      buttonsEnabled = true;
-    };
+  const detailWindow = new ui.Window({
+    id: 'detail-window',
+    update: () => {
+      const story = stories[currentStory];
+      ui.setText('detail-title', story.title);
+
+      const textView = ui.get('detail-text');
+      textView.innerText = story.description;
+      textView.onclick = () => {
+        detailWindow.hide();
+        mainWindow.show();
+        buttonsEnabled = true;
+      };
+    }
   });
 }
 
@@ -73,13 +82,13 @@ function setupButtons() {
         if(currentStory === 0) return;
         
         currentStory--; 
-        ui.get('main-card').animate = true;
+        ui.animate('main-card-instance');
         break;
       case 'down': 
         if(currentStory === stories.length - 1) return;
         
         currentStory++; 
-        ui.get('main-card').animate = true;
+        ui.animate('main-card-instance');
         break;
       default: break;
     }
@@ -90,8 +99,7 @@ function setupButtons() {
 function setupTimeout() {
   timeoutHandle = setTimeout(() => {
     ui.setVisible('loading-text', true);
-    const errorView = ui.get('loading-text');
-    errorView.innerText = 'Timed out';
+    ui.setText('loading-text', 'Download failed!');
   }, TIMEOUT_MS);
 }
 

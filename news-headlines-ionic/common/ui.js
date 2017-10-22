@@ -9,21 +9,21 @@ export function setVisible(id, visible) {
   element.style.display = visible ? 'inline' : 'none';
 }
 
-export function animate(id) {
-  let element = get(id);
-  element.animate = true;
-}
+export function animate(id) { get(id).animate = true; }
+
+export function setText(id, text) { get(id).innerText = text; }
 
 /**
  * Windows collect multiple elements by ID using a parent <svg> element, and start hidden
- * setupCb is called immediately
- * updateCb is called at the developer's discretion
+ * setup is called immediately
+ * update is called at the developer's discretion
  */
-export function Window(svgId, setupCb, updateCb) {
-  this.id = svgId;
+export function Window(opts) {
+  const { id, setup, update } = opts;
+  this.id = id;
   this.show = () => setVisible(this.id, true);
   this.hide = () => setVisible(this.id, false);
   this.hide();
-  if(updateCb) this.update = updateCb;
-  if(setupCb) setupCb();
+  if(update) this.update = update;
+  if(setup) setup();
 }
