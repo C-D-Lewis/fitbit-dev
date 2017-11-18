@@ -1,6 +1,6 @@
 import document from 'document';
-import * as messaging from 'messaging';
 
+import * as comm from '../common/comm';
 import * as log from '../common/log';
 import * as ui from '../common/ui';
 
@@ -14,10 +14,13 @@ let timeoutHandle;
 
 function setupUI() {
   loadingWindow = new ui.Window({
-    id: 'loading-window'
+    id: 'loading-window',
+    setup: () => {
+      ui.setVisible('loading-text', true);
+      ui.setText('loading-text', 'Waiting for phone...');
+    }
   });
   loadingWindow.show();
-  ui.setVisible('loading-text', false);
   
   mainWindow = new ui.Window({
     id: 'main-window', 
@@ -44,7 +47,7 @@ function setupUI() {
       ui.setText('detail-title', story.title);
 
       const textView = ui.get('detail-text');
-      textView.innerText = story.description;
+      textView.text = story.description;
       textView.onclick = () => {
         detailWindow.hide();
         mainWindow.show();
@@ -55,22 +58,24 @@ function setupUI() {
 }
 
 function setupMessaging() {
-  messaging.peerSocket.onopen = () => log.info('Device socket open');
-  messaging.peerSocket.onmessage = (evt) => {
-    if(stories.length === 0) {
-      clearTimeout(timeoutHandle);
-      loadingWindow.hide();
-      mainWindow.show();
-      buttonsEnabled = true;
-    }
+  comm.setup({
+    open: () => log.info('Device socket open'),
+    message: (evt) => {
+      if(stories.length === 0) {
+        clearTimeout(timeoutHandle);
+        loadingWindow.hide();
+        mainWindow.show();
+        buttonsEnabled = true;
+      }
 
-    stories.push(evt.data);
-    mainWindow.update();
-  };
-  messaging.peerSocket.onerror = (err) => {
-    log.error(`Device connection error: ${err.code} - ${err.message}`);
-    ui.setVisible('loading-text', true);
-  };
+      stories.push(evt.data);
+      mainWindow.update();
+    },
+    error: (err) => {
+      log.error(`Device connection error: ${err.code} - ${err.message}`);
+      ui.setVisible('loading-text', true);
+    }
+  });
 }
 
 function setupButtons() {

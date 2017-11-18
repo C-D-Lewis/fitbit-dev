@@ -19,7 +19,7 @@
           width="70%" height="76%"
           fill="black" 
           text-anchor="start" text-overflow="ellipsis" text-length="128"
-          font-family="Colfax-Medium" font-size="30" font-weight="bold">NONE</textarea>
+          font-family="Colfax-Medium" font-size="28" font-weight="bold">NONE</textarea>
         <animate attributeName="y" begin="enable" from="-10%" to="0%" dur="0.2" final="restore" />
       </svg>
     </symbol>
@@ -42,7 +42,7 @@
           id="detail-text"
           pointer-events="visible"
           x="5%" y="35%"
-          width="90%" height="90%"
+          width="90%" height="65%"
           fill="fb-dark-gray" 
           text-anchor="start" text-overflow="ellipsis" text-length="256"
           font-family="Colfax-Medium" font-size="25">NONE</textarea>
@@ -81,9 +81,9 @@
     <text
       id="loading-text"
       x="50%" y="90%"
-      width="100%" height="100%"
-      fill="white" 
-      text-anchor="middle" text-length="24"
+      width="100%" height="30%"
+      fill="#999999" 
+      text-anchor="middle" text-length="64"
       font-family="Colfax-Medium" font-size="30" font-weight="bold">Sync Error</text>  
     </svg>
   

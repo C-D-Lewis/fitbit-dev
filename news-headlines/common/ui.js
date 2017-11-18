@@ -9,9 +9,9 @@ export function setVisible(id, visible) {
   element.style.display = visible ? 'inline' : 'none';
 }
 
-export function animate(id) { get(id).animate = true; }
+export function animate(id) { get(id).animate('enable'); }
 
-export function setText(id, text) { get(id).innerText = text; }
+export function setText(id, text) { get(id).text = text; }
 
 /**
  * Windows collect multiple elements by ID using a parent <svg> element, and start hidden
