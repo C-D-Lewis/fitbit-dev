@@ -16,9 +16,9 @@ function buildDate(date) {
 
 function onTick(date) {
   const timeView = ui.get('time');
-  timeView.innerText = `${helpers.zeroPad(date.getHours())}:${helpers.zeroPad(date.getMinutes())}`;
+  timeView.text = `${helpers.zeroPad(date.getHours())}:${helpers.zeroPad(date.getMinutes())}`;
   const dateView = ui.get('date');
-  dateView.innerText = buildDate(date);
+  dateView.text = buildDate(date);
 }
 
 function main() {

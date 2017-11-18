@@ -4,7 +4,7 @@ function SettingsPage(props) {
       <Section
         title={<Text bold align="center">Isotime Settings</Text>}>
         <Select
-          label={`Color set`}
+          label={`Choose Color`}
           settingsKey="color"
           options={[
             {name: "red" },
@@ -16,7 +16,8 @@ function SettingsPage(props) {
             {name: "bloodred" },
             {name: "cyan" },
             {name: "orange" },
-            {name: "royalblue" }
+            {name: "royalblue" },
+            {name: "white" }
           ]}
         />
       </Section>

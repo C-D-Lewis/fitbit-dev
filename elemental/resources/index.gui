@@ -10,7 +10,7 @@
   </text>
   <text id="date" 
         x="50%" y="50%+90"
-        fill="fb-dark-gray" 
+        fill="#a38d1c" 
         font-size="55" 
         font-family="Tungsten-Medium"
         text-anchor="middle" 

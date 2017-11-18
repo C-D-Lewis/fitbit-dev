@@ -1,9 +1,15 @@
 {
   "fitbit": {
-    "appUUID": "aeaed21f-3dc2-4f48-ac17-fbd7f18dc753",
-    "appType": "app",
+    "appUUID": "055d6a04-2eb2-4a73-b378-1188a550034d",
+    "appType": "clockface",
     "appDisplayName": "Elemental",
     "iconFile": "resources/icon.png",
-    "wipeColor": "#607d8b"
+    "wipeColor": "#607d8b",
+    "requestedPermissions": [],
+    "i18n": {
+      "en": {
+        "name": "Elemental"
+      }
+    }
   }
 }
