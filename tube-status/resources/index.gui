@@ -1,0 +1,94 @@
+<svg class="background">
+  <defs>
+    <symbol id="line-card-circle">
+      <svg>
+        <circle cx="52" cy="50%" r="42" fill="black"/>
+        <circle cx="52" cy="50%" r="30" fill="white"/>
+      </svg>
+    </symbol>
+  </defs>
+  
+  <rect x="0" y="0" width="100%" height="100%" fill="white" />
+  
+  <svg id="loading-window" display="none">
+    <circle cx="50%" cy="50%" r="42" fill="black"/>
+    <circle cx="50%" cy="50%" r="30" fill="white"/>
+    <text
+      id="loading-text" x="50%" y="90%" width="100%" height="30%"
+      fill="#999999" text-anchor="middle" text-length="64"
+      font-family="Colfax-Medium" font-size="30" font-weight="bold">Sync Error</text>  
+  </svg>
+  
+  <svg id="main-window" display="none">
+    <use id="lines-tile-list" href="#tile-list" height="100%" width="100%">
+      <var id="align-mode" value="1" />
+
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[0]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[0]" class="line-name"/>
+        <text id="lines-card-status[0]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[1]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[1]" class="line-name"/>
+        <text id="lines-card-status[1]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[2]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[2]" class="line-name"/>
+        <text id="lines-card-status[2]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[3]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[3]" class="line-name"/>
+        <text id="lines-card-status[3]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[4]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[4]" class="line-name"/>
+        <text id="lines-card-status[4]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[5]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[5]" class="line-name"/>
+        <text id="lines-card-status[5]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[6]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[6]" class="line-name"/>
+        <text id="lines-card-status[6]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[7]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[7]" class="line-name"/>
+        <text id="lines-card-status[7]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[8]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[8]" class="line-name"/>
+        <text id="lines-card-status[8]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[9]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[9]" class="line-name"/>
+        <text id="lines-card-status[9]" class="line-status"/>
+      </use>
+      <use href="#tile-list-item">
+        <rect id="lines-card-line[10]" class="line-line"/>
+        <use href="#line-card-circle"/>
+        <text id="lines-card-name[10]" class="line-name"/>
+        <text id="lines-card-status[10]" class="line-status"/>
+      </use>
+    </use>
+  </svg>
+</svg>

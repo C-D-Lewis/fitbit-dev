@@ -1,0 +1,17 @@
+{
+  "fitbit": {
+    "appUUID": "9de5e0b2-10b1-4241-8dcf-c4830b9c31f5",
+    "appType": "app",
+    "appDisplayName": "Tube Status",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#8bc34a",
+    "requestedPermissions": [
+      "access_internet"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Tube Status"
+      }
+    }
+  }
+}
