@@ -5,30 +5,29 @@ import * as ui from '../common/ui';
 let loadingWindow, mainWindow;
 let linesArr = [];
 
-function loadLinesData() {
-  const lineData = data.lines;
-  lineData.forEach((line, i) => {
-    ui.get(`lines-card-line[${i}]`).style.fill = lineData[i].color;
-    ui.setText(`lines-card-name[${i}]`, lineData[i].name);
-  });
-}
-
 function setupUI() {
   loadingWindow = new ui.Window({
-    id: 'loading-window',
-    setup: () => {
-      ui.setVisible('loading-text', true);
-      ui.setText('loading-text', 'Waiting for phone...');
-    }
+    id: 'loading-window'
   });
   loadingWindow.show();
   
   mainWindow = new ui.Window({
     id: 'main-window', 
-    setup: loadLinesData, 
+    setup: () => {
+      const lineData = data.lines;
+      lineData.forEach((line, i) => {
+        ui.get(`lines-card-line[${i}]`).style.fill = lineData[i].color;
+        ui.setText(`lines-card-name[${i}]`, lineData[i].name);
+      });
+    }, 
     update: () => {
       linesArr.forEach((item, i) => {
         ui.setText(`lines-card-status[${i}]`, item.status);
+        
+        const reason = item.reason ? item.reason : '';
+        ui.setText(`lines-card-reason[${i}]`, reason);
+        
+        ui.setVisible(`lines-card-icon[${i}]`, item.reason);
       });
     }
   });
@@ -44,6 +43,7 @@ function main() {
     message: (evt) => {
       linesArr = evt.data;
       console.log(`Recv: ${JSON.stringify(linesArr)}`);
+      
       loadingWindow.hide();
       mainWindow.update();
       mainWindow.show();

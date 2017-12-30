@@ -28,6 +28,27 @@
   font-weight: bold;
 }
 
+.line-reason {
+  x: 30%;
+  y: 63%;
+  width: 70%;
+  height: 40%;
+  fill: #999999;
+  text-anchor: start;
+  text-length: 128;
+  font-family: Colfax-Medium;
+  font-size: 24;
+  rows: 3;
+  text-overflow: ellipsis;
+}
+
+.line-icon {
+  x: 8%;
+  y: 39%;
+  width: 15%;
+  height: 20%;
+}
+
 .line-line {
   x: 40;
   y: 0;
