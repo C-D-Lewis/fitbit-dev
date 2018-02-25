@@ -3,49 +3,43 @@
     <symbol id="main-card">
       <svg>
         <rect
-          id="main-paper"
-          x="10%" y="20%"
-          width="80%" height="90%"
+          id="main-paper" x="10%" y="20%" width="80%" height="90%"
           fill="fb-white"/>
         <rect
-          id="main-top-bar"
-          x="15%" y="23%"
-          width="70%" height="10"
+          id="main-top-bar" x="15%" y="23%" width="70%" height="10"
           fill="fb-light-gray"/>
         <textarea
-          id="main-title"
-          pointer-events="visible"
-          x="15%" y="29%"
-          width="70%" height="76%"
+          id="main-title" x="15%" y="29%" width="70%" height="76%"
           fill="black" 
           text-anchor="start" text-overflow="ellipsis" text-length="128"
-          font-family="Colfax-Medium" font-size="28" font-weight="bold">NONE</textarea>
+          font-family="Colfax-Medium" font-size="28" font-weight="bold"
+          pointer-events="visible">
+          NONE
+        </textarea>
         <animate attributeName="y" begin="enable" from="-10%" to="0%" dur="0.2" final="restore" />
       </svg>
     </symbol>
     <symbol id="detail-card">
       <svg>
         <rect
-          id="detail-bg"
-          x="0" y="0"
-          width="100%" height="100%"
+          id="detail-bg" x="0" y="0" width="100%" height="100%"
           fill="fb-white"/>
         <textarea
-          id="detail-title"
-          pointer-events="visible"
-          x="5%" y="5%"
-          width="90%" height="40%"
+          id="detail-title" x="5%" y="5%" width="90%" height="40%"
           fill="black" 
           text-anchor="start" text-overflow="ellipsis" text-length="128"
-          font-family="Colfax-Medium" font-size="30" font-weight="bold">NONE</textarea>
+          font-family="Colfax-Medium" font-size="30" font-weight="bold"
+          pointer-events="visible">
+          NONE
+        </textarea>
         <textarea
-          id="detail-text"
-          pointer-events="visible"
-          x="5%" y="35%"
-          width="90%" height="65%"
+          id="detail-text" x="5%" y="35%" width="90%" height="65%"
           fill="fb-dark-gray" 
           text-anchor="start" text-overflow="ellipsis" text-length="256"
-          font-family="Colfax-Medium" font-size="25">NONE</textarea>
+          font-family="Colfax-Medium" font-size="25"
+          pointer-events="visible">
+          NONE
+        </textarea>
         <animate attributeName="y" begin="enable" from="110%" to="0%" dur="0.2" final="restore" />
       </svg>
     </symbol>
@@ -54,54 +48,41 @@
   <svg id="loading-window">
     <!-- Logo -->
     <rect
-      id="loading-logo-bg"
-      x="140" y="80"
-      width="70" height="62"
+      id="loading-logo-bg" x="140" y="80" width="70" height="62"
       fill="fb-white"/>
     <rect
-      id="loading-logo-line1"
-      x="146" y="85"
-      width="55" height="8"
+      id="loading-logo-line1" x="146" y="85" width="55" height="8"
       fill="fb-black"/>
     <rect
-      x="146" y="97"
-      id="loading-logo-line2"
-      width="50" height="8"
+      id="loading-logo-line2" x="146" y="97" width="50" height="8"
       fill="fb-black"/>
     <rect
-      id="loading-logo-line3"
-      x="146" y="109"
-      width="35" height="8"
+      id="loading-logo-line3" x="146" y="109" width="35" height="8"
       fill="fb-black"/>
     <rect
-      id="loading-logo-line4"
-      x="146" y="121"
-      width="32" height="8"
+      id="loading-logo-line4" x="146" y="121" width="32" height="8"
       fill="fb-black"/>
     <text
-      id="loading-text"
-      x="50%" y="90%"
-      width="100%" height="30%"
+      id="loading-text" x="50%" y="90%" width="100%" height="30%"
       fill="#999999" 
       text-anchor="middle" text-length="64"
-      font-family="Colfax-Medium" font-size="30" font-weight="bold">Sync Error</text>  
+      font-family="Colfax-Medium" font-size="30" font-weight="bold">
+      Sync Error
+    </text>  
     </svg>
   
   <!-- Main Window -->
   <svg id="main-window" display="none">
     <rect
-      id="main-bg"
-      x="0" y="0"
-      width="100%" height="100%"
+      id="main-bg" x="0" y="0" width="100%" height="100%"
       fill="#AD000B"/>
     <text
-      id="main-progress"
-      x="50%" y="12%"
-      width="100%" height="30%"
+      id="main-progress" x="50%" y="12%" width="100%" height="30%"
       fill="white" 
       text-anchor="middle" text-length="5"
-      font-family="Colfax-Regular" font-size="25">NONE</text>
-    
+      font-family="Colfax-Regular" font-size="25">
+      NONE
+    </text>
     <svg>
       <use id="main-card-instance" href="#main-card"/>
     </svg>

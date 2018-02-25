@@ -1,33 +1,28 @@
 import * as fs from 'fs';
 
-let db = null;
-let dbName = '';
+let data = {};
+let dbPath = '';
 
-function save() { fs.writeFileSync(dbName, db, 'json'); }
+const save = () => fs.writeFileSync(dbPath, data, 'json');
 
-export function load(appName) {
-  dbName = `${appName}.json`;
+export const load = (appName) => {
+  dbPath = `${appName}.json`;
   
   try {
-    db = fs.readFileSync(dbName, 'json');
-    console.log(`Loaded ${dbName}`);
+    data = fs.readFileSync(dbPath, 'json');
+    console.log(`Loaded ${dbPath}`);
   } catch(e) {
-    db = {};
+    console.log(e);
+    data = {};
     save();
   }
-}
+};
 
-export function contains(key) { return get(key) !== null; }
+export const contains = key => get(key) !== null;
 
-export function get(key) {
-  if(!db) return;
-  
-  return db[key];
-}
+export const get = key => data[key];
 
-export function set(key, value) {
-  if(!db) return;
-  
-  db[key] = value;
+export const set = (key, value) => {
+  data[key] = value;
   save();
-}
+};

@@ -5,10 +5,10 @@ import * as headlines from './headlines';
 
 const RETRY_TIMEOUT = 2000;
 
-var stories = [];
-var lastIndex = 0;
+let stories = [];
+let lastIndex = 0;
 
-function sendNext() {
+const sendNext = () => {
   if(lastIndex === stories.length) return;
   
   try {
@@ -17,26 +17,24 @@ function sendNext() {
     log.info(`Sending story ${lastIndex}`);
     messaging.peerSocket.send(story);
     lastIndex++;
-  } catch(e) {
+  } catch (e) {
     log.error(`Error sending message: ${e}`);
     setTimeout(sendNext, RETRY_TIMEOUT);
   }
-}
+};
 
-function download() {
+const download = () => {
   log.info('Downloading...');
   headlines.download((items) => {
     stories = items;
     setInterval(sendNext, 1000);
   });
-}
+};
 
-function main() {
+(() => {
   log.info('News Headlines companion start');
   
   messaging.peerSocket.onopen = download;
-  messaging.peerSocket.onerror = (err) => log.error(`Connection error: ${err.code} - ${err.message}`);
+  messaging.peerSocket.onerror = err => log.error(`Connection error: ${err.code} - ${err.message}`);
   // messaging.peerSocket.onbufferedamountdecrease = sendNext;
-}
-
-(() => main())();
+})();

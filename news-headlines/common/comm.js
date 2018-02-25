@@ -1,8 +1,7 @@
 import * as messaging from 'messaging';
 
-export function setup(opts) {
-  const { open, message, error } = opts;
+export const setup = ({ open, message, error }) => {
   messaging.peerSocket.onopen = open;
   messaging.peerSocket.onmessage = message;
   messaging.peerSocket.onerror = error;
-}
+};

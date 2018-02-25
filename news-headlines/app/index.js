@@ -12,7 +12,7 @@ let currentStory = 0;
 let buttonsEnabled = false;
 let timeoutHandle;
 
-function setupUI() {
+const setupUI = () => {
   loadingWindow = new ui.Window({
     id: 'loading-window',
     setup: () => {
@@ -26,7 +26,6 @@ function setupUI() {
     id: 'main-window', 
     setup: () => {
       ui.get('main-title').onclick = () => {
-        // mainWindow.hide();
         detailWindow.show();
         detailWindow.update();
         ui.animate('detail-card-instance');
@@ -46,21 +45,21 @@ function setupUI() {
       const story = stories[currentStory];
       ui.setText('detail-title', story.title);
 
-      const textView = ui.get('detail-text');
-      textView.text = story.description;
-      textView.onclick = () => {
+      const detailText = ui.get('detail-text');
+      detailText.text = story.description;
+      detailText.onclick = () => {
         detailWindow.hide();
         mainWindow.show();
         buttonsEnabled = true;
       };
     }
   });
-}
+};
 
-function setupMessaging() {
+const setupMessaging = () => {
   comm.setup({
     open: () => log.info('Device socket open'),
-    message: (evt) => {
+    message: (event) => {
       if(stories.length === 0) {
         clearTimeout(timeoutHandle);
         loadingWindow.hide();
@@ -68,7 +67,7 @@ function setupMessaging() {
         buttonsEnabled = true;
       }
 
-      stories.push(evt.data);
+      stories.push(event.data);
       mainWindow.update();
     },
     error: (err) => {
@@ -78,7 +77,7 @@ function setupMessaging() {
   });
 }
 
-function setupButtons() {
+const setupButtons = () => {
   document.onkeypress = (e) => {
     if(!buttonsEnabled) return;
     
@@ -97,16 +96,17 @@ function setupButtons() {
         break;
       default: break;
     }
+
     mainWindow.update();
   };
-}
+};
 
-function setupTimeout() {
+const setupTimeout = () => {
   timeoutHandle = setTimeout(() => {
     ui.setVisible('loading-text', true);
     ui.setText('loading-text', 'Download failed!');
   }, TIMEOUT_MS);
-}
+};
 
 (() => {
   setupUI();

@@ -23,31 +23,31 @@ const SETS = {
 
 const digits = [ ui.get('h0'), ui.get('h1'), ui.get('m0'), ui.get('m1') ];
 
-var chosenColor = '';
+let chosenColor = '';
 
-function getImagePath(value) { return `${value}.png`; }
+const getImagePath = (value) => `${value}.png`;
 
-function loadColor() {
+const loadColor = () => {
   let color = '';
   if(!db.contains(KEY_COLOR)) {
     color = SETS.green;
     db.set(KEY_COLOR, color);
     console.log(`Defaulted ${color}`);
-  } else {
-    color = db.get(KEY_COLOR);
-    console.log(`Read ${color}`);
-    
-    if(!color) {
-      color = SETS.green;
-      db.set(KEY_COLOR, color);
-      console.log(`Recovered ${color}`);
-    }
+  }
+  
+  color = db.get(KEY_COLOR);
+  console.log(`Read ${color}`);
+
+  if(!color) {
+    color = SETS.green;
+    db.set(KEY_COLOR, color);
+    console.log(`Recovered ${color}`);
   }
 
   return color;
-}
+};
 
-function update(date) {
+const update = (date) => {
   const hours = date.getHours();
   const mins = date.getMinutes();
 
@@ -59,7 +59,15 @@ function update(date) {
   digits[2].href = getImagePath(Math.floor(mins / 10));
   digits[3].style.fill = chosenColor;
   digits[3].href = getImagePath(mins % 10);
-}
+};
+
+const onMessage = (event) => {
+  console.log(JSON.stringify(event.data));
+  chosenColor = SETS[event.data.color];
+  db.set(KEY_COLOR, chosenColor);
+  console.log(`Chosen color: ${chosenColor}`);
+  update(new Date());
+};
 
 (() => {
   console.log('Isotime for Ionic');  
@@ -67,17 +75,8 @@ function update(date) {
   chosenColor = loadColor();
 
   clock.granularity = 'minutes';
-  clock.ontick = (evt) => {
-    const date = evt.date;
-    update(date);    
-  };
+  clock.ontick = (event) => update(event.date);
   update(new Date());
   
-  messaging.peerSocket.onmessage = (evt) => {
-    console.log(JSON.stringify(evt.data));
-    chosenColor = SETS[evt.data.color];
-    db.set(KEY_COLOR, chosenColor);
-    console.log(`Chosen color: ${chosenColor}`);
-    update(new Date());
-  };
+  messaging.peerSocket.onmessage = onMessage;
 })();
