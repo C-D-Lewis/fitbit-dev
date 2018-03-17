@@ -1,0 +1,19 @@
+{
+  "fitbit": {
+    "appUUID": "6e35f28e-3e77-4fe8-a46f-24acd8a09225",
+    "appType": "clockface",
+    "appDisplayName": "Beam Up",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Beam Up"
+      }
+    }
+  }
+}
