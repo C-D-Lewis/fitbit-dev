@@ -6,6 +6,10 @@
     "iconFile": "resources/icon.png",
     "wipeColor": "#607d8b",
     "requestedPermissions": [],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
     "i18n": {
       "en": {
         "name": "Elemental"

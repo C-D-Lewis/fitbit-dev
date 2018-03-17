@@ -1,10 +1,11 @@
 const document = require('document');
 
-export function get(id) { return document.getElementById(id); }
+export const get = id => document.getElementById(id);
 
-export function setVisible(target, visible) {
-  let element = (typeof target === 'object') ? target : get(target);
-  if(!element) return;
+export const setText = (id, text) => get(id).text = text;
+
+export const setVisible = (target, visible) => {
+  const element = (typeof target === 'object') ? target : get(target);
 
   element.style.display = visible ? 'inline' : 'none';
-}
+};
