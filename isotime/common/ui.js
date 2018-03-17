@@ -3,9 +3,7 @@ const document = require('document');
 export const get = id => (typeof id === 'object') ? id : document.getElementById(id);
 
 export const setVisible = (id, visible) => {
-  let element = get(id);
-  if(!element) return;
-  
+  const element = get(id);  
   element.style.display = visible ? 'inline' : 'none';
 };
 

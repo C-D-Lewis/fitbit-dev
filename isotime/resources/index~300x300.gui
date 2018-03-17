@@ -1,0 +1,6 @@
+<svg viewport-fill="black">
+  <image fill="#FFFFFF" id="h0" x="17%" y="6%" width="145" height="90" href="0.png" />
+  <image fill="#FFFFFF" id="h1" x="43%" y="25%" width="145" height="90" href="1.png" />
+  <image fill="#FFFFFF" id="m0" x="5%" y="46%" width="145" height="90" href="2.png" />
+  <image fill="#FFFFFF" id="m1" x="30%" y="64%" width="145" height="90" href="3.png" />
+</svg>

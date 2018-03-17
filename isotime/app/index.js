@@ -1,5 +1,5 @@
-import clock from 'clock';
-import * as messaging from 'messaging';
+const clock = require('clock');
+const messaging = require('messaging');
 
 import * as ui from '../common/ui';
 import * as db from '../common/db';
@@ -25,7 +25,7 @@ const digits = [ ui.get('h0'), ui.get('h1'), ui.get('m0'), ui.get('m1') ];
 
 let chosenColor = '';
 
-const getImagePath = (value) => `${value}.png`;
+const getImagePath = value => `${value}.png`;
 
 const loadColor = () => {
   let color = '';
@@ -75,7 +75,7 @@ const onMessage = (event) => {
   chosenColor = loadColor();
 
   clock.granularity = 'minutes';
-  clock.ontick = (event) => update(event.date);
+  clock.ontick = event => update(event.date);
   update(new Date());
   
   messaging.peerSocket.onmessage = onMessage;

@@ -1,6 +1,6 @@
 <svg viewport-fill="black">
-  <image fill="#FFFFFF" id="h0" x="80" y="8" width="145" height="90" href="0.png" />
-  <image fill="#FFFFFF" id="h1" x="170" y="56" width="145" height="90" href="1.png" />
-  <image fill="#FFFFFF" id="m0" x="38" y="107" width="145" height="90" href="2.png" />
-  <image fill="#FFFFFF" id="m1" x="127" y="152" width="145" height="90" href="3.png" />
+  <image fill="#FFFFFF" id="h0" x="23%" y="3%" width="145" height="90" href="0.png" />
+  <image fill="#FFFFFF" id="h1" x="49%" y="22%" width="145" height="90" href="1.png" />
+  <image fill="#FFFFFF" id="m0" x="11%" y="43%" width="145" height="90" href="2.png" />
+  <image fill="#FFFFFF" id="m1" x="36%" y="61%" width="145" height="90" href="3.png" />
 </svg>
