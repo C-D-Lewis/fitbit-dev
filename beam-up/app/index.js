@@ -19,12 +19,24 @@ const SETS = {
   orange: '#ff8c00',
   royalblue: '#1d00c4'
 };
+const DAYS = {
+  0: 'sun',
+  1: 'mon',
+  2: 'tue',
+  3: 'wed',
+  4: 'thu',
+  5: 'fri',
+  6: 'sat'
+};
 
-const digits = [ ui.get('h0'), ui.get('h1'), ui.get('m0'), ui.get('m1') ];
+const timeDigits = [ ui.get('h0'), ui.get('h1'), ui.get('m0'), ui.get('m1') ];
+const dateDigits = [ ui.get('d0'), ui.get('d1') ];
 
 let chosenColor = '';
 
-const getImagePath = value => `${value}.png`;
+const getTimePath = value => `time/${value}.png`;
+const getDatePath = value => `date/${value}_s.png`;
+const getDayPath = value => `day/${DAYS[value]}.png`;
 
 const loadColor = () => {
   let color = '';
@@ -53,10 +65,18 @@ const update = (date) => {
   const background = ui.get('background');
   background.style.fill = chosenColor;
   
-  digits[0].href = getImagePath(Math.floor(hours / 10));
-  digits[1].href = getImagePath(hours % 10);
-  digits[2].href = getImagePath(Math.floor(mins / 10));
-  digits[3].href = getImagePath(mins % 10);
+  timeDigits[0].href = getTimePath(Math.floor(hours / 10));
+  timeDigits[1].href = getTimePath(hours % 10);
+  timeDigits[2].href = getTimePath(Math.floor(mins / 10));
+  timeDigits[3].href = getTimePath(mins % 10);
+  
+  const dom = date.getDate();
+  dateDigits[0].href = getDatePath(Math.floor(dom / 10));
+  // dateDigits[0].href = getDatePath(2);
+  dateDigits[1].href = getDatePath(dom % 10);
+  
+  const day = date.getDay();
+  ui.get('day').href = getDayPath(day);
 };
 
 const onMessage = (event) => {
