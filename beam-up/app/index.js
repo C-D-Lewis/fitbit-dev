@@ -1,17 +1,21 @@
 import clock from "clock";
 const messaging = require('messaging');
 
+import * as BeamUpBar from './beamUpBar';
 import * as data from './data';
 import * as db from '../common/db';
 import * as ui from '../common/ui';
 
 const APP_NAME = 'BeamUp';  // Do not change without migration
 
+const secondsBar = new BeamUpBar.SecondsBar();
 let chosenColor = '';
 
 const update = (date) => {
   const hours = date.getHours();
   const mins = date.getMinutes();
+  const seconds = date.getSeconds();
+  if(seconds % 15 !== 0) return;
   
   ui.get('background').style.fill = chosenColor;
   
@@ -26,6 +30,8 @@ const update = (date) => {
   
   const day = date.getDay();
   ui.get('day').href = data.getDayPath(day);
+  
+  secondsBar.setProgress(seconds);
 };
 
 const onMessage = (event) => {
@@ -42,9 +48,14 @@ const onMessage = (event) => {
   db.load(APP_NAME);
   chosenColor = data.loadColor();
   
-  clock.granularity = 'minutes';
+  clock.granularity = 'seconds';
   clock.ontick = event => update(event.date);
-  update(new Date());
+  
+  const nowish = new Date();
+  let last15 = nowish.getSeconds();
+  while(last15 % 15 !== 0) last15--;
+  nowish.setSeconds(last15);
+  update(nowish);
   
   messaging.peerSocket.onmessage = onMessage;
 })();

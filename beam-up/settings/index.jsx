@@ -4,7 +4,7 @@ function SettingsPage(props) {
       <Section
         title={<Text bold align="center">Beam Up Settings</Text>}>
         <Select
-          label={`Choose Background Color`}
+          label={`Choose Background Color (applies after animation)`}
           settingsKey="color"
           options={[
             {name: "black" },

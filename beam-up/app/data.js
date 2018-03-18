@@ -19,7 +19,9 @@ const DAYS = { 0: 'sun', 1: 'mon', 2: 'tue', 3: 'wed', 4: 'thu', 5: 'fri', 6: 's
 const DB_KEY_COLOR = 'color';
 
 export const getTimePath = value => `time/${value}.png`;
+
 export const getDatePath = value => `date/${value}_s.png`;
+
 export const getDayPath = value => `day/${DAYS[value]}.png`;
 
 export const setColor = key => db.set(DB_KEY_COLOR, COLOR_SETS[key]);

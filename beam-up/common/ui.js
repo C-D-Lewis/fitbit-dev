@@ -7,7 +7,7 @@ export const setVisible = (id, visible) => {
   element.style.display = visible ? 'inline' : 'none';
 };
 
-export const animate = id => get(id).animate = true;
+export const animate = id => get(id).animate('enable');
 
 /**
  * Windows collect multiple elements by ID, and start hidden
