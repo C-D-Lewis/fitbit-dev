@@ -1,11 +1,41 @@
 <svg viewport-fill="black">
   <rect id="background" x="0" y="0" width="100%" height="100%" fill="black">
+    <!-- Beams go down, then up after the digits have moved -->
+    <rect id="b0" class="beam" x="14%">
+      <animate attributeName="height" begin="enable+1" from="0%" to="155" dur="0.3" final="keep" easing="ease-out"/>
+      <animate attributeName="height" begin="enable+2.5" from="155" to="0%" dur="0.3" final="keep" easing="ease-out"/>
+    </rect>
+     <rect id="b1" class="beam" x="14%+60">
+      <animate attributeName="height" begin="enable+1" from="0%" to="155" dur="0.3" final="keep" easing="ease-out"/>
+      <animate attributeName="height" begin="enable+2.5" from="155" to="0%" dur="0.3" final="keep" easing="ease-out"/>
+    </rect>
+     <rect id="b2" class="beam" x="14%+140">
+      <animate attributeName="height" begin="enable+1" from="0%" to="155" dur="0.3" final="keep" easing="ease-out"/>
+      <animate attributeName="height" begin="enable+2.5" from="155" to="0%" dur="0.3" final="keep" easing="ease-out"/>
+    </rect>
+     <rect id="b3" class="beam" x="14%+200">
+      <animate attributeName="height" begin="enable+1" from="0%" to="155" dur="0.3" final="keep" easing="ease-out"/>
+      <animate attributeName="height" begin="enable+2.5" from="155" to="0%" dur="0.3" final="keep" easing="ease-out"/>
+    </rect>
+    
     <!-- Time (imagine.ttf 84 pt) -->
-    <image id="h0" class="time-digit" x="14%"/>
-    <image id="h1" class="time-digit" x="14%+60"/>
+    <image id="h0" class="time-digit" x="14%">
+      <animate attributeName="y" begin="enable+1.5" from="95" to="-53" dur="0.2" final="keep" easing="ease-in"/>
+      <animate attributeName="y" begin="enable+2" from="-53" to="95" dur="0.2" final="keep" easing="ease-in"/>
+    </image>
+    <image id="h1" class="time-digit" x="14%+60">
+      <animate attributeName="y" begin="enable+1.5" from="95" to="-53" dur="0.2" final="keep" easing="ease-in"/>
+      <animate attributeName="y" begin="enable+2" from="-53" to="95" dur="0.2" final="keep" easing="ease-in"/>
+    </image>
     <image id="cn" class="time-digit" x="14%+120" href="time/colon.png"/>
-    <image id="m0" class="time-digit" x="14%+140"/>
-    <image id="m1" class="time-digit" x="14%+200"/>
+    <image id="m0" class="time-digit" x="14%+140">
+      <animate attributeName="y" begin="enable+1.5" from="95" to="-53" dur="0.2" final="keep" easing="ease-in"/>
+      <animate attributeName="y" begin="enable+2" from="-53" to="95" dur="0.2" final="keep" easing="ease-in"/>
+    </image>
+    <image id="m1" class="time-digit" x="14%+200">
+      <animate attributeName="y" begin="enable+1.5" from="95" to="-53" dur="0.2" final="keep" easing="ease-in"/>
+      <animate attributeName="y" begin="enable+2" from="-53" to="95" dur="0.2" final="keep" easing="ease-in"/>
+    </image>
     
     <!-- Seconds bar -->
     <svg id="beam-up-bar" width="100%" height="100%">
@@ -18,7 +48,7 @@
       <rect id="beam-up-bar-75" class="bar">
         <animate attributeName="width" begin="enable" from="0%" to="75%" dur="0.5" final="keep" easing="ease-out"/>
       </rect>
-      <rect id="beam-up-bar-100" y="50%" class="bar">
+      <rect id="beam-up-bar-100" class="bar">
         <animate attributeName="width" begin="enable" from="0%" to="100%" dur="0.5" final="keep" easing="ease-out"/>
       </rect>
       <rect id="beam-up-bar-return" class="bar">

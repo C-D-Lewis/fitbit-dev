@@ -11,7 +11,7 @@ const IDS = {
 export function SecondsBar () {
   this.state = 0;
   
-  this.reset = () => {
+  this.hideAll = () => {
     ui.setVisible(IDS.q1, false);
     ui.setVisible(IDS.q2, false);
     ui.setVisible(IDS.q3, false);
@@ -19,7 +19,11 @@ export function SecondsBar () {
   };
   
   this.setProgress = (value) => {
-    if(value % 15 !== 0) return;
+    // Ensure the bar has returned
+    if(value > 1 && value < 15 && this.state !== 1) value = 1;
+
+    if(value % 15 !== 0 && value !== 1 && value !== 58) return;
+    
     if(value === this.state) return;
     
     this.state = value;
@@ -36,17 +40,17 @@ export function SecondsBar () {
         ui.setVisible(IDS.q3, true);
         ui.animate(IDS.q3);
         break;
-      case 60:
+      case 58:
         ui.setVisible(IDS.q4, true);
         ui.animate(IDS.q4);
         break;
-      case 0:
-        this.reset();
+      case 1:
+        this.hideAll();
         ui.setVisible(IDS.ret, true);
         ui.animate(IDS.ret);
         break;
     }
   };
   
-  this.reset();
+  this.hideAll();
 };

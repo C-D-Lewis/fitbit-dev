@@ -38,7 +38,7 @@ export const loadColor = () => {
   console.log(`Read ${hex}`);
 
   if(!hex) {
-    hex = SETS.black;
+    hex = COLOR_SETS.black;
     db.set(DB_KEY_COLOR, hex);
     console.log(`Recovered ${hex}`);
   }
