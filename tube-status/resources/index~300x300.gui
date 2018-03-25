@@ -33,7 +33,7 @@
         <text id="lines-card-name[0]" class="line-name"/>
         <text id="lines-card-status[0]" class="line-status"/>
         <textarea id="lines-card-reason[0]" class="line-reason"/>
-        <image id="lines-card-icon[0]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[0]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[1]" class="line-line"/>
@@ -41,7 +41,7 @@
         <text id="lines-card-name[1]" class="line-name"/>
         <text id="lines-card-status[1]" class="line-status"/>
         <textarea id="lines-card-reason[1]" class="line-reason"/>
-        <image id="lines-card-icon[1]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[1]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[2]" class="line-line"/>
@@ -49,7 +49,7 @@
         <text id="lines-card-name[2]" class="line-name"/>
         <text id="lines-card-status[2]" class="line-status"/>
         <textarea id="lines-card-reason[2]" class="line-reason"/>
-        <image id="lines-card-icon[2]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[2]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[3]" class="line-line"/>
@@ -57,7 +57,7 @@
         <text id="lines-card-name[3]" class="line-name"/>
         <text id="lines-card-status[3]" class="line-status"/>
         <textarea id="lines-card-reason[3]" class="line-reason"/>
-        <image id="lines-card-icon[3]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[3]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[4]" class="line-line"/>
@@ -65,7 +65,7 @@
         <text id="lines-card-name[4]" class="line-name"/>
         <text id="lines-card-status[4]" class="line-status"/>
         <textarea id="lines-card-reason[4]" class="line-reason"/>
-        <image id="lines-card-icon[4]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[4]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[5]" class="line-line"/>
@@ -73,7 +73,7 @@
         <text id="lines-card-name[5]" class="line-name"/>
         <text id="lines-card-status[5]" class="line-status"/>
         <textarea id="lines-card-reason[5]" class="line-reason"/>
-        <image id="lines-card-icon[5]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[5]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[6]" class="line-line"/>
@@ -81,7 +81,7 @@
         <text id="lines-card-name[6]" class="line-name"/>
         <text id="lines-card-status[6]" class="line-status"/>
         <textarea id="lines-card-reason[6]" class="line-reason"/>
-        <image id="lines-card-icon[6]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[6]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[7]" class="line-line"/>
@@ -89,7 +89,7 @@
         <text id="lines-card-name[7]" class="line-name"/>
         <text id="lines-card-status[7]" class="line-status"/>
         <textarea id="lines-card-reason[7]" class="line-reason"/>
-        <image id="lines-card-icon[7]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[7]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[8]" class="line-line"/>
@@ -97,7 +97,7 @@
         <text id="lines-card-name[8]" class="line-name"/>
         <text id="lines-card-status[8]" class="line-status"/>
         <textarea id="lines-card-reason[8]" class="line-reason"/>
-        <image id="lines-card-icon[8]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[8]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[9]" class="line-line"/>
@@ -105,7 +105,7 @@
         <text id="lines-card-name[9]" class="line-name"/>
         <text id="lines-card-status[9]" class="line-status"/>
         <textarea id="lines-card-reason[9]" class="line-reason"/>
-        <image id="lines-card-icon[9]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[9]" href="alert-yellow.png" class="line-icon" />
       </use>
       <use href="#tile-list-item">
         <rect id="lines-card-line[10]" class="line-line"/>
@@ -113,7 +113,7 @@
         <text id="lines-card-name[10]" class="line-name"/>
         <text id="lines-card-status[10]" class="line-status"/>
         <textarea id="lines-card-reason[10]" class="line-reason"/>
-        <image id="lines-card-icon[10]" href="images/alert-yellow.png" class="line-icon" />
+        <image id="lines-card-icon[10]" href="alert-yellow.png" class="line-icon" />
       </use>
     </use>
   </svg>

@@ -24,7 +24,7 @@
   text-anchor: start;
   text-length: 64;
   font-family: Colfax-Medium;
-  font-size: 30;
+  font-size: 35;
   font-weight: bold;
 }
 
@@ -37,8 +37,8 @@
   text-anchor: start;
   text-length: 128;
   font-family: Colfax-Medium;
-  font-size: 18;
-  rows: 4;
+  font-size: 24;
+  rows: 3;
   text-overflow: ellipsis;
 }
 

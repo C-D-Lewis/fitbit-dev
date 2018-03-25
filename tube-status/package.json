@@ -4,9 +4,13 @@
     "appType": "app",
     "appDisplayName": "Tube Status",
     "iconFile": "resources/icon.png",
-    "wipeColor": "#607d8b",
+    "wipeColor": "#3f51b5",
     "requestedPermissions": [
       "access_internet"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson"
     ],
     "i18n": {
       "en": {

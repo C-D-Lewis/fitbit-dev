@@ -5,10 +5,8 @@ import * as ui from '../common/ui';
 let loadingWindow, mainWindow;
 let linesArr = [];
 
-function setupUI() {
-  loadingWindow = new ui.Window({
-    id: 'loading-window'
-  });
+const setupUI = () => {
+  loadingWindow = new ui.Window({ id: 'loading-window' });
   loadingWindow.show();
   
   mainWindow = new ui.Window({
@@ -31,25 +29,24 @@ function setupUI() {
       });
     }
   });
-}
+};
 
-function main() {
+(() => {
   console.log('Tube Status app start');
   
   setupUI();
   
   comm.setup({
     open: () => console.log('device onopen'),
-    message: (evt) => {
-      linesArr = evt.data;
-      console.log(`Recv: ${JSON.stringify(linesArr)}`);
+    message: (event) => {
+      // All line data arrives in one message
+      linesArr = event.data;
+      if(data.debug) console.log(`Recv: ${JSON.stringify(linesArr)}`);
       
       loadingWindow.hide();
       mainWindow.update();
       mainWindow.show();
     },
-    error: (err) => console.log(JSON.stringify(err))
+    error: err => console.log(JSON.stringify(err))
   });
-}
-
-(() => main())();
+})();

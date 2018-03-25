@@ -1,15 +1,16 @@
 {
+  "debug": false,
   "lines": [
-    { "name": "Bakerloo", "color": "#B36305" },
-    { "name": "Central", "color": "#E32017" },
-    { "name": "Circle", "color": "#FFD300" },
-    { "name": "District", "color": "#00782A" },
-    { "name": "H'smith & City", "color": "#F3A9BB" },
-    { "name": "Jubilee", "color": "#A0A5A9" },
-    { "name": "Metropolitan", "color": "#9B0056" },
-    { "name": "Northern", "color": "#000000" },
-    { "name": "Piccadilly", "color": "#003688" },
-    { "name": "Victoria", "color": "#0098D4" },
+    { "name": "Bakerloo",        "color": "#B36305" },
+    { "name": "Central",         "color": "#E32017" },
+    { "name": "Circle",          "color": "#FFD300" },
+    { "name": "District",        "color": "#00782A" },
+    { "name": "H'smith & City",  "color": "#F3A9BB" },
+    { "name": "Jubilee",         "color": "#A0A5A9" },
+    { "name": "Metropolitan",    "color": "#9B0056" },
+    { "name": "Northern",        "color": "#000000" },
+    { "name": "Piccadilly",      "color": "#003688" },
+    { "name": "Victoria",        "color": "#0098D4" },
     { "name": "Waterloo & City", "color": "#95CDBA" }
   ]
 }
