@@ -4,7 +4,7 @@
     <symbol id="line-card-circle">
       <svg>
         <circle cx="52" cy="50%" r="42" fill="black"/>
-        <circle cx="52" cy="50%" r="30" fill="white"/>
+        <circle cx="52" cy="50%" r="32" fill="white"/>
       </svg>
     </symbol>
   </defs>

@@ -3,7 +3,7 @@
 }
 
 .line-name {
-  x: 30%;
+  x: 23%;
   y: 48%;
   width: 100%;
   height: 30%;
@@ -11,47 +11,47 @@
   text-anchor: start;
   text-length: 64;
   font-family: Colfax-Medium;
-  font-size: 28;
+  font-size: 30;
   font-weight: bold;
 }
 
 .line-status {
-  x: 30%;
-  y: 61%;
+  x: 23%;
+  y: 59%;
   width: 100%;
   height: 30%;
   fill: #000000;
   text-anchor: start;
   text-length: 64;
   font-family: Colfax-Medium;
-  font-size: 35;
+  font-size: 26;
   font-weight: bold;
 }
 
 .line-reason {
-  x: 30%;
-  y: 63%;
+  x: 23%;
+  y: 62%;
   width: 70%;
   height: 40%;
   fill: #999999;
   text-anchor: start;
   text-length: 128;
   font-family: Colfax-Medium;
-  font-size: 24;
-  rows: 3;
+  font-size: 18;
+  rows: 5;
   text-overflow: ellipsis;
 }
 
 .line-icon {
-  x: 8%;
-  y: 39%;
-  width: 15%;
-  height: 20%;
+  x: 6%;
+  y: 43%;
+  width: 36;
+  height: 36;
 }
 
 .line-line {
-  x: 40;
+  x: 27;
   y: 0;
-  width: 7%;
+  width: 15;
   height: 100%;
 }
