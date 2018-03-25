@@ -35,10 +35,10 @@
   height: 40%;
   fill: #999999;
   text-anchor: start;
-  text-length: 128;
+  text-length: 256;
   font-family: Colfax-Medium;
-  font-size: 18;
-  rows: 4;
+  font-size: 20;
+  rows: 6;
   text-overflow: ellipsis;
 }
 

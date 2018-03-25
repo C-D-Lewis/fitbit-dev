@@ -1,3 +1,5 @@
+import { me as device } from 'device';
+
 import * as comm from '../common/comm';
 import * as data from '../common/data.json';
 import * as ui from '../common/ui';
@@ -24,8 +26,15 @@ const setupUI = () => {
         
         const reason = item.reason ? item.reason : '';
         ui.setText(`lines-card-reason[${i}]`, reason);
-        
         ui.setVisible(`lines-card-icon[${i}]`, item.reason);
+        
+        // Move view
+        if(reason) {
+          const { nameY, statusY, reasonY } = data.layout[device.modelName];
+          ui.get(`lines-card-name[${i}]`).y = nameY;
+          ui.get(`lines-card-status[${i}]`).y = statusY;
+          ui.get(`lines-card-reason[${i}]`).y = reasonY;
+        }
       });
     }
   });

@@ -12,5 +12,17 @@
     { "name": "Piccadilly",      "color": "#003688" },
     { "name": "Victoria",        "color": "#0098D4" },
     { "name": "Waterloo & City", "color": "#95CDBA" }
-  ]
+  ],
+  "layout": {
+    "Versa": {
+      "nameY": 110,
+      "statusY": 136,
+      "reasonY": 140
+    },
+    "Ionic": {
+      "nameY": 90,
+      "statusY": 122,
+      "reasonY": 130
+    }
+  }
 }
