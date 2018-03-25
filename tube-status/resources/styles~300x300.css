@@ -11,7 +11,7 @@
   text-anchor: start;
   text-length: 64;
   font-family: Colfax-Medium;
-  font-size: 30;
+  font-size: 32;
   font-weight: bold;
 }
 
@@ -24,14 +24,14 @@
   text-anchor: start;
   text-length: 64;
   font-family: Colfax-Medium;
-  font-size: 26;
+  font-size: 28;
   font-weight: bold;
 }
 
 .line-reason {
   x: 23%;
   y: 62%;
-  width: 70%;
+  width: 75%;
   height: 40%;
   fill: #999999;
   text-anchor: start;
