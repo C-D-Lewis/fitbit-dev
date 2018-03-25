@@ -15,9 +15,9 @@
   ],
   "layout": {
     "Versa": {
-      "nameY": 110,
-      "statusY": 136,
-      "reasonY": 140
+      "nameY": 112,
+      "statusY": 140,
+      "reasonY": 146
     },
     "Ionic": {
       "nameY": 90,
