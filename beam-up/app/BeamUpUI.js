@@ -9,8 +9,6 @@ const IDS = {
 };
 
 export function SecondsBar () {
-  this.state = 0;
-  
   this.hideAll = () => {
     ui.setVisible(IDS.q1, false);
     ui.setVisible(IDS.q2, false);
@@ -20,13 +18,6 @@ export function SecondsBar () {
   
   this.setProgress = (value) => {
     // Ensure the bar has returned
-    if(value > 1 && value < 15 && this.state !== 1) value = 1;
-
-    if(value % 15 !== 0 && value !== 1 && value !== 58) return;
-    
-    if(value === this.state) return;
-    
-    this.state = value;
     switch(value) {
       case 15: 
         ui.setVisible(IDS.q1, true);

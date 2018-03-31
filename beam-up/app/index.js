@@ -48,28 +48,31 @@ const scheduleColorChange = (id) => {
   setTimeout(() => ui.get(id).style.fill = 'white', 2500);
 };
 
-const update = (date) => {
+const updateTime = (date) => {
   const timeDigits = getTimeDigits(date);
-  const seconds = date.getSeconds();
-  
-  secondsBar.setProgress(seconds);
-  
-  if(seconds !== 58 && seconds !== 1 && seconds % 15 !== 0) return;
-
-  ui.get('background').style.fill = chosenColor;
-  
   ui.get('h0').href = data.getTimePath(timeDigits.h0);
   ui.get('h1').href = data.getTimePath(timeDigits.h1);
   ui.get('m0').href = data.getTimePath(timeDigits.m0);
   ui.get('m1').href = data.getTimePath(timeDigits.m1);
-  
+};
+
+const updateDate = (date) => {
   const dom = date.getDate();
   ui.get('d0').href = data.getDatePath(Math.floor(dom / 10));
   ui.get('d1').href = data.getDatePath(dom % 10);
   
   const day = date.getDay();
   ui.get('day').href = data.getDayPath(day);
+};
+
+const onSecondTick = (date) => {
+  const seconds = date.getSeconds();
+  secondsBar.setProgress(seconds);
   
+  updateTime(date);
+  updateDate(date);
+
+  // Begin animation chain
   if(seconds === 58) {
     const changes = predictNextChanges(date);
     if(includes(changes, 'h0')) {
@@ -104,6 +107,21 @@ const onMessage = (event) => {
   ui.get('background').style.fill = chosenColor;
 };
 
+const onDisplayChange = (event) => {
+  if(!display.on) {
+    secondsBar.hideAll();
+    return;
+  }
+  
+  const date = new Date();
+  updateTime(date);
+  updateDate(date);
+  
+  let seconds = date.getSeconds();
+  while(seconds % 15 !== 0) seconds -= 1;
+  secondsBar.setProgress(seconds);
+};
+
 (() => {
   console.log('Beam Up');
 
@@ -111,16 +129,14 @@ const onMessage = (event) => {
   chosenColor = data.loadColor();
   
   clock.granularity = 'seconds';
-  clock.ontick = event => update(event.date);
+  clock.ontick = event => onSecondTick(event.date);
+    
+  // Initial setup
+  ui.get('background').style.fill = chosenColor;
+  const now = new Date();
+  updateTime(now);
+  updateDate(now);
   
-  display.addEventListener('change', event => update(new Date()));
-
-  // Always update on startup
-  const nowish = new Date();
-  let last15 = nowish.getSeconds();
-  while(last15 % 15 !== 0) last15--;
-  nowish.setSeconds(last15);
-  update(nowish);
-  
+  display.onchange = onDisplayChange;
   messaging.peerSocket.onmessage = onMessage;
 })();
