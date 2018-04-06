@@ -4,8 +4,11 @@ import * as comm from '../common/comm';
 import * as data from '../common/data.json';
 import * as ui from '../common/ui';
 
+const TIMEOUT_MS = 30000;
+
 let loadingWindow, mainWindow;
 let linesArr = [];
+let timeoutHandle;
 
 const setupUI = () => {
   loadingWindow = new ui.Window({ id: 'loading-window' });
@@ -21,7 +24,14 @@ const setupUI = () => {
       });
     }, 
     update: () => {
+      const lineData = data.lines;
       linesArr.forEach((item, i) => {
+        // Verify the item is the correct line and in the same order
+        if(item.id !== lineData[i].id) {
+          ui.setText('loading-text', 'Data error!');
+          return;
+        }
+        
         ui.setText(`lines-card-status[${i}]`, item.status);
         
         const reason = item.reason ? item.reason : '';
@@ -48,6 +58,8 @@ const setupUI = () => {
   comm.setup({
     open: () => console.log('device onopen'),
     message: (event) => {
+      if(timeoutHandle) clearTimeout(timeoutHandle); 
+      
       // All line data arrives in one message
       linesArr = event.data;
       if(data.debug) console.log(`Recv: ${JSON.stringify(linesArr)}`);
@@ -58,4 +70,9 @@ const setupUI = () => {
     },
     error: err => console.log(JSON.stringify(err))
   });
+  
+  timeoutHandle = setTimeout(() => {
+    ui.setText('loading-text', 'Timed out!');
+    timeoutHandle = null;
+  }, TIMEOUT_MS);
 })();

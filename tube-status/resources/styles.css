@@ -35,7 +35,7 @@
   height: 40%;
   fill: #999999;
   text-anchor: start;
-  text-length: 256;
+  text-length: 300;
   font-family: Colfax-Medium;
   font-size: 20;
   rows: 6;
@@ -54,4 +54,11 @@
   y: 0;
   width: 7%;
   height: 100%;
+}
+
+.icon {
+  x: 130;
+  y: 95;
+  width: 80;
+  height: 80;
 }

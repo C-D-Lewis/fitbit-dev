@@ -8,5 +8,5 @@ export const setup = ({ open, message, error }) => {
 
 export const send = (data) => {
   messaging.peerSocket.send(data);
-  console.log(`Sent ${JSON.stringify(data)}`);
+  // console.log(`Sent ${JSON.stringify(data)}`);
 };
