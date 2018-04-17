@@ -1,0 +1,21 @@
+{
+  "fitbit": {
+    "appUUID": "23ee18c0-5e26-454d-bfcf-56d1fd13e5de",
+    "appType": "app",
+    "appDisplayName": "Upcoming",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#2196f3",
+    "requestedPermissions": [
+      "access_internet"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Upcoming"
+      }
+    }
+  }
+}
