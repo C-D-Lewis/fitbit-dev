@@ -28,7 +28,7 @@ export const refreshAccess = (oauthData) => {
   const url = 'https://www.googleapis.com/oauth2/v4/token';
   const params = {
     client_secret: DATA.clientSecret,
-    grant_type: refresh_token,
+    grant_type: 'refresh_token',
     refresh_token: oauthData.refresh_token,
     client_id: DATA.clientId
   };

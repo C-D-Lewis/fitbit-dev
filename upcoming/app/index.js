@@ -16,7 +16,7 @@ let timeoutHandle, cardColor = DATA.colorStale;
   loadingWindow = new ui.Window({ id: 'loading-window' });
   loadingWindow.show();
   
-  add a migration if not v 1.1.0 delete data and start again
+  //dd a migration if not v 1.1.0 delete data and start again
   
   mainWindow = new ui.Window({
     id: 'main-window', 
