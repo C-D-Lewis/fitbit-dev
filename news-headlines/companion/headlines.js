@@ -1,4 +1,4 @@
-import * as log from '../common/log';
+import * as DATA from '../common/data.json';
 
 const decode = str => str.split(/&amp;/g).join('&')
   .split('<![CDATA[').join('')
@@ -21,22 +21,24 @@ const getStories = (xml) => {
   const items = [];
   xml = xml.split('<item>');
   xml.shift();
-  xml.map((xmlChunk) => {
+  xml.map((xmlChunk, i) => {
     items.push({
-      title: decode(scrape(xmlChunk, [ '<title>' ], '</title>')),
-      description: decode(scrape(xmlChunk, [ '<description>' ], '</description>'))
+      t: decode(scrape(xmlChunk, ['<title>'], '</title>')),
+      d: decode(scrape(xmlChunk, ['<description>'], '</description>')),
+      dt: decode(scrape(xmlChunk, ['<pubDate>'], '</pubDate>')),
+      i
     });
   });
 
-  log.info(`Extracted ${items.length} items.`);
+  console.log(`Extracted ${items.length} items.`);
   return items;
 };
 
 export const download = (cb) => {
-  fetch('http://feeds.bbci.co.uk/news/rss.xml')
-    .then(response => response.text().then((text) => {
-      const stories = getStories(text).slice(0, 10);
-      if(stories.length < 1) return;
-      else cb(stories);
-    }));
+  fetch('https://feeds.bbci.co.uk/news/rss.xml').then(response => response.text().then((text) => {
+    const stories = getStories(text).slice(0, DATA.maxStories);
+    if(stories.length < 1) return;
+    
+    cb(stories);
+  }));
 };

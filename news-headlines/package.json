@@ -1,16 +1,20 @@
 {
   "fitbit": {
-    "appUUID": "7452645d-8cd1-43d4-83fb-6a2bf8d7f55e",
+    "appUUID": "51b7a243-61de-4b5b-8b35-09c5f3f30ad4",
     "appType": "app",
-    "appDisplayName": "News Headlines",
+    "appDisplayName": "Headlines",
     "iconFile": "resources/icon.png",
     "wipeColor": "#f44336",
     "requestedPermissions": [
       "access_internet"
     ],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
     "i18n": {
       "en": {
-        "name": "News Headlines"
+        "name": "Headlines"
       }
     }
   }

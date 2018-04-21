@@ -7,36 +7,37 @@
 }
 
 .icon {
-  x: 130;
-  y: 75;
+  x: 108;
+  y: 112;
   width: 80;
   height: 80;
 }
 
 .card-bg {
   x: 10;
-  y: 8;
-  width: 328;
-  height: 236;
+  y: 10;
+  width: 280;
+  height: 280;
+  fill: #AAAAAA;
 }
 
 .card-title {
-  x: 25;
-  y: 40;
-  width: 85%;
-  height: 70%;
+  x: 20;
+  y: 42;
+  width: 80%;
+  height: 80%;
   fill: #FFFFFF;
   text-anchor: start;
   text-length: 256;
   font-family: Colfax-Medium;
   font-size: 34;
-  rows: 4;
+  rows: 5;
   text-overflow: ellipsis;
 }
 
 .card-index {
   x: 50%;
-  y: 31;
+  y: 33;
   width: 100%;
   height: 20%;
   fill: #FFFFFF;
@@ -47,22 +48,22 @@
 }
 
 .card-date {
-  x: 25;
-  y: 237;
-  width: 80%;
+  x: 20;
+  y: 278;
+  width: 100%;
   height: 20%;
   fill: #FFFFFF;
   text-anchor: start;
   text-length: 32;
   font-family: Colfax-Medium;
-  font-size: 24;
+  font-size: 22;
   text-overflow: ellipsis;
 }
 
 .card-div-line {
   x: 0;
-  y: 208;
-  width: 348;
+  y: 248;
+  width: 300;
   height: 5;
   fill: #000000;
 }

@@ -1,116 +1,78 @@
-import document from 'document';
-
 import * as comm from '../common/comm';
-import * as log from '../common/log';
+import * as DATA from '../common/data.json';
+import * as db from '../common/db';
 import * as ui from '../common/ui';
 
-const TIMEOUT_MS = 10000;
+const TIMEOUT_MS = 30000;
 
-const stories = [];
 let loadingWindow, mainWindow;
-let currentStory = 0;
-let buttonsEnabled = false;
-let timeoutHandle;
+let storiesArr = [];
+let timeoutHandle, cardColor = DATA.colorStale, storiesReceived = 0;
 
-const setupUI = () => {
-  loadingWindow = new ui.Window({
-    id: 'loading-window',
-    setup: () => {
-      ui.setVisible('loading-text', true);
-      ui.setText('loading-text', 'Waiting for phone...');
-    }
-  });
+// Sun, 15 Apr 2018 13:25:00 GMT
+const formatDate = input => `${input.substring(5, 22)} GMT`;
+
+(() => {
+  console.log('News Headlines app start');
+  
+  loadingWindow = new ui.Window({ id: 'loading-window' });
   loadingWindow.show();
   
   mainWindow = new ui.Window({
     id: 'main-window', 
-    setup: () => {
-      ui.get('main-title').onclick = () => {
-        detailWindow.show();
-        detailWindow.update();
-        ui.animate('detail-card-instance');
-        buttonsEnabled = false;
-      };
-    }, 
+    setup: () => {}, 
     update: () => {
-      const story = stories[currentStory];
-      ui.setText('main-progress', `${currentStory + 1}/${stories.length}`);
-      ui.setText('main-title', story.title);
+      storiesArr.forEach((item, i) => {
+        const card = new ui.Card(`card[${i}]`);
+        
+        // Update this card
+        card.get('bg').style.fill = cardColor;
+        card.setText('index', `${i + 1} / ${DATA.maxStories}`);
+        card.setText('title', item.t);
+        card.setText('date', formatDate(item.dt));
+      });
     }
   });
   
-  const detailWindow = new ui.Window({
-    id: 'detail-window',
-    update: () => {
-      const story = stories[currentStory];
-      ui.setText('detail-title', story.title);
-
-      const detailText = ui.get('detail-text');
-      detailText.text = story.description;
-      detailText.onclick = () => {
-        detailWindow.hide();
-        mainWindow.show();
-        buttonsEnabled = true;
-      };
-    }
-  });
-};
-
-const setupMessaging = () => {
   comm.setup({
-    open: () => log.info('Device socket open'),
-    message: (event) => {
-      if(stories.length === 0) {
-        clearTimeout(timeoutHandle);
-        loadingWindow.hide();
-        mainWindow.show();
-        buttonsEnabled = true;
+    file: (fileName, json) => {
+      if(timeoutHandle) clearTimeout(timeoutHandle); 
+      
+      // Handle auth error
+      if(json.error) {
+        ui.setText('loading-text', json.error);
+        loadingWindow.show();
+        mainWindow.hide();
+        return;
       }
+      
+      // Save the stories  [{ t, d, i, dt }, ... ]
+      storiesArr = json.stories;
+      db.set('stories', JSON.stringify(storiesArr));
+      
+      console.log(`Received ${storiesArr.length} stories`);
+      console.log('Download complete!');
+      cardColor = DATA.colorFresh;
 
-      stories.push(event.data);
+      loadingWindow.hide();
       mainWindow.update();
-    },
-    error: (err) => {
-      log.error(`Device connection error: ${err.code} - ${err.message}`);
-      ui.setVisible('loading-text', true);
+      mainWindow.show();
     }
   });
-}
-
-const setupButtons = () => {
-  document.onkeypress = (e) => {
-    if(!buttonsEnabled) return;
-    
-    switch(e.key) {
-      case 'up': 
-        if(currentStory === 0) return;
-        
-        currentStory--; 
-        ui.animate('main-card-instance');
-        break;
-      case 'down': 
-        if(currentStory === stories.length - 1) return;
-        
-        currentStory++; 
-        ui.animate('main-card-instance');
-        break;
-      default: break;
-    }
-
-    mainWindow.update();
-  };
-};
-
-const setupTimeout = () => {
+  
   timeoutHandle = setTimeout(() => {
-    ui.setVisible('loading-text', true);
-    ui.setText('loading-text', 'Download failed!');
+    ui.setText('loading-text', 'Timed out!');
+    timeoutHandle = null;
   }, TIMEOUT_MS);
-};
-
-(() => {
-  setupUI();
-  setupButtons();
-  setupMessaging();
-  setupTimeout();
+  
+  db.load(DATA.appName);
+  const staleData = db.get('stories');
+  if(staleData) {
+    storiesArr = JSON.parse(staleData);
+    console.log(`Loaded ${storiesArr.length} stale stories`);
+    
+    loadingWindow.hide();
+    mainWindow.update();
+    mainWindow.show();
+  }
 })();

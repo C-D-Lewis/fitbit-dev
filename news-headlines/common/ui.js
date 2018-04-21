@@ -1,17 +1,16 @@
-const document = require('document');
+import * as document from 'document';
 
 export const get = id => (typeof id === 'object') ? id : document.getElementById(id);
 
 export const setVisible = (id, visible) => {
-  const element = get(id);
-  if(!element) return;
-  
-  element.style.display = visible ? 'inline' : 'none';
+  get(id).style.display = visible ? 'inline' : 'none';
 };
 
 export const animate = id => get(id).animate('enable');
 
-export const setText = (id, text) => get(id).text = text;
+export const setText = (id, text) => {
+  get(id).text = text; 
+};
 
 /**
  * Windows collect multiple elements by ID using a parent <svg> element, and start hidden
@@ -23,7 +22,23 @@ export function Window({ id, setup, update }) {
   this.show = () => setVisible(this.id, true);
   this.hide = () => setVisible(this.id, false);
   this.hide();
-  
   if(update) this.update = update;
   if(setup) setup();
 }
+
+const getChild = (element, id) => element.getElementById(id);
+
+/**
+ * Cards are a single instance, multiple reuse element with child elements
+ */
+export function Card(id) {
+  this.root = get(id);
+  
+  this.setText = function (id, text) {
+    getChild(this.root, id).text = text;
+  };
+  
+  this.get = function (id) {
+    return getChild(this.root, id);
+  };
+};
