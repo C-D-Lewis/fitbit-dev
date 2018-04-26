@@ -5,31 +5,24 @@ import * as ui from '../common/ui';
 
 const TIMEOUT_MS = 30000;
 
-let loadingWindow, mainWindow;
-let storiesArr = [];
-let timeoutHandle, cardColor = DATA.colorStale, storiesReceived = 0;
-
-// Sun, 15 Apr 2018 13:25:00 GMT
-const formatDate = input => `${input.substring(5, 22)} GMT`;
-
 (() => {
   console.log('News Headlines app start');
   
-  loadingWindow = new ui.Window({ id: 'loading-window' });
-  loadingWindow.show();
+  let storiesArr = [];
+  let timeoutHandle, cardColor = DATA.colorStale;
   
-  mainWindow = new ui.Window({
+  const loadingWindow = new ui.Window({ id: 'loading-window' });  
+  const mainWindow = new ui.Window({
     id: 'main-window', 
-    setup: () => {}, 
     update: () => {
       storiesArr.forEach((item, i) => {
         const card = new ui.Card(`card[${i}]`);
         
         // Update this card
         card.get('bg').style.fill = cardColor;
-        card.setText('index', `${i + 1} / ${DATA.maxStories}`);
-        card.setText('title', item.t);
-        card.setText('date', formatDate(item.dt));
+        card.setText('index', `${i + 1} / ${storiesArr.length}`);
+        card.setText('title', item.title);
+        card.setText('date', `${item.dateTime.substring(5, 22)} GMT`);
       });
     }
   });
@@ -51,7 +44,6 @@ const formatDate = input => `${input.substring(5, 22)} GMT`;
       db.set('stories', JSON.stringify(storiesArr));
       
       console.log(`Received ${storiesArr.length} stories`);
-      console.log('Download complete!');
       cardColor = DATA.colorFresh;
 
       loadingWindow.hide();
@@ -60,12 +52,9 @@ const formatDate = input => `${input.substring(5, 22)} GMT`;
     }
   });
   
-  timeoutHandle = setTimeout(() => {
-    ui.setText('loading-text', 'Timed out!');
-    timeoutHandle = null;
-  }, TIMEOUT_MS);
+  timeoutHandle = setTimeout(() => ui.setText('loading-text', 'Timed out!'), TIMEOUT_MS);
   
-  db.load(DATA.appName);
+  db.load();
   const staleData = db.get('stories');
   if(staleData) {
     storiesArr = JSON.parse(staleData);
@@ -75,4 +64,6 @@ const formatDate = input => `${input.substring(5, 22)} GMT`;
     mainWindow.update();
     mainWindow.show();
   }
+  
+  loadingWindow.show();
 })();

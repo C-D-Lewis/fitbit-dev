@@ -1,4 +1,4 @@
-.bg {
+.background {
   x: 0;
   y: 0;
   width: 100%;
@@ -65,4 +65,17 @@
   width: 348;
   height: 5;
   fill: #000000;
+}
+
+.loading-text {
+  x: 50%;
+  y: 80%; 
+  width: 100%;
+  height: 30%;
+  fill: #999999;
+  text-anchor: middle;
+  text-length: 64;
+  font-family: Colfax-Medium;
+  font-size: 30; 
+  font-weight: bold;
 }

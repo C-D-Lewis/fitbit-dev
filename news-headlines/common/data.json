@@ -1,6 +1,5 @@
 {
   "appName": "Headlines",
-  "appColor": "#d40000",
   "maxStories": 10,
   "colorFresh": "#d40000",
   "colorStale": "#AAAAAA"

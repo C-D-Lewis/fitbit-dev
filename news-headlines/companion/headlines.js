@@ -23,10 +23,9 @@ const getStories = (xml) => {
   xml.shift();
   xml.map((xmlChunk, i) => {
     items.push({
-      t: decode(scrape(xmlChunk, ['<title>'], '</title>')),
-      d: decode(scrape(xmlChunk, ['<description>'], '</description>')),
-      dt: decode(scrape(xmlChunk, ['<pubDate>'], '</pubDate>')),
-      i
+      title: decode(scrape(xmlChunk, ['<title>'], '</title>')),
+      description: decode(scrape(xmlChunk, ['<description>'], '</description>')),
+      dateTime: decode(scrape(xmlChunk, ['<pubDate>'], '</pubDate>'))
     });
   });
 
@@ -34,11 +33,6 @@ const getStories = (xml) => {
   return items;
 };
 
-export const download = (cb) => {
-  fetch('https://feeds.bbci.co.uk/news/rss.xml').then(response => response.text().then((text) => {
-    const stories = getStories(text).slice(0, DATA.maxStories);
-    if(stories.length < 1) return;
-    
-    cb(stories);
-  }));
-};
+export const download = () => fetch('https://feeds.bbci.co.uk/news/rss.xml')
+  .then(response => response.text())
+  .then(text => getStories(text).slice(0, DATA.maxStories));

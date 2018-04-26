@@ -21,7 +21,8 @@ export const setup = ({ open, message, error, file }) => {
 
 export const sendMessage = data => messaging.peerSocket.send(data);
 
-export const sendFile = (fileName, data) => {
+// fileName is optional, if data is handled explicitly
+export const sendFile = (data, fileName = 'data.json') => {
   outbox.enqueue(fileName, cbor.encode(data)).then((ft) => {
     console.log(`File '${fileName}' enqueued`);
   }).catch(err => console.log(err));

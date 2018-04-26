@@ -1,7 +1,7 @@
 <svg class="background">
   <defs>
     <symbol id="card">
-      <image id="bg" class="card-bg" href="./resources/bg-rounded-ionic.png"/>
+      <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
       <text id="index" class="card-index">0/0</text>
       <textarea id="title" class="card-title">TITLE</textarea>
       <rect class="card-div-line"/>
@@ -11,12 +11,8 @@
   
   <!-- Loading Window -->
   <svg id="loading-window">
-    <rect x="0" y="0" width="100%" height="100%" fill="#000000"/>
     <image href="icon.png" class="icon"/>
-    <text
-      id="loading-text" x="50%" y="80%" width="100%" height="30%"
-      fill="#999999" text-anchor="middle" text-length="64"
-      font-family="Colfax-Medium" font-size="30" font-weight="bold">Loading</text>  
+    <text id="loading-text" class="loading-text">Loading</text>  
   </svg>
   
   <!-- Main Window -->

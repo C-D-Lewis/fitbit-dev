@@ -5,9 +5,9 @@ import * as headlines from './headlines';
 
 const download = () => {
   console.log('Downloading...');
-  headlines.download((stories) => {
+  headlines.download().then((stories) => {
     console.log(`Total size: ${JSON.stringify(stories).length} B`);
-    comm.sendFile('stories.json', { stories });
+    comm.sendFile({ stories });
   });
 };
 

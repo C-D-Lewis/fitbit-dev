@@ -1,6 +1,6 @@
 import * as document from 'document';
 
-export const get = id => (typeof id === 'object') ? id : document.getElementById(id);
+export const get = id => document.getElementById(id);
 
 export const setVisible = (id, visible) => {
   get(id).style.display = visible ? 'inline' : 'none';
@@ -21,7 +21,9 @@ export function Window({ id, setup, update }) {
   this.id = id;
   this.show = () => setVisible(this.id, true);
   this.hide = () => setVisible(this.id, false);
+  
   this.hide();
+  
   if(update) this.update = update;
   if(setup) setup();
 }
