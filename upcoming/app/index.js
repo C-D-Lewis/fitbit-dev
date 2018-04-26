@@ -56,7 +56,7 @@ let timeoutHandle, cardColor = DATA.colorStale;
       
       loadingWindow.hide();
       mainWindow.update();
-      // mainWindow.show();
+      mainWindow.show();
     }
   });
   
