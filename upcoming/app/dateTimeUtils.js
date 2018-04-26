@@ -8,6 +8,14 @@ const getMonthStr = (month) => {
   return values[parseInt(month)];
 };
 
+const getDayStr = (month) => {
+  const values = {
+    0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu',
+    4: 'Fri', 5: 'Sat',  6: 'Sun'
+  };
+  return values[parseInt(month)];
+};
+
 const isToday = (date, delta = 0) => {
   const now = new Date();
   const [year, month, day] = date.split('/');

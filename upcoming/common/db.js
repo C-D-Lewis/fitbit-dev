@@ -1,16 +1,15 @@
 const fs = require('fs');
 
+const PATH = 'db.json';
+
 let data = {};
-let dbPath = '';
 
-const save = () => fs.writeFileSync(dbPath, data, 'json');
+const save = () => fs.writeFileSync(PATH, data, 'json');
 
-export const load = (appName) => {
-  dbPath = `${appName}.json`;
-  
+export const load = () => {
   try {
-    data = fs.readFileSync(dbPath, 'json');
-    console.log(`Loaded ${dbPath}`);
+    data = fs.readFileSync(PATH, 'json');
+    console.log(`Loaded ${PATH}`);
   } catch(e) {
     console.log(e);
     save();

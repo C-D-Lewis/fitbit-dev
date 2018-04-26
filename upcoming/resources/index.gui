@@ -1,9 +1,22 @@
 <svg class="background">
   <defs>
     <symbol id="card">
-      <image id="bg" class="card-bg" href="./resources/bg-rounded-ionic.png"/>
+      <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
       <text id="index" class="card-index">0/0</text>
-      <textarea id="title" class="card-title">TITLE</textarea>
+      <use href="#panoramaview">
+        <use href="#panoramaview-item">
+          <textarea id="title" class="card-title">TITLE</textarea>
+        </use>
+        <use href="#panoramaview-item">
+          <textarea id="description" class="card-description">DESC</textarea>
+        </use>
+        
+        <use id="pagination-dots" href="#pagination-widget" class="card-dots">
+          <use href="#pagination-dot"/>
+          <use href="#pagination-dot"/>
+          <use href="#pagination-highlight-dot"/>
+        </use>
+      </use>
       <rect class="card-div-line"/>
       <text id="time" class="card-time">time</text>
       <text id="date" class="card-date">date</text>
@@ -14,17 +27,13 @@
   
   <!-- Loading Window -->
   <svg id="loading-window">
-    <rect x="0" y="0" width="100%" height="100%" fill="white"/>
     <image href="icon.png" class="icon"/>
-    <text
-      id="loading-text" x="50%" y="80%" width="100%" height="30%"
-      fill="#999999" text-anchor="middle" text-length="64"
-      font-family="Colfax-Medium" font-size="30" font-weight="bold">Loading</text>  
+    <text id="loading-text" class="loading-text">Loading</text>  
   </svg>
   
   <!-- Main Window -->
   <svg id="main-window" display="none">
-    <rect class="bg"/>
+    <rect class="background"/>
     <use id="lines-tile-list" href="#tile-list" height="100%" width="100%">
       <var id="align-mode" value="1" />
 

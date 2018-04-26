@@ -1,4 +1,4 @@
-.bg {
+.background {
   x: 0;
   y: 0;
   width: 100%;
@@ -30,9 +30,27 @@
   text-anchor: start;
   text-length: 256;
   font-family: Colfax-Medium;
-  font-size: 34;
+  font-size: 32;
   rows: 4;
   text-overflow: ellipsis;
+}
+
+.card-description {
+  x: 25;
+  y: 44;
+  width: 85%;
+  height: 60%;
+  fill: #FFFFFF;
+  text-anchor: start;
+  text-length: 256;
+  font-family: Colfax-Medium;
+  font-size: 22;
+  rows: 6;
+  text-overflow: ellipsis;
+}
+
+.card-dots {
+  y: 200;
 }
 
 .card-index {
@@ -89,7 +107,7 @@
 
 .card-div-line {
   x: 0;
-  y: 208;
+  y: 213;
   width: 300;
   height: 5;
   fill: #FEFEFE;

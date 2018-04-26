@@ -4,7 +4,6 @@
   "maxEvents": 10,
   "colorFresh": "#009cff",
   "colorStale": "#AAAAAA",
-  "appName": "Upcoming",
   "dbKeys": {
     "staleEvents": "STALE_EVENTS"
   }

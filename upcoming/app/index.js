@@ -6,21 +6,15 @@ import * as ui from '../common/ui';
 
 const TIMEOUT_MS = 30000;
 
-let loadingWindow, mainWindow;
 let eventsArr = [];
 let timeoutHandle, cardColor = DATA.colorStale;
 
 (() => {
   console.log('Upcoming app start');
   
-  loadingWindow = new ui.Window({ id: 'loading-window' });
-  loadingWindow.show();
-  
-  //dd a migration if not v 1.1.0 delete data and start again
-  
-  mainWindow = new ui.Window({
+  const loadingWindow = new ui.Window({ id: 'loading-window' });
+  const mainWindow = new ui.Window({
     id: 'main-window', 
-    setup: () => {}, 
     update: () => {
       for (let i = 0; i < DATA.maxEvents; i += 1) {
         const card = new ui.Card(`card[${i}]`);
@@ -35,6 +29,7 @@ let timeoutHandle, cardColor = DATA.colorStale;
         card.get('bg').style.fill = cardColor;
         card.setText('index', `${i + 1} / ${eventsArr.length}`);
         card.setText('title', item.title);
+        card.setText('description', item.description);
         card.setText('time', `${item.startTime} - ${item.endTime}`);
         card.setText('date', DTU.decodeDate(item.startDate, item.endDate));
       }
@@ -71,7 +66,7 @@ let timeoutHandle, cardColor = DATA.colorStale;
   }, TIMEOUT_MS);
   
   // Check for stale data
-  db.load(DATA.appName);
+  db.load();
   const staleEvents = db.get(DATA.dbKeys.staleEvents);
   if(staleEvents) {
     eventsArr = staleEvents;
@@ -81,4 +76,6 @@ let timeoutHandle, cardColor = DATA.colorStale;
     mainWindow.update();
     mainWindow.show();
   }
+  
+  loadingWindow.show();
 })();

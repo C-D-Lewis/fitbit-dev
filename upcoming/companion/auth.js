@@ -32,6 +32,7 @@ export const refreshAccess = (oauthData) => {
     refresh_token: oauthData.refresh_token,
     client_id: DATA.clientId
   };
+  
   return fetch(url, {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     method: 'POST',

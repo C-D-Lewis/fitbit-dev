@@ -8,7 +8,6 @@ function mySettings(props) {
       <Section
         title={<Text bold align="center">Google Account</Text>}>
         The next 10 events from your primary calendar will be synchronized.
-        After authenticating, please restart the watch app.
         <Oauth
           settingsKey="oauth"
           title="Login to Google"
