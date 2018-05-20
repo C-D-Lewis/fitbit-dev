@@ -22,6 +22,7 @@ const TIMEOUT_MS = 30000;
         card.get('bg').style.fill = cardColor;
         card.setText('index', `${i + 1} / ${storiesArr.length}`);
         card.setText('title', item.title);
+        card.setText('description', item.description);
         card.setText('date', `${item.dateTime.substring(5, 22)} GMT`);
       });
     }
@@ -54,6 +55,8 @@ const TIMEOUT_MS = 30000;
   
   timeoutHandle = setTimeout(() => ui.setText('loading-text', 'Timed out!'), TIMEOUT_MS);
   
+  loadingWindow.show();
+  
   db.load();
   const staleData = db.get('stories');
   if(staleData) {
@@ -64,6 +67,5 @@ const TIMEOUT_MS = 30000;
     mainWindow.update();
     mainWindow.show();
   }
-  
-  loadingWindow.show();
+ 
 })();

@@ -3,7 +3,20 @@
     <symbol id="card">
       <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
       <text id="index" class="card-index">0/0</text>
-      <textarea id="title" class="card-title">TITLE</textarea>
+      <use href="#panoramaview">
+        <use href="#panoramaview-item">
+          <textarea id="title" class="card-title">TITLE</textarea>
+        </use>
+        <use href="#panoramaview-item">
+          <textarea id="description" class="card-description">DESC</textarea>
+        </use>
+        
+        <use id="pagination-dots" href="#pagination-widget" class="card-dots">
+          <use href="#pagination-dot"/>
+          <use href="#pagination-dot"/>
+          <use href="#pagination-highlight-dot"/>
+        </use>
+      </use>
       <rect class="card-div-line"/>
       <text id="date" class="card-date">date</text>
     </symbol>
@@ -18,6 +31,7 @@
   <!-- Main Window -->
   <svg id="main-window" display="none">
     <rect class="bg"/>
+    
     <use id="lines-tile-list" href="#tile-list" height="100%" width="100%">
       <var id="align-mode" value="1" />
 
@@ -52,5 +66,8 @@
         <use id="card[9]" href="#card"/>
       </use>
     </use>
+    
+    <rect class="left-bar"/>
+    <rect class="right-bar"/>
   </svg>
 </svg>

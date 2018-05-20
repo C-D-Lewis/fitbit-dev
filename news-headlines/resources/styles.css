@@ -29,10 +29,45 @@
   text-anchor: start;
   text-length: 256;
   font-family: Colfax-Medium;
-  font-size: 34;
+  font-size: 32;
   rows: 4;
   text-overflow: ellipsis;
 }
+
+.card-description {
+  x: 25;
+  y: 42;
+  width: 85%;
+  height: 60%;
+  fill: #FFFFFF;
+  text-anchor: start;
+  text-length: 256;
+  font-family: Colfax-Medium;
+  font-size: 22;
+  rows: 6;
+  text-overflow: ellipsis;
+}
+
+.card-dots {
+  y: 190;
+}
+
+.left-bar {
+  x: 0;
+  y: 0;
+  width: 10;
+  height: 100%;
+  fill: black;
+}
+
+.right-bar {
+  x: 338;
+  y: 0;
+  width: 10;
+  height: 100%;
+  fill: black;
+}
+
 
 .card-index {
   x: 50%;
@@ -48,14 +83,14 @@
 
 .card-date {
   x: 25;
-  y: 237;
+  y: 235;
   width: 80%;
   height: 20%;
   fill: #FFFFFF;
   text-anchor: start;
   text-length: 32;
   font-family: Colfax-Medium;
-  font-size: 24;
+  font-size: 22;
   text-overflow: ellipsis;
 }
 

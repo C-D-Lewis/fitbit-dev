@@ -43,4 +43,8 @@ export function Card(id) {
   this.get = function (id) {
     return getChild(this.root, id);
   };
+  
+  this.setVisible = function (id, visible) {
+    this.get(id).style.display = visible ? 'inline' : 'none';
+  };
 };
