@@ -1,0 +1,23 @@
+.background {
+  viewport-fill: black;
+}
+
+.text {
+  font-family: System-Bold;
+  text-length: 64;
+  text-anchor: middle;
+  width: 100%;
+  fill: white;
+}
+
+.text-time {
+  font-size: 26;
+}
+
+.text-quote {
+  text-anchor: middle;
+  font-size: 24;
+  rows: 2;
+  width: 90%;
+  line-increment: 20;
+}

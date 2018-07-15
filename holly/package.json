@@ -1,0 +1,19 @@
+{
+  "fitbit": {
+    "appUUID": "10c63d7c-5433-488c-82d9-7837cc16317a",
+    "appType": "clockface",
+    "appDisplayName": "Holly",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Holly"
+      }
+    }
+  }
+}
