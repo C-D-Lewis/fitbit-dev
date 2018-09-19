@@ -18,7 +18,7 @@ let timeoutHandle, cardColor = DATA.colorStale;
     update: () => {
       for (let i = 0; i < DATA.maxEvents; i += 1) {
         const card = new ui.Card(`card[${i}]`);
-        if(!eventsArr[i]) {
+        if (!eventsArr[i]) {
           // Hide the card
           ui.setVisible(`card-container[${i}]`, false);
           continue;
@@ -30,14 +30,6 @@ let timeoutHandle, cardColor = DATA.colorStale;
         card.setText('index', `${i + 1} / ${eventsArr.length}`);
         card.setText('title', item.title);
         card.setText('description', item.description);
-        
-        // const desc = card.get('description');
-        // console.log('height before ' + desc.height);
-        // const bbox = desc.getBBox();
-        // desc.height = bbox.height;
-        // console.log('height after ' + desc.height);
-        
-        
         card.setText('time', `${item.startTime} - ${item.endTime}`);
         card.setText('date', DTU.decodeDate(item.startDate, item.endDate));
       }
@@ -46,10 +38,12 @@ let timeoutHandle, cardColor = DATA.colorStale;
   
   comm.setup({
     file: (fileName, json) => {
-      if(timeoutHandle) clearTimeout(timeoutHandle); 
+      if (timeoutHandle) {
+        clearTimeout(timeoutHandle); 
+      }
       
       // Handle auth error
-      if(json.error) {
+      if (json.error) {
         ui.setText('loading-text', json.error);
         loadingWindow.show();
         mainWindow.hide();
@@ -76,7 +70,7 @@ let timeoutHandle, cardColor = DATA.colorStale;
   // Check for stale data
   db.load();
   const staleEvents = db.get(DATA.dbKeys.staleEvents);
-  if(staleEvents) {
+  if (staleEvents) {
     eventsArr = staleEvents;
     console.log(`Loaded ${eventsArr.length} stale events`);
     

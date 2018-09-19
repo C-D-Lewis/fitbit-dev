@@ -14,8 +14,8 @@ export const setText = (id, text) => {
 
 /**
  * Windows collect multiple elements by ID using a parent <svg> element, and start hidden
- * setup is called immediately
- * update is called at the developer's discretion
+ * setup is called immediately.
+ * update is called at the developer's discretion.
  */
 export function Window({ id, setup, update }) {
   this.id = id;
@@ -23,9 +23,12 @@ export function Window({ id, setup, update }) {
   this.hide = () => setVisible(this.id, false);
   
   this.hide();
-  
-  if(update) this.update = update;
-  if(setup) setup();
+  if (update) {
+    this.update = update;
+  }
+  if (setup) {
+    setup();
+  }
 }
 
 const getChild = (element, id) => element.getElementById(id);

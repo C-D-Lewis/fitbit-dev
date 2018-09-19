@@ -1,5 +1,5 @@
-import * as cbor from 'cbor';
 import { inbox, outbox } from 'file-transfer';
+import * as cbor from 'cbor';
 import * as messaging from 'messaging';
 
 export const setup = ({ open, message, error, file }) => {
@@ -21,9 +21,10 @@ export const setup = ({ open, message, error, file }) => {
 
 export const sendMessage = data => messaging.peerSocket.send(data);
 
-// fileName is optional, if data is handled explicitly
+// fileName is optional, if data is handled explicitly in the filesystem
+// else any name will do!
 export const sendFile = (data, fileName = 'data.json') => {
-  outbox.enqueue(fileName, cbor.encode(data)).then((ft) => {
-    console.log(`File '${fileName}' enqueued`);
-  }).catch(err => console.log(err));
+  outbox.enqueue(fileName, cbor.encode(data))
+    .then(ft => console.log(`File '${fileName}' enqueued`))
+    .catch(console.log);
 };
