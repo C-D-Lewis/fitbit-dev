@@ -31,11 +31,11 @@ let timeoutHandle, cardColor = DATA.colorStale;
         card.setText('title', item.title);
         card.setText('description', item.description);
         
-        const desc = card.get('description');
-        console.log('height before ' + desc.height);
-        const bbox = desc.getBBox();
-        desc.height = bbox.height;
-        console.log('height after ' + desc.height);
+        // const desc = card.get('description');
+        // console.log('height before ' + desc.height);
+        // const bbox = desc.getBBox();
+        // desc.height = bbox.height;
+        // console.log('height after ' + desc.height);
         
         
         card.setText('time', `${item.startTime} - ${item.endTime}`);
