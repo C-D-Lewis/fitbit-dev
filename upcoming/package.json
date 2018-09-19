@@ -17,5 +17,9 @@
         "name": "Upcoming"
       }
     }
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~1.0.0",
+    "@fitbit/sdk-cli": "^1.0.0"
   }
 }
