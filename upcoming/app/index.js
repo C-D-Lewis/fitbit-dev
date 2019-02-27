@@ -7,7 +7,7 @@ import * as ui from '../common/ui';
 const TIMEOUT_MS = 30000;
 
 let eventsArr = [];
-let timeoutHandle, cardColor = DATA.colorStale;
+let timeoutHandle;
 
 (() => {
   console.log('Upcoming app start');
@@ -26,12 +26,18 @@ let timeoutHandle, cardColor = DATA.colorStale;
         
         ui.setVisible(`card-container[${i}]`, true);
         const item = eventsArr[i];
-        card.get('bg').style.fill = cardColor;
         card.setText('index', `${i + 1} / ${eventsArr.length}`);
         card.setText('title', item.title);
         card.setText('description', item.description);
         card.setText('time', `${item.startTime} - ${item.endTime}`);
-        card.setText('date', DTU.decodeDate(item.startDate, item.endDate));
+        const decodedDate = DTU.decodeDate(item.startDate, item.endDate);
+        card.setText('date', decodedDate);
+
+        if (item.isStale) {
+          card.get('bg').style.fill = decodedDate === 'Today' ? DATA.colorStaleToday : DATA.colorStaleOtherDay;  
+        } else {
+          card.get('bg').style.fill = decodedDate === 'Today' ? DATA.colorUpdatedToday : DATA.colorUpdatedOtherDay;  
+        }
       }
     }
   });
@@ -53,7 +59,6 @@ let timeoutHandle, cardColor = DATA.colorStale;
       // All events data arrives in one message
       eventsArr = json.eventList;
       db.set(DATA.dbKeys.staleEvents, eventsArr);
-      cardColor = DATA.colorFresh;
       console.log(`Received ${eventsArr.length} events`);
       
       loadingWindow.hide();
@@ -71,7 +76,10 @@ let timeoutHandle, cardColor = DATA.colorStale;
   db.load();
   const staleEvents = db.get(DATA.dbKeys.staleEvents);
   if (staleEvents) {
-    eventsArr = staleEvents;
+    eventsArr = staleEvents.map((item) => {
+      item.isStale = true;
+      return item;
+    });
     console.log(`Loaded ${eventsArr.length} stale events`);
     
     loadingWindow.hide();

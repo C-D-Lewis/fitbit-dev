@@ -1,7 +1,9 @@
 {
   "maxEvents": 10,
-  "colorFresh": "#009cff",
-  "colorStale": "#AAAAAA",
+  "colorUpdatedToday": "#009cff",
+  "colorUpdatedOtherDay": "#1a66ff",
+  "colorStaleToday": "#AAAAAA",
+  "colorStaleOtherDay": "#808080",
   "dbKeys": {
     "staleEvents": "STALE_EVENTS"
   }
