@@ -11,7 +11,12 @@ const QUOTES = [
   'That\'s a load of Tottenham, that is',
   'Oh yeah, didn\'t see that',
   'I\'ve always had a bit of a blind spot with sevens',
-  'I would estimate it\'s round about... lunchtime, maybe half one'
+  'It\'s about lunchtime, maybe half one',
+  'My IQ is 6000 - same as 6000 PE teachers',
+  'Abandon shop! This is not a daffodil.',
+  'Everybody\'s dead, Dave',
+  'They\'re dead, Dave.',
+  'Gordon Bennett!',
 ];
 
 const textTime = document.getElementById('text_time');
@@ -25,12 +30,14 @@ const onTick = (event) => {
   const today = event.date;
   const hours = zeroPad(today.getHours());
   const mins = zeroPad(today.getMinutes());
-  
+
   textTime.text = `Alright dudes? It's ${hours}:${mins}`;
   textQuote.text = QUOTES[randomInt(QUOTES.length - 1)];
 };
 
-(() => {
+const main = () => {
   clock.granularity = 'minutes';
   clock.ontick = onTick;
-})();
+};
+
+main();
