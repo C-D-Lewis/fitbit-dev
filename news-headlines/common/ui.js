@@ -1,4 +1,4 @@
-import * as document from 'document';
+import document from 'document';
 
 export const get = id => document.getElementById(id);
 
@@ -9,7 +9,7 @@ export const setVisible = (id, visible) => {
 export const animate = id => get(id).animate('enable');
 
 export const setText = (id, text) => {
-  get(id).text = text; 
+  get(id).text = text;
 };
 
 /**
@@ -21,11 +21,15 @@ export function Window({ id, setup, update }) {
   this.id = id;
   this.show = () => setVisible(this.id, true);
   this.hide = () => setVisible(this.id, false);
-  
+
   this.hide();
-  
-  if(update) this.update = update;
-  if(setup) setup();
+
+  if (update) {
+    this.update = update;
+  }
+  if (setup) {
+    setup();
+  }
 }
 
 const getChild = (element, id) => element.getElementById(id);
@@ -35,11 +39,11 @@ const getChild = (element, id) => element.getElementById(id);
  */
 export function Card(id) {
   this.root = get(id);
-  
+
   this.setText = function (id, text) {
     getChild(this.root, id).text = text;
   };
-  
+
   this.get = function (id) {
     return getChild(this.root, id);
   };

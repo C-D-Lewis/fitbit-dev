@@ -1,4 +1,4 @@
-import * as DATA from '../common/data.json';
+import Constants from '../common/constants';
 
 const decode = str => str.split(/&amp;/g).join('&')
   .split('<![CDATA[').join('')
@@ -6,9 +6,11 @@ const decode = str => str.split(/&amp;/g).join('&')
 
 const scrape = (text, beforeArr, after) => {
   let index = 0;
-  for(let i = 0; i < beforeArr.length; i++) {
+  for (let i = 0; i < beforeArr.length; i++) {
     index = text.indexOf(beforeArr[i]);
-    if(index === -1) return;
+    if(index === -1) {
+      return;
+    }
 
     text = text.substring(index);
   }
@@ -34,5 +36,5 @@ const getStories = (xml) => {
 };
 
 export const download = () => fetch('https://feeds.bbci.co.uk/news/rss.xml')
-  .then(response => response.text())
-  .then(text => getStories(text).slice(0, DATA.maxStories));
+  .then(res => res.text())
+  .then(text => getStories(text).slice(0, Constants.maxStories));
