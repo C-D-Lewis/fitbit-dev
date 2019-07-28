@@ -1,13 +1,11 @@
-const clock = require('clock');
-const messaging = require('messaging');
-
+import clock from 'clock';
+import messaging from 'messaging';
 import * as ui from '../common/ui';
 import * as db from '../common/db';
 
 const APP_NAME = 'Isotime';
-const KEY_COLOR = 'color';
-
-const SETS = {
+const DB_KEY_COLOR = 'color';
+const COLORS = {
   white: '#ffffff',
   red: '#d30808',
   blue: '#2b7cff',
@@ -21,62 +19,68 @@ const SETS = {
   royalblue: '#1d00c4'
 };
 
-const digits = [ ui.get('h0'), ui.get('h1'), ui.get('m0'), ui.get('m1') ];
+const digits = [ui.get('h0'), ui.get('h1'), ui.get('m0'), ui.get('m1')];
 
 let chosenColor = '';
 
-const getImagePath = value => `${value}.png`;
+const getDigitImagePath = value => `${value}.png`;
 
 const loadColor = () => {
   let color = '';
-  if(!db.contains(KEY_COLOR)) {
-    color = SETS.green;
-    db.set(KEY_COLOR, color);
-    console.log(`Defaulted ${color}`);
+
+  // Set default
+  if (!db.contains(DB_KEY_COLOR)) {
+    color = COLORS.green;
+    db.set(DB_KEY_COLOR, color);
+    console.log(`Defaulted to ${color}`);
   }
-  
-  color = db.get(KEY_COLOR);
+
+  // Load previous, could be null
+  color = db.get(DB_KEY_COLOR);
   console.log(`Read ${color}`);
 
-  if(!color) {
-    color = SETS.green;
-    db.set(KEY_COLOR, color);
+  // Superdefault
+  if (!color) {
+    color = COLORS.green;
+    db.set(DB_KEY_COLOR, color);
     console.log(`Recovered ${color}`);
   }
 
   return color;
 };
 
-const update = (date) => {
+const updateTime = (date) => {
   const hours = date.getHours();
   const mins = date.getMinutes();
 
   digits[0].style.fill = chosenColor;
-  digits[0].href = getImagePath(Math.floor(hours / 10));
+  digits[0].href = getDigitImagePath(Math.floor(hours / 10));
   digits[1].style.fill = chosenColor;
-  digits[1].href = getImagePath(hours % 10);
+  digits[1].href = getDigitImagePath(hours % 10);
   digits[2].style.fill = chosenColor;
-  digits[2].href = getImagePath(Math.floor(mins / 10));
+  digits[2].href = getDigitImagePath(Math.floor(mins / 10));
   digits[3].style.fill = chosenColor;
-  digits[3].href = getImagePath(mins % 10);
+  digits[3].href = getDigitImagePath(mins % 10);
 };
 
 const onMessage = (event) => {
-  console.log(JSON.stringify(event.data));
-  chosenColor = SETS[event.data.color];
-  db.set(KEY_COLOR, chosenColor);
-  console.log(`Chosen color: ${chosenColor}`);
-  update(new Date());
+  chosenColor = COLORS[event.data.color];
+  db.set(DB_KEY_COLOR, chosenColor);
+
+  console.log(`Applied chosen color: ${chosenColor}`);
+  updateTime(new Date());
 };
 
-(() => {
-  console.log('Isotime for Ionic');  
-  db.load(APP_NAME);
+const main = () => {
+  console.log('Isotime app');
+  db.init(APP_NAME);
   chosenColor = loadColor();
 
   clock.granularity = 'minutes';
-  clock.ontick = event => update(event.date);
-  update(new Date());
-  
+  clock.ontick = event => updateTime(event.date);
+  updateTime(new Date());
+
   messaging.peerSocket.onmessage = onMessage;
-})();
+};
+
+main();
