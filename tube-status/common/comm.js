@@ -1,4 +1,4 @@
-import * as messaging from 'messaging';
+import messaging from 'messaging';
 
 export const setup = ({ open, message, error }) => {
   messaging.peerSocket.onopen = open;

@@ -9,7 +9,7 @@ export const setVisible = (id, visible) => {
 export const animate = id => get(id).animate('enable');
 
 export const setText = (id, text) => {
-  get(id).text = text; 
+  get(id).text = text;
 };
 
 /**
@@ -22,6 +22,11 @@ export function Window({ id, setup, update }) {
   this.show = () => setVisible(this.id, true);
   this.hide = () => setVisible(this.id, false);
   this.hide();
-  if(update) this.update = update;
-  if(setup) setup();
+
+  if (update) {
+    this.update = update;
+  }
+  if (setup) {
+    setup();
+  }
 }
