@@ -8,18 +8,17 @@ const IDS = {
   ret: 'beam-up-bar-return'
 };
 
-export function SecondsBar () {
-  this.hideAll = () => {
+const SecondsBar = () => {
+  const hideAll = () => {
     ui.setVisible(IDS.q1, false);
     ui.setVisible(IDS.q2, false);
     ui.setVisible(IDS.q3, false);
     ui.setVisible(IDS.q4, false);
   };
-  
-  this.setProgress = (value) => {
-    // Ensure the bar has returned
+
+  const setProgress = (value) => {
     switch(value) {
-      case 15: 
+      case 15:
         ui.setVisible(IDS.q1, true);
         ui.animate(IDS.q1);
         break;
@@ -36,12 +35,19 @@ export function SecondsBar () {
         ui.animate(IDS.q4);
         break;
       case 1:
-        this.hideAll();
+        hideAll();
         ui.setVisible(IDS.ret, true);
         ui.animate(IDS.ret);
         break;
     }
   };
-  
-  this.hideAll();
+
+  hideAll();
+
+  return {
+    hideAll,
+    setProgress,
+  };
 };
+
+export default SecondsBar;

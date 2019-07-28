@@ -11,14 +11,14 @@
 
 .time-digit {
   y: 95;
-  width: 53; 
+  width: 53;
   height: 53;
   fill: white;
 }
 
 .date-digit {
   y: 170;
-  width: 26; 
+  width: 26;
   height: 26;
 }
 

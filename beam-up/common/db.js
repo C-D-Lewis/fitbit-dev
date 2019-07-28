@@ -5,9 +5,9 @@ let dbPath = '';
 
 const save = () => fs.writeFileSync(dbPath, data, 'json');
 
-export const load = (appName) => {
+export const init = (appName) => {
   dbPath = `${appName}.json`;
-  
+
   try {
     data = fs.readFileSync(dbPath, 'json');
     console.log(`Loaded ${dbPath}`);

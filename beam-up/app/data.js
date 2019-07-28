@@ -28,16 +28,20 @@ export const setColor = key => db.set(DB_KEY_COLOR, COLOR_SETS[key]);
 
 export const loadColor = () => {
   let hex = '';
-  if(!db.contains(DB_KEY_COLOR)) {
+
+  // Default value
+  if (!db.contains(DB_KEY_COLOR)) {
     hex = COLOR_SETS.black;
     db.set(DB_KEY_COLOR, hex);
-    console.log(`Defaulted to ${hex}`);
+    console.log(`Default set: ${hex}`);
   }
-  
+
+  // Load previous
   hex = db.get(DB_KEY_COLOR);
   console.log(`Read ${hex}`);
 
-  if(!hex) {
+  // Load failed
+  if (!hex) {
     hex = COLOR_SETS.black;
     db.set(DB_KEY_COLOR, hex);
     console.log(`Recovered ${hex}`);
