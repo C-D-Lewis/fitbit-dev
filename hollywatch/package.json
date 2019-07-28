@@ -2,7 +2,7 @@
   "fitbit": {
     "appUUID": "10c63d7c-5433-488c-82d9-7837cc16317a",
     "appType": "clockface",
-    "appDisplayName": "Holly",
+    "appDisplayName": "Hollywatch",
     "iconFile": "resources/icon.png",
     "wipeColor": "",
     "requestedPermissions": [],
