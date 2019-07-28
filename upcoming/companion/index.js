@@ -2,7 +2,7 @@ import { settingsStorage } from 'settings';
 
 import * as auth from './auth';
 import * as comm from '../common/comm';
-import * as DATA from '../common/data.json';
+import Constants from '../common/constants';
 import * as web from '../common/web';
 
 // Support multiple calendars one day
@@ -22,10 +22,10 @@ const fetchCalendarEvents = (accessToken, calendarId = 'primary') => {
     timeMin: new Date().toISOString(),
     orderBy: 'startTime',
     singleEvents: 'true',
-    maxResults: DATA.maxEvents,
+    maxResults: Constants.maxEvents,
   };
   const paramStr = web.buildParams(params);
-  const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?${paramStr}`;  
+  const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?${paramStr}`;
   return web.getJSON(url)
     .then((json) => {
       if (json.error) {
@@ -36,7 +36,7 @@ const fetchCalendarEvents = (accessToken, calendarId = 'primary') => {
       return json.items.map((item) => {
         // Multiday allday
         if (item.start.date) {
-          return { 
+          return {
             title: item.summary,
             description: item.description || 'No description',
             startDate: item.start.date.split('-').join('/'),
@@ -45,7 +45,7 @@ const fetchCalendarEvents = (accessToken, calendarId = 'primary') => {
             endTime: '00:00',
           };
         }
-        
+
         const [d1, t1] = item.start.dateTime.split('T');
         const [d2, t2] = item.end.dateTime.split('T');
         return {
@@ -96,20 +96,22 @@ const onSocketOpen = () => {
     comm.sendFile({ error: 'Please log in' });
     return;
   }
-  
+
   getEvents(oauthData);
 };
 
-(() => {
+const main = () => {
   console.log('Upcoming companion start');
-  
+
   comm.setup({ open: onSocketOpen });
 
   settingsStorage.onchange = (event) => {
-    if (event.key !== "oauth") {
+    if (event.key !== 'oauth') {
       return;
     }
 
     getEvents(auth.getOauthData());
   };
-})();
+};
+
+main();

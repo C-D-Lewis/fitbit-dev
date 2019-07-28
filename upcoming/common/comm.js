@@ -6,13 +6,13 @@ export const setup = ({ open, message, error, file }) => {
   messaging.peerSocket.onopen = open;
   messaging.peerSocket.onmessage = message;
   messaging.peerSocket.onerror = error;
-  
+
   try {
     inbox.onnewfile = () => {
       const fs = require('fs');
       const fileName = inbox.nextFile();
       const json = fs.readFileSync(`/private/data/${fileName}`, 'cbor');
-      file(fileName, json); 
+      file(fileName, json);
     };
   } catch (e) {
     // Could be called from companion, which is OK

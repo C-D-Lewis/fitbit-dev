@@ -6,7 +6,7 @@ let data = {};
 
 const save = () => fs.writeFileSync(PATH, data, 'json');
 
-export const load = () => {
+export const init = () => {
   try {
     data = fs.readFileSync(PATH, 'json');
     console.log(`Loaded ${PATH}`);

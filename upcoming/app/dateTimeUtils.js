@@ -29,20 +29,20 @@ const isTomorrow = date => isToday(date, 1);
 export const decodeDate = (startDate, endDate) => {
   const [startYear, startMonth, startDay] = startDate.split('/');
   const [finishYear, finishMonth, finishDay] = endDate.split('/');
-  
+
   // Single day
-  if(startDate === endDate) {
+  if (startDate === endDate) {
     // Today?
-    if(isToday(startDate)) {
+    if (isToday(startDate)) {
       return 'Today';
     }
-    if(isTomorrow(startDate)) {
+    if (isTomorrow(startDate)) {
       return 'Tomorrow';
     }
-    
+
     return `${startDay} ${getMonthStr(startMonth)}`;
   }
-  
+
   // Multi-day
   return `${startDay} ${getMonthStr(startMonth)} - ${finishDay} ${getMonthStr(finishMonth)}`;
 };
