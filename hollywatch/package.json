@@ -8,17 +8,18 @@
     "requestedPermissions": [],
     "buildTargets": [
       "higgs",
-      "meson"
+      "meson",
+      "gemini"
     ],
     "i18n": {
       "en": {
-        "name": "Holly"
+        "name": "Hollywatch"
       }
     }
   },
   "devDependencies": {
-    "@fitbit/sdk": "~1.0.0",
-    "@fitbit/sdk-cli": "^1.0.0"
+    "@fitbit/sdk": "~3.1.0",
+    "@fitbit/sdk-cli": "^1.6.3"
   },
   "scripts": {
     "build": "fitbit-build"
