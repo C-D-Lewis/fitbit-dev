@@ -5,6 +5,10 @@ import * as comm from '../common/comm';
 import Constants from '../common/constants';
 
 const transformEvent = (item) => {
+  // For some reason the date properties are objects here
+  item.startDate = item.startDate.toISOString();
+  item.endDate = item.endDate.toISOString();
+
   // Multiday allday
   if (item.isAllDay) {
     return {
@@ -24,8 +28,8 @@ const transformEvent = (item) => {
     description: item.description || 'No description',
     startDate: d1.split('-').join('/'),
     endDate: d2.split('-').join('/'),
-    startTime: t1.split('+')[0].split(':').slice(0, 2).join(':'),
-    endTime: t2.split('+')[0].split(':').slice(0, 2).join(':'),
+    startTime: t1.split(':').slice(0, 2).join(':'),
+    endTime: t2.split(':').slice(0, 2).join(':'),
   };
 };
 
