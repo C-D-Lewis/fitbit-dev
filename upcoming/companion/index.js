@@ -14,8 +14,8 @@ const transformEvent = (item) => {
     return {
       title: item.title,
       description: item.description || 'No description',
-      startDate: item.startDate.split('-').join('/'),
-      endDate: item.endDate.split('-').join('/'),
+      startDate: item.startDate.split('T')[0].split('-').join('/'),
+      endDate: item.endDate.split('T')[0].split('-').join('/'),
       startTime: '00:00',
       endTime: '00:00',
     };
@@ -26,8 +26,8 @@ const transformEvent = (item) => {
   return {
     title: item.title,
     description: item.description || 'No description',
-    startDate: d1.split('-').join('/'),
-    endDate: d2.split('-').join('/'),
+    startDate: d1.split('T')[0].split('-').join('/'),
+    endDate: d2.split('T')[0].split('-').join('/'),
     startTime: t1.split(':').slice(0, 2).join(':'),
     endTime: t2.split(':').slice(0, 2).join(':'),
   };
