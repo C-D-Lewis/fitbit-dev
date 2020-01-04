@@ -56,7 +56,7 @@ const sendEventList = (eventList) => {
  */
 const handleSendError = (err) => {
   console.log(err.stack);
-  comm.sendFile({ error: 'Please grant permissions and choose a calendar' });
+  comm.sendFile({ error: 'Select calendar' });
 };
 
 /**
@@ -83,7 +83,6 @@ const fetchCalendarEvents = async () => {
   const calendarId = calendarSelection.values[0].value;
   const startDate = new Date();
   const endDate = new Date();
-  startDate.setHours(0, 0, 0, 0);
   endDate.setHours(999, 59, 59, 999);
   const data = await calendars.searchEvents({
     startDate,
@@ -102,6 +101,10 @@ const fetchCalendarEvents = async () => {
 const getEvents = async () => {
   try {
     const events = await fetchCalendarEvents();
+    if (!events.length) {
+      throw new Error('No events found');
+    }
+
     sendEventList(events);
   } catch (err) {
     handleSendError(err);

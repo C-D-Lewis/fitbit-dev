@@ -13,8 +13,6 @@ const SettingsPage = ({ settings, settingsStorage }) => {
     <Page>
       <Text>Select a calendar source and calendar to start seeing events on your watch.</Text>
       <Section title="Source Selection">
-        <Text>Please select a source.</Text>
-        <Text>Note: Calendars you do not own may not return any events.</Text>
         <Select
           label={`Source`}
           value={sourceSelection}
@@ -28,7 +26,7 @@ const SettingsPage = ({ settings, settingsStorage }) => {
       </Section>
       {sourceSelection && (
         <Section title="Calendar Selection">
-          <Text>Please select a calendar.</Text>
+          <Text>Note: Calendars you do not own may not return any events.</Text>
           <Select
             label={`Calendar`}
             settingsKey="calendarSelection"
