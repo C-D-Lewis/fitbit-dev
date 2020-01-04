@@ -53,13 +53,13 @@ const setupUI = () => {
 const setupComm = () => {
   comm.setup({
     open: () => console.log('device onopen'),
-    message: (event) => {
+    file: (fileName, json) => {
       if (timeoutHandle) {
         clearTimeout(timeoutHandle);
       }
 
       // All line data arrives in one message
-      lines = event.data;
+      lines = json;
       if (Constants.debug) {
         console.log(`Recv: ${JSON.stringify(lines)}`);
       }

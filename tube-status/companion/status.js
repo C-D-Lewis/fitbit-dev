@@ -1,3 +1,5 @@
+const REASON_MAX_LENGTH = 192;
+
 const getAllLinesStatus = json => json.map((item) => {
   const result = {
     id: item.id,
@@ -5,7 +7,7 @@ const getAllLinesStatus = json => json.map((item) => {
   };
 
   if (item.lineStatuses[0].reason) {
-    let reason = item.lineStatuses[0].reason.substring(0, 128);
+    let reason = item.lineStatuses[0].reason.substring(0, REASON_MAX_LENGTH);
     if (reason.includes(':')) {
       reason = reason.substring(reason.indexOf(':') + 1);
     }
@@ -22,6 +24,7 @@ export const download = () => {
     .then((json) => {
       console.log('Download from unified API complete!');
       const payload = getAllLinesStatus(json);
+      console.log(JSON.stringify(payload));
       console.log(`payload.length=${JSON.stringify(payload).length}`);
       return payload;
     });

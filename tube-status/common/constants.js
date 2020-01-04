@@ -22,6 +22,11 @@ const Constants = {
       statusY: 143,
       reasonY: 151,
     },
+    'Versa 2': {
+      nameY: 112,
+      statusY: 143,
+      reasonY: 151,
+    },
     Ionic: {
       nameY: 90,
       statusY: 122,
