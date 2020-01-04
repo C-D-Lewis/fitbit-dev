@@ -65,20 +65,34 @@ const handleSendError = (err) => {
  * @returns {Promise}
  */
 const fetchCalendarEvents = async () => {
+  const sourceSelection = JSON.parse(settingsStorage.getItem('sourceSelection') || '[]');
+  const calendarSelection = JSON.parse(settingsStorage.getItem('calendarSelection') || '[]');
+  // console.log(JSON.stringify({ sourceSelection, calendarSelection }));
+  if (!sourceSelection || !calendarSelection) {
+    throw new Error('User has not selected calendar or source yet');
+  }
+
   const sources = await calendars.searchSources();
   settingsStorage.setItem('sources', JSON.stringify(sources));
 
-  const results = await calendars.searchCalendars();
+  // Find calendars only from the user's selected source
+  const sourceId = sourceSelection.values[0].value;
+  const results = await calendars.searchCalendars({ sourceIds: [sourceId] });
   settingsStorage.setItem('calendars', JSON.stringify(results));
 
+  const calendarId = calendarSelection.values[0].value;
   const startDate = new Date();
   const endDate = new Date();
   startDate.setHours(0, 0, 0, 0);
   endDate.setHours(999, 59, 59, 999);
-  const data = await calendars.searchEvents({ startDate, endDate });
+  const data = await calendars.searchEvents({
+    startDate,
+    endDate,
+    calendarIds: [calendarId],
+  });
   const events = data.slice(0, Constants.maxEvents);
 
-  console.log(`events: ${JSON.stringify(events)}`);
+  // console.log(`events: ${JSON.stringify(events)}`);
   return events.map(transformEvent);
 };
 
@@ -117,8 +131,13 @@ const main = () => {
   comm.setup({ open: onSocketOpen });
 
   settingsStorage.onchange = (event) => {
-    // Save prefs here?
+    onSocketOpen();
   };
+
+  if (me.launchReasons.settingsChanged) {
+    // Settings were changed while the companion was not running
+    onSocketOpen();
+  }
 };
 
 main();
