@@ -1,10 +1,13 @@
-const mySettings = props => (
-  <Page>
-    <Section
-      title="Calendar Selection">
-    </Section>
-    
-  </Page>
-);
+const SettingsPage = ({ settings }) => {
+  const { sources, calendars } = settings;
 
-registerSettingsPage(mySettings);
+  return (
+    <Page>
+      <Section title="Calendar Selection">
+
+      </Section>
+    </Page>
+  );
+};
+
+registerSettingsPage(SettingsPage);

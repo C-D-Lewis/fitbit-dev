@@ -4,6 +4,12 @@ import calendars from 'calendars';
 import * as comm from '../common/comm';
 import Constants from '../common/constants';
 
+/**
+ * Transform a FitBit calendar event to one the app is expecting.
+ *
+ * @param {Object} item - Item to transform.
+ * @returns {Object} Transformed object.
+ */
 const transformEvent = (item) => {
   // For some reason the date properties are objects here
   item.startDate = item.startDate.toISOString();
@@ -33,45 +39,64 @@ const transformEvent = (item) => {
   };
 };
 
+/**
+ * Send the event list to the watch.
+ *
+ * @param {Object[]} List of events.
+ */
 const sendEventList = (eventList) => {
   console.log(`Packet size: ${JSON.stringify(eventList).length}`);
   comm.sendFile({ eventList });
 };
 
+/**
+ * Handle a sending error by sending an error string to the watch for display.
+ *
+ * @param {Error} err - Error object.
+ */
 const handleSendError = (err) => {
   console.log(err.stack);
   comm.sendFile({ error: 'Please grant permissions and choose a calendar' });
 };
 
-const fetchCalendarEvents = () => calendars
-  .searchSources()
-  .then((sources) => {
-    settingsStorage.setItem('sources', JSON.stringify(sources));
+/**
+ * Fetch all events from all calendars.
+ *
+ * @returns {Promise}
+ */
+const fetchCalendarEvents = async () => {
+  const sources = await calendars.searchSources();
+  settingsStorage.setItem('sources', JSON.stringify(sources));
 
-    return calendars.searchCalendars();
-  })
-  .then((results) => {
-    settingsStorage.setItem('calendars', JSON.stringify(results));
+  const results = await calendars.searchCalendars();
+  settingsStorage.setItem('calendars', JSON.stringify(results));
 
-    const startDate = new Date();
-    const endDate = new Date();
-    startDate.setHours(0, 0, 0, 0);
-    endDate.setHours(999, 59, 59, 999);
-    return calendars.searchEvents({ startDate, endDate });
-  })
-  .then(events => events.slice(0, Constants.maxEvents))
-  .then((events) => {
-    console.log('All events: ' + JSON.stringify(events));
-    return events;
-  })
-  .then(events => events.map(transformEvent));
+  const startDate = new Date();
+  const endDate = new Date();
+  startDate.setHours(0, 0, 0, 0);
+  endDate.setHours(999, 59, 59, 999);
+  const data = await calendars.searchEvents({ startDate, endDate });
+  const events = data.slice(0, Constants.maxEvents);
 
-const getEvents = async () => {
-  fetchCalendarEvents()
-    .then(sendEventList)
-    .catch(handleSendError);
+  console.log(`events: ${JSON.stringify(events)}`);
+  return events.map(transformEvent);
 };
 
+/**
+ * Fetch and send events to the watch, handling any errors.
+ */
+const getEvents = async () => {
+  try {
+    const events = await fetchCalendarEvents();
+    sendEventList(events);
+  } catch (err) {
+    handleSendError(err);
+  }
+};
+
+/**
+ * When a peer socket is available.
+ */
 const onSocketOpen = () => {
   console.log('Companion peerSocket onopen');
 
@@ -83,6 +108,9 @@ const onSocketOpen = () => {
   getEvents();
 };
 
+/**
+ * The main function.
+ */
 const main = () => {
   console.log('Upcoming companion start');
 
