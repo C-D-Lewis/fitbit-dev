@@ -1,4 +1,4 @@
-import * as ui from '../common/ui';
+import { UI } from '@chris-lewis/fitbit-utils';
 
 const IDS = {
   q1: 'beam-up-bar-25',
@@ -10,34 +10,34 @@ const IDS = {
 
 const SecondsBar = () => {
   const hideAll = () => {
-    ui.setVisible(IDS.q1, false);
-    ui.setVisible(IDS.q2, false);
-    ui.setVisible(IDS.q3, false);
-    ui.setVisible(IDS.q4, false);
+    UI.setVisible(IDS.q1, false);
+    UI.setVisible(IDS.q2, false);
+    UI.setVisible(IDS.q3, false);
+    UI.setVisible(IDS.q4, false);
   };
 
   const setProgress = (value) => {
     switch(value) {
       case 15:
-        ui.setVisible(IDS.q1, true);
-        ui.animate(IDS.q1);
+        UI.setVisible(IDS.q1, true);
+        UI.animate(IDS.q1);
         break;
       case 30:
-        ui.setVisible(IDS.q2, true);
-        ui.animate(IDS.q2);
+        UI.setVisible(IDS.q2, true);
+        UI.animate(IDS.q2);
         break;
       case 45:
-        ui.setVisible(IDS.q3, true);
-        ui.animate(IDS.q3);
+        UI.setVisible(IDS.q3, true);
+        UI.animate(IDS.q3);
         break;
       case 58:
-        ui.setVisible(IDS.q4, true);
-        ui.animate(IDS.q4);
+        UI.setVisible(IDS.q4, true);
+        UI.animate(IDS.q4);
         break;
       case 1:
         hideAll();
-        ui.setVisible(IDS.ret, true);
-        ui.animate(IDS.ret);
+        UI.setVisible(IDS.ret, true);
+        UI.animate(IDS.ret);
         break;
     }
   };

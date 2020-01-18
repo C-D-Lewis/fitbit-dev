@@ -3,8 +3,7 @@ import { display } from 'display';
 import messaging from 'messaging';
 import SecondsBar from './SecondsBar';
 import * as data from './data';
-import * as db from '../common/db';
-import * as ui from '../common/ui';
+import { DB, UI } from '@chris-lewis/fitbit-utils';
 
 const APP_NAME = 'BeamUp';  // Do not change without migration
 const TEST_ALL_CHANGE = false;
@@ -47,24 +46,24 @@ const predictNextChanges = (date) => {
 };
 
 const scheduleColorChange = (id) => {
-  setTimeout(() => ui.get(id).style.fill = chosenColor, 1200);
-  setTimeout(() => ui.get(id).style.fill = 'white', 2500);
+  setTimeout(() => UI.get(id).style.fill = chosenColor, 1200);
+  setTimeout(() => UI.get(id).style.fill = 'white', 2500);
 };
 
 const updateTime = (date) => {
   const timeDigits = getTimeDigits(date);
-  ui.get('h0').href = data.getTimePath(timeDigits.h0);
-  ui.get('h1').href = data.getTimePath(timeDigits.h1);
-  ui.get('m0').href = data.getTimePath(timeDigits.m0);
-  ui.get('m1').href = data.getTimePath(timeDigits.m1);
+  UI.get('h0').href = data.getTimePath(timeDigits.h0);
+  UI.get('h1').href = data.getTimePath(timeDigits.h1);
+  UI.get('m0').href = data.getTimePath(timeDigits.m0);
+  UI.get('m1').href = data.getTimePath(timeDigits.m1);
 };
 
 const updateDate = (date) => {
   const dayOfMonth = date.getDate();
-  ui.get('d0').href = data.getDatePath(Math.floor(dayOfMonth / 10));
-  ui.get('d1').href = data.getDatePath(dayOfMonth % 10);
+  UI.get('d0').href = data.getDatePath(Math.floor(dayOfMonth / 10));
+  UI.get('d1').href = data.getDatePath(dayOfMonth % 10);
 
-  ui.get('day').href = data.getDayPath(date.getDay());
+  UI.get('day').href = data.getDayPath(date.getDay());
 };
 
 const onSecondTick = (date) => {
@@ -78,23 +77,23 @@ const onSecondTick = (date) => {
   if (seconds === 58) {
     const changes = predictNextChanges(date);
     if (includes(changes, 'h0')) {
-      ui.get('b0').animate('enable');
-      ui.get('h0').animate('enable');
+      UI.get('b0').animate('enable');
+      UI.get('h0').animate('enable');
       scheduleColorChange('h0');
     }
     if (includes(changes, 'h1')) {
-      ui.get('b1').animate('enable');
-      ui.get('h1').animate('enable');
+      UI.get('b1').animate('enable');
+      UI.get('h1').animate('enable');
       scheduleColorChange('h1');
     }
     if (includes(changes, 'm0')) {
-      ui.get('b2').animate('enable');
-      ui.get('m0').animate('enable');
+      UI.get('b2').animate('enable');
+      UI.get('m0').animate('enable');
       scheduleColorChange('m0');
     }
     if (includes(changes, 'm1')) {
-      ui.get('b3').animate('enable');
-      ui.get('m1').animate('enable');
+      UI.get('b3').animate('enable');
+      UI.get('m1').animate('enable');
       scheduleColorChange('m1');
     }
   }
@@ -106,7 +105,7 @@ const onMessage = (event) => {
   chosenColor = data.loadColor();
   console.log(`Chosen color: ${chosenColor}`);
 
-  ui.get('background').style.fill = chosenColor;
+  UI.get('background').style.fill = chosenColor;
 };
 
 const onDisplayChange = (event) => {
@@ -128,14 +127,14 @@ const onDisplayChange = (event) => {
 const main = () => {
   console.log('Beam Up app');
 
-  db.init(APP_NAME);
+  DB.init(APP_NAME);
   chosenColor = data.loadColor();
 
   clock.granularity = 'seconds';
   clock.ontick = event => onSecondTick(event.date);
 
   // Initial setup
-  ui.get('background').style.fill = chosenColor;
+  UI.get('background').style.fill = chosenColor;
   const now = new Date();
   updateTime(now);
   updateDate(now);

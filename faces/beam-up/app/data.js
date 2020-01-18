@@ -1,4 +1,4 @@
-import * as db from '../common/db';
+import { DB } from '@chris-lewis/fitbit-utils';
 
 const COLOR_SETS = {
   black: '#000000',
@@ -24,26 +24,26 @@ export const getDatePath = value => `date/${value}_s.png`;
 
 export const getDayPath = value => `day/${DAYS[value]}.png`;
 
-export const setColor = key => db.set(DB_KEY_COLOR, COLOR_SETS[key]);
+export const setColor = key => DB.set(DB_KEY_COLOR, COLOR_SETS[key]);
 
 export const loadColor = () => {
   let hex = '';
 
   // Default value
-  if (!db.contains(DB_KEY_COLOR)) {
+  if (!DB.contains(DB_KEY_COLOR)) {
     hex = COLOR_SETS.black;
-    db.set(DB_KEY_COLOR, hex);
+    DB.set(DB_KEY_COLOR, hex);
     console.log(`Default set: ${hex}`);
   }
 
   // Load previous
-  hex = db.get(DB_KEY_COLOR);
+  hex = DB.get(DB_KEY_COLOR);
   console.log(`Read ${hex}`);
 
   // Load failed
   if (!hex) {
     hex = COLOR_SETS.black;
-    db.set(DB_KEY_COLOR, hex);
+    DB.set(DB_KEY_COLOR, hex);
     console.log(`Recovered ${hex}`);
   }
 
