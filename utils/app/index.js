@@ -1,4 +1,11 @@
-export * as AOD from './aod';
-export * as Comm from './comm';
-export * as DB from './db';
-export * as UI from './ui';
+import * as AOD from './aod';
+import * as Comm from './comm';
+import * as DB from './db';
+import * as UI from './ui';
+
+export {
+  AOD,
+  Comm,
+  DB,
+  UI
+}

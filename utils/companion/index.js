@@ -1,2 +1,7 @@
-export * as Comm from './comm';
-export * as Web from './web';
+import * as Comm from './comm';
+import * as Web from './web';
+
+export {
+  Comm,
+  Web
+}

@@ -24,6 +24,6 @@ export const setup = (handlers) => {
       file(fileName, json);
     };
   } catch (e) {
-    // Could be called from companion, which is OK
+    console.log(e);
   }
 };
