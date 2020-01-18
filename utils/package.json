@@ -4,7 +4,8 @@
   "description": "Common utility modules for common tasks across projects.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/unit/index.spec.js"
+    "test": "mocha test/unit/index.spec.js",
+    "publish": "npm publish --access public"
   },
   "keywords": ["fitbit", "fitbitdev"],
   "author": "Chris Lewis",
