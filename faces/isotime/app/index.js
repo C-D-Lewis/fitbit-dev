@@ -1,7 +1,6 @@
+import { UI, DB } from '@chris-lewis/fitbit-utils';
 import clock from 'clock';
 import messaging from 'messaging';
-import * as ui from '../common/ui';
-import * as db from '../common/db';
 
 const APP_NAME = 'Isotime';
 const DB_KEY_COLOR = 'color';
@@ -19,7 +18,7 @@ const COLORS = {
   royalblue: '#1d00c4'
 };
 
-const digits = [ui.get('h0'), ui.get('h1'), ui.get('m0'), ui.get('m1')];
+const digits = [UI.get('h0'), UI.get('h1'), UI.get('m0'), UI.get('m1')];
 
 let chosenColor = '';
 
@@ -29,20 +28,20 @@ const loadColor = () => {
   let color = '';
 
   // Set default
-  if (!db.contains(DB_KEY_COLOR)) {
+  if (!DB.contains(DB_KEY_COLOR)) {
     color = COLORS.green;
-    db.set(DB_KEY_COLOR, color);
+    DB.set(DB_KEY_COLOR, color);
     console.log(`Defaulted to ${color}`);
   }
 
   // Load previous, could be null
-  color = db.get(DB_KEY_COLOR);
+  color = DB.get(DB_KEY_COLOR);
   console.log(`Read ${color}`);
 
   // Superdefault
   if (!color) {
     color = COLORS.green;
-    db.set(DB_KEY_COLOR, color);
+    DB.set(DB_KEY_COLOR, color);
     console.log(`Recovered ${color}`);
   }
 
@@ -65,7 +64,7 @@ const updateTime = (date) => {
 
 const onMessage = (event) => {
   chosenColor = COLORS[event.data.color];
-  db.set(DB_KEY_COLOR, chosenColor);
+  DB.set(DB_KEY_COLOR, chosenColor);
 
   console.log(`Applied chosen color: ${chosenColor}`);
   updateTime(new Date());
@@ -73,7 +72,7 @@ const onMessage = (event) => {
 
 const main = () => {
   console.log('Isotime app');
-  db.init(APP_NAME);
+  DB.init(APP_NAME);
   chosenColor = loadColor();
 
   clock.granularity = 'minutes';
