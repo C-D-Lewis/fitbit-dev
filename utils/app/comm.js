@@ -17,7 +17,6 @@ export const setup = (handlers) => {
 
   try {
     inbox.onnewfile = () => {
-      // Require here so same module can be used on both app and companion
       const fileName = inbox.nextFile();
       const json = readFileSync(`/private/data/${fileName}`, 'cbor');
       console.log(`File ${fileName} received`);
