@@ -1,12 +1,12 @@
 {
-  "name": "@chrislewis/fitbit-utils",
+  "name": "@chris-lewis/fitbit-utils",
   "version": "1.0.0",
   "description": "Common utility modules for common tasks across projects.",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/unit/index.spec.js"
   },
-  "keywords": ["fitbit"],
+  "keywords": ["fitbit", "fitbitdev"],
   "author": "Chris Lewis",
   "license": "Apache-2.0"
 }
