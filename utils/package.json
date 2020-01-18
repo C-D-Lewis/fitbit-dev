@@ -4,10 +4,13 @@
   "description": "Common utility modules for common tasks across projects.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/unit/index.spec.js",
     "publish": "npm publish --access public"
   },
-  "keywords": ["fitbit", "fitbitdev"],
+  "repository": "https://github.com/C-D-Lewis/fitbit-dev",
+  "keywords": [
+    "fitbit",
+    "fitbitdev"
+  ],
   "author": "Chris Lewis",
   "license": "Apache-2.0"
 }
