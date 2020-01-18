@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { readFileSync, writeFileSync } from 'fs';
 
 let data = {};
 let dbPath = '';
@@ -6,7 +6,7 @@ let dbPath = '';
 /**
  * Save the data to the filesystem.
  */
-const save = () => fs.writeFileSync(dbPath, data, 'json');
+const save = () => writeFileSync(dbPath, data, 'json');
 
 /**
  * Initialise the data in the filesystem to empty object.
@@ -17,7 +17,7 @@ export const init = (appName) => {
   dbPath = `${appName}.json`;
 
   try {
-    data = fs.readFileSync(dbPath, 'json');
+    data = readFileSync(dbPath, 'json');
     console.log(`Loaded ${dbPath}`);
   } catch(e) {
     console.log(e);

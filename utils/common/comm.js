@@ -1,6 +1,7 @@
 import { inbox, outbox } from 'file-transfer';
 import * as cbor from 'cbor';
 import * as messaging from 'messaging';
+import { readFileSync } from 'fs';
 
 /**
  * Setup handlers for messaging and file-transfer events.
@@ -18,9 +19,8 @@ export const setup = (handlers) => {
   try {
     inbox.onnewfile = () => {
       // Require here so same module can be used on both app and companion
-      const fs = require('fs');
       const fileName = inbox.nextFile();
-      const json = fs.readFileSync(`/private/data/${fileName}`, 'cbor');
+      const json = readFileSync(`/private/data/${fileName}`, 'cbor');
       console.log(`File ${fileName} received`);
       file(fileName, json);
     };
