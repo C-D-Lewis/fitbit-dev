@@ -1,5 +1,4 @@
 *.DS_Store
-misc
 assets
 build
 node_modules
