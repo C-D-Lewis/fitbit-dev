@@ -1,0 +1,27 @@
+{
+  "fitbit": {
+    "appUUID": "981aec72-b5f2-43f4-9820-ae822d268720",
+    "appType": "app",
+    "appDisplayName": "Calendar Test",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#8bc34a",
+    "requestedPermissions": [
+      "access_calendar"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson",
+      "gemini",
+      "mira"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Calendar Test"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~4.1.0"
+  }
+}

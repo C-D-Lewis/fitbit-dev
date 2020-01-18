@@ -1,0 +1,31 @@
+{
+  "fitbit": {
+    "appUUID": "b0f592b0-4273-498e-bd5c-cf3e3b5cc272",
+    "appType": "clockface",
+    "appDisplayName": "AODTest",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [
+      "access_aod"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson",
+      "gemini",
+      "mira"
+    ],
+    "i18n": {
+      "en": {
+        "name": "AODTest"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "^4.1.0",
+    "@fitbit/sdk-cli": "^1.7.1"
+  },
+  "scripts": {
+    "build": "fitbit-build"
+  }
+}
