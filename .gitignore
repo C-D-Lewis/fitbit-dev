@@ -3,3 +3,5 @@ assets
 build
 node_modules
 secrets.js
+utils/app
+utils/companion
