@@ -1,4 +1,5 @@
 // Problems when file() is uncommented, not sure why
+
 // import { inbox } from 'file-transfer';
 // import { readFileSync } from 'fs';
 // import * as messaging from 'messaging';
@@ -27,4 +28,3 @@
 //     console.log(e);
 //   }
 // };
-"use strict";

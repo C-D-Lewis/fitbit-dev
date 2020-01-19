@@ -1,6 +1,8 @@
 # utils
 
-Common utility modules for common tasks across projects.
+Common utility modules for common tasks across projects. Separated into two modules for each app component:
+
+## app
 
 * `aod.js` - simple interface for AoD on/off events.
 
@@ -9,5 +11,7 @@ Common utility modules for common tasks across projects.
 * `db.js` - simple interface for local JSON object storage.
 
 * `ui.js` - useful for getting/setting/manipulating UI elements.
+
+## companion
 
 * `web.js` - helpers for making and receiving web requests.

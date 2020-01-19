@@ -1,22 +1,32 @@
-import { display } from "display";
-import { me } from "appbit";
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _display = require("display");
+
+var _appbit = require("appbit");
 
 /**
  * Handle Always on Display on/off events.
  *
  * @param {Object} handlers - containing onAodStarted() and onAodEnded().
  */
-const handleAoD = (handlers) => {
-  if (!display.aodAvailable) {
+var handleAoD = function handleAoD(handlers) {
+  if (!_display.display.aodAvailable) {
     console.error('AoD is not supported');
   }
-  if (!me.permissions.granted("access_aod")) {
+
+  if (!_appbit.me.permissions.granted("access_aod")) {
     console.error('access_aod permission not granted');
   }
 
-  display.aodAllowed = true;
-  display.addEventListener("change", () => {
-    if (!display.aodActive && display.on) {
+  _display.display.aodAllowed = true;
+
+  _display.display.addEventListener("change", function () {
+    if (!_display.display.aodActive && _display.display.on) {
       handlers.onAodEnded();
       return;
     }
@@ -25,4 +35,5 @@ const handleAoD = (handlers) => {
   });
 };
 
-export default handleAoD;
+var _default = handleAoD;
+exports["default"] = _default;
