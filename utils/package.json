@@ -1,6 +1,6 @@
 {
   "name": "@chris-lewis/fitbit-utils",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Common utility modules for common tasks across projects.",
   "main": "index.js",
   "repository": "https://github.com/C-D-Lewis/fitbit-dev",
@@ -20,7 +20,6 @@
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
     "@babel/plugin-transform-modules-commonjs": "^7.8.3",
-    "@babel/polyfill": "^7.8.3",
     "@babel/preset-env": "^7.8.3"
   },
   "babel": {
@@ -30,5 +29,8 @@
     "plugins": [
       "@babel/plugin-transform-modules-commonjs"
     ]
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.3"
   }
 }
