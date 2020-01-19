@@ -1,3 +1,5 @@
+import "@babel/polyfill";
+
 import * as AOD from './aod';
 // import * as Comm from './comm';
 import * as DB from './db';
