@@ -1,6 +1,6 @@
 import { settingsStorage } from 'settings';
 import { me } from 'companion';
-import messaging from 'messaging';
+import { Comm } from '@chris-lewis/fitbit-utils/companion';
 
 const DB_KEY_COLOR = 'color';
 
@@ -10,11 +10,8 @@ const sendValue = (key, value) => {
   }
 
   const data = { [key]: value };
-  if (messaging.peerSocket.readyState !== messaging.peerSocket.OPEN) {
-    throw new Error('No peerSocket connection');
-  }
 
-  messaging.peerSocket.send(data);
+  Comm.sendMessage(data);
   console.log(`Send:\n${JSON.stringify(data)}`);
 };
 
