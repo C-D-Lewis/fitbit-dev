@@ -1,6 +1,6 @@
 {
   "name": "@chris-lewis/fitbit-utils",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Common utility modules for common tasks across projects.",
   "main": "index.js",
   "repository": "https://github.com/C-D-Lewis/fitbit-dev",

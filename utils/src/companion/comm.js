@@ -22,3 +22,17 @@ export const sendFile = async (data, fileName = 'data.json') => {
   const res = await outbox.enqueue(fileName, cbor.encode(data));
   console.log(`File '${fileName}' enqueued`);
 };
+
+/**
+ * Setup handlers for messaging and file-transfer events.
+ *
+ * @param {Object} handlers - Handlers for socket open, socket message,
+ *                            errors, and file received events.
+ */
+export const setup = (handlers) => {
+  const { open, message, error } = handlers;
+
+  messaging.peerSocket.onopen = open;
+  messaging.peerSocket.onmessage = message;
+  messaging.peerSocket.onerror = error;
+};
