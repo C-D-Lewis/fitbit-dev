@@ -1,6 +1,5 @@
 import { me as device } from 'device';
-import * as comm from '../common/comm';
-import * as ui from '../common/ui';
+import { Comm, UI } from '@chris-lewis/fitbit-utils/app';
 import Constants from '../common/constants';
 
 const TIMEOUT_MS = 30000;
@@ -11,16 +10,16 @@ let lines = [];
 let timeoutHandle;
 
 const setupUI = () => {
-  loadingWindow = new ui.Window({ id: 'loading-window' });
+  loadingWindow = new UI.Window({ id: 'loading-window' });
   loadingWindow.show();
 
-  mainWindow = new ui.Window({
+  mainWindow = new UI.Window({
     id: 'main-window',
     setup: () => {
       const lineData = Constants.lines;
       lineData.forEach((line, i) => {
-        ui.get(`lines-card-line[${i}]`).style.fill = lineData[i].color;
-        ui.setText(`lines-card-name[${i}]`, lineData[i].name);
+        UI.get(`lines-card-line[${i}]`).style.fill = lineData[i].color;
+        UI.setText(`lines-card-name[${i}]`, lineData[i].name);
       });
     },
     update: () => {
@@ -28,22 +27,22 @@ const setupUI = () => {
       lines.forEach((item, i) => {
         // Verify the item is the correct line and in the same order
         if (item.id !== lineData[i].id) {
-          ui.setText('loading-text', 'Data error!');
+          UI.setText('loading-text', 'Data error!');
           return;
         }
 
-        ui.setText(`lines-card-status[${i}]`, item.status);
+        UI.setText(`lines-card-status[${i}]`, item.status);
 
         const reason = item.reason ? item.reason : '';
-        ui.setText(`lines-card-reason[${i}]`, reason);
-        ui.setVisible(`lines-card-icon[${i}]`, item.reason);
+        UI.setText(`lines-card-reason[${i}]`, reason);
+        UI.setVisible(`lines-card-icon[${i}]`, item.reason);
 
         // Move view
         if (reason) {
           const { nameY, statusY, reasonY } = Constants.layout[device.modelName];
-          ui.get(`lines-card-name[${i}]`).y = nameY;
-          ui.get(`lines-card-status[${i}]`).y = statusY;
-          ui.get(`lines-card-reason[${i}]`).y = reasonY;
+          UI.get(`lines-card-name[${i}]`).y = nameY;
+          UI.get(`lines-card-status[${i}]`).y = statusY;
+          UI.get(`lines-card-reason[${i}]`).y = reasonY;
         }
       });
     }
@@ -51,7 +50,7 @@ const setupUI = () => {
 };
 
 const setupComm = () => {
-  comm.setup({
+  Comm.setup({
     open: () => console.log('device onopen'),
     file: (fileName, json) => {
       if (timeoutHandle) {
@@ -72,7 +71,7 @@ const setupComm = () => {
   });
 
   timeoutHandle = setTimeout(() => {
-    ui.setText('loading-text', 'Timed out!');
+    UI.setText('loading-text', 'Timed out!');
     timeoutHandle = null;
   }, TIMEOUT_MS);
 };

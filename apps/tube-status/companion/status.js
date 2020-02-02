@@ -24,7 +24,7 @@ export const download = () => {
     .then((json) => {
       console.log('Download from unified API complete!');
       const payload = getAllLinesStatus(json);
-      console.log(JSON.stringify(payload));
+      // console.log(JSON.stringify(payload));
       console.log(`payload.length=${JSON.stringify(payload).length}`);
       return payload;
     });
