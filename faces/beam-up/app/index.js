@@ -3,7 +3,7 @@ import { display } from 'display';
 import messaging from 'messaging';
 import SecondsBar from './SecondsBar';
 import * as data from './data';
-import { DB, UI } from '@chris-lewis/fitbit-utils';
+import { DB, UI } from '@chris-lewis/fitbit-utils/app';
 
 const APP_NAME = 'BeamUp';  // Do not change without migration
 const TEST_ALL_CHANGE = false;

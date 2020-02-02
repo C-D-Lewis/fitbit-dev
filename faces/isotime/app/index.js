@@ -1,4 +1,4 @@
-import { UI, DB } from '@chris-lewis/fitbit-utils';
+import { UI, DB } from '@chris-lewis/fitbit-utils/app';
 import clock from 'clock';
 import messaging from 'messaging';
 

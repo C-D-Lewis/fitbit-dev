@@ -1,4 +1,4 @@
-import { DB } from '@chris-lewis/fitbit-utils';
+import { DB } from '@chris-lewis/fitbit-utils/app';
 
 const COLOR_SETS = {
   black: '#000000',

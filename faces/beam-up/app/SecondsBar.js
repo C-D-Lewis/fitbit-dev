@@ -1,4 +1,4 @@
-import { UI } from '@chris-lewis/fitbit-utils';
+import { UI } from '@chris-lewis/fitbit-utils/app';
 
 const IDS = {
   q1: 'beam-up-bar-25',
