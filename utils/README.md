@@ -15,3 +15,5 @@ Common utility modules for common tasks across projects. Separated into two modu
 ## companion
 
 * `web.js` - helpers for making and receiving web requests.
+
+* `comm.js` - helpers for companion-side messaging and file transfer.
