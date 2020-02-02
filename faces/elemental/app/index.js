@@ -1,4 +1,4 @@
-import document from 'document';
+import { UI } from '@chris-lewis/fitbit-utils/app';
 import clock from 'clock';
 
 const MONTHS = [
@@ -6,16 +6,14 @@ const MONTHS = [
   'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-const setText = (id, text) => document.getElementById(id).text = text;
-
 const zeroPad = value => (value < 10) ? `0${value}` : value;
 
 const formatDateStr = date => `${MONTHS[date.getMonth()]} ${date.getDate()}`;
 
 const onTick = (date) => {
   const timeString = `${zeroPad(date.getHours())}:${zeroPad(date.getMinutes())}`;
-  setText('time', timeString);
-  setText('date', formatDateStr(date));
+  UI.setText('time', timeString);
+  UI.setText('date', formatDateStr(date));
 };
 
 const main = () => {
