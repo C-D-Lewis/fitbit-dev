@@ -1,5 +1,5 @@
+import { UI } from '@chris-lewis/fitbit-utils/app';
 import clock from 'clock';
-import document from 'document';
 
 const Colors = {
   day: '#ffdc7d',
@@ -31,9 +31,9 @@ const onTick = (date) => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
 
-  document.getElementById('text_hours').text = zeroPad(hours);
+  UI.setText('text_hours', zeroPad(hours));
 
-  const arcMinutes = document.getElementById('arc_minutes');
+  const arcMinutes = UI.get('arc_minutes');
   arcMinutes.sweepAngle = Math.floor((minutes / 60) * 360)
   arcMinutes.style.fill = getArcFill(hours);
 };
