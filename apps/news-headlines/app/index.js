@@ -1,6 +1,5 @@
-import * as comm from '../common/comm';
-import * as db from '../common/db';
-import * as ui from '../common/ui';
+import { DB, UI, Comm } from '@chris-lewis/fitbit-utils/app';
+import { Card } from './Card';
 import Constants from '../common/constants';
 
 const TIMEOUT_MS = 30000;
@@ -11,12 +10,12 @@ let loadingWindow;
 let mainWindow;
 
 const initUi = () => {
-  loadingWindow = new ui.Window({ id: 'loading-window' });
-  mainWindow = new ui.Window({
+  loadingWindow = new UI.Window({ id: 'loading-window' });
+  mainWindow = new UI.Window({
     id: 'main-window',
     update: () => {
       stories.forEach((item, i) => {
-        const card = new ui.Card(`card[${i}]`);
+        const card = new Card(`card[${i}]`);
 
         // Update this card
         card.get('bg').style.fill = cardColor;
@@ -32,7 +31,7 @@ const initUi = () => {
 const initComm = () => {
   let timeoutHandle;
 
-  comm.setup({
+  Comm.setup({
     file: (fileName, json) => {
       if (timeoutHandle) {
         clearTimeout(timeoutHandle);
@@ -41,7 +40,7 @@ const initComm = () => {
 
       // Handle auth error
       if (json.error) {
-        ui.setText('loading-text', json.error);
+        UI.setText('loading-text', json.error);
         loadingWindow.show();
         mainWindow.hide();
         return;
@@ -49,7 +48,7 @@ const initComm = () => {
 
       // Save the stories  [{ t, d, i, dt }, ... ]
       stories = json.stories;
-      db.set('stories', JSON.stringify(stories));
+      DB.set('stories', JSON.stringify(stories));
 
       console.log(`Received ${stories.length} stories`);
       cardColor = Constants.colorFresh;
@@ -60,12 +59,13 @@ const initComm = () => {
     }
   });
 
-  timeoutHandle = setTimeout(() => ui.setText('loading-text', 'Timed out!'), TIMEOUT_MS);
+  timeoutHandle = setTimeout(() => UI.setText('loading-text', 'Timed out!'), TIMEOUT_MS);
 };
 
 const initData = () => {
-  db.init();
-  const staleData = db.get('stories');
+  DB.init();
+
+  const staleData = DB.get('stories');
   if (staleData) {
     stories = JSON.parse(staleData);
     console.log(`Loaded ${stories.length} stale stories`);
