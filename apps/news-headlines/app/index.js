@@ -1,5 +1,4 @@
 import { DB, UI, Comm } from '@chris-lewis/fitbit-utils/app';
-import { Card } from './Card';
 import Constants from '../common/constants';
 
 const TIMEOUT_MS = 30000;
@@ -15,7 +14,7 @@ const initUi = () => {
     id: 'main-window',
     update: () => {
       stories.forEach((item, i) => {
-        const card = new Card(`card[${i}]`);
+        const card = new UI.Card(`card[${i}]`);
 
         // Update this card
         card.get('bg').style.fill = cardColor;
