@@ -1,5 +1,5 @@
+import { UI } from '@chris-lewis/fitbit-utils/app';
 import clock from 'clock';
-import document from 'document';
 
 const QUOTES = [
   'There\'s an emergency going on',
@@ -19,8 +19,8 @@ const QUOTES = [
   'Gordon Bennett!',
 ];
 
-const textTime = document.getElementById('text_time');
-const textQuote = document.getElementById('text_quote');
+const textTime = UI.get('text_time');
+const textQuote = UI.get('text_quote');
 
 const zeroPad = i => (i >= 10) ? i : `0${i}`;
 
