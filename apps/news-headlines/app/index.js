@@ -62,7 +62,7 @@ const initComm = () => {
 };
 
 const initData = () => {
-  DB.init();
+  DB.init('news-headlines');
 
   const staleData = DB.get('stories');
   if (staleData) {

@@ -1,7 +1,7 @@
 import { settingsStorage } from 'settings';
 import me from 'companion';
 import calendars from 'calendars';
-import * as comm from '../common/comm';
+import { Comm } from '@chris-lewis/fitbit-utils/companion';
 import Constants from '../common/constants';
 
 /**
@@ -46,7 +46,7 @@ const transformEvent = (item) => {
  */
 const sendEventList = (eventList) => {
   console.log(`Packet size: ${JSON.stringify(eventList).length}`);
-  comm.sendFile({ eventList });
+  Comm.sendFile({ eventList });
 };
 
 /**
@@ -56,7 +56,7 @@ const sendEventList = (eventList) => {
  */
 const handleSendError = (err) => {
   console.log(err.stack);
-  comm.sendFile({ error: 'Select calendar' });
+  Comm.sendFile({ error: 'Select calendar' });
 };
 
 /**
@@ -118,7 +118,7 @@ const onSocketOpen = () => {
   console.log('Companion peerSocket onopen');
 
   if (!me.permissions.granted('access_calendar')) {
-    comm.sendFile({ error: 'Please grant permissions and choose a calendar' });
+    Comm.sendFile({ error: 'Please grant permissions and choose a calendar' });
     return;
   }
 
@@ -131,7 +131,7 @@ const onSocketOpen = () => {
 const main = () => {
   console.log('Upcoming companion start');
 
-  comm.setup({ open: onSocketOpen });
+  Comm.setup({ open: onSocketOpen });
 
   settingsStorage.onchange = (event) => {
     onSocketOpen();

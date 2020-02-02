@@ -1,8 +1,6 @@
-import * as comm from '../common/comm';
+import { Comm, UI, DB } from '@chris-lewis/fitbit-utils/app';
 import Constants from '../common/constants';
 import { decodeDate } from './dateTimeUtils';
-import * as db from '../common/db';
-import * as ui from '../common/ui';
 
 /** Max timeout when loading screen is waiting for companion. */
 const TIMEOUT_MS = 30000;
@@ -17,13 +15,13 @@ let mainWindow;
  */
 const mainWindowUpdate = () => {
   for (let i = 0; i < Constants.maxEvents; i += 1) {
-    const card = new ui.Card(`card[${i}]`);
+    const card = new UI.Card(`card[${i}]`);
     if (!eventsArr[i]) {
-      ui.setVisible(`card-container[${i}]`, false);
+      UI.setVisible(`card-container[${i}]`, false);
       continue;
     }
 
-    ui.setVisible(`card-container[${i}]`, true);
+    UI.setVisible(`card-container[${i}]`, true);
     const item = eventsArr[i];
     card.setText('index', `${i + 1} / ${eventsArr.length}`);
     card.setText('title', item.title);
@@ -44,8 +42,8 @@ const mainWindowUpdate = () => {
  * Setup the UI using own window framework.
  */
 const setupUi = () => {
-  loadingWindow = new ui.Window({ id: 'loading-window' });
-  mainWindow = new ui.Window({ id: 'main-window', update: mainWindowUpdate });
+  loadingWindow = new UI.Window({ id: 'loading-window' });
+  mainWindow = new UI.Window({ id: 'main-window', update: mainWindowUpdate });
 };
 
 /**
@@ -59,7 +57,7 @@ const onFileReceived = (fileName, json) => {
 
   // Handle auth error
   if (json.error) {
-    ui.setText('loading-text', json.error);
+    UI.setText('loading-text', json.error);
     loadingWindow.show();
     mainWindow.hide();
     return;
@@ -67,7 +65,7 @@ const onFileReceived = (fileName, json) => {
 
   // All events data arrives in one message
   eventsArr = json.eventList;
-  db.set(Constants.dbKeys.staleEvents, eventsArr);
+  DB.set(Constants.dbKeys.staleEvents, eventsArr);
   console.log(`Received ${eventsArr.length} events`);
 
   loadingWindow.hide();
@@ -76,13 +74,13 @@ const onFileReceived = (fileName, json) => {
 };
 
 /**
- * Setup comm.js module.
+ * Setup communication with companion.
  */
 const setupComm = () => {
-  comm.setup({ file: onFileReceived });
+  Comm.setup({ file: onFileReceived });
 
   timeoutHandle = setTimeout(() => {
-    ui.setText('loading-text', 'Timed out!');
+    UI.setText('loading-text', 'Timed out!');
     timeoutHandle = null;
   }, TIMEOUT_MS);
 };
@@ -91,10 +89,10 @@ const setupComm = () => {
  * Seup app data.
  */
 const setupData = () => {
-  db.init();
+  DB.init('upcoming');
 
   // Check for stale data
-  const staleEvents = db.get(Constants.dbKeys.staleEvents);
+  const staleEvents = DB.get(Constants.dbKeys.staleEvents);
   if (staleEvents) {
     eventsArr = staleEvents.map((item) => ({ ...item, isStale: true }));
     console.log(`Loaded ${eventsArr.length} stale events`);

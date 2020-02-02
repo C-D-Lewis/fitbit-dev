@@ -1,3 +1,5 @@
+const NOT_FOUND_OPTIONS = [{ name: 'No items found', value: 'none_found' }];
+
 let sourceSelection;
 
 const SettingsPage = ({ settings, settingsStorage }) => {
@@ -8,6 +10,8 @@ const SettingsPage = ({ settings, settingsStorage }) => {
   }
 
   sourceSelection = settings.sourceSelection || null;
+  const sourceOptions = sources.map(item => ({ name: item.title, value: item.id }));
+  const calendarOptions = calendars.map(item => ({ name: item.title, value: item.id }));
 
   return (
     <Page>
@@ -17,7 +21,7 @@ const SettingsPage = ({ settings, settingsStorage }) => {
           label={`Source`}
           value={sourceSelection}
           settingsKey="sourceSelection"
-          options={sources.map(item => ({ name: item.title, value: item.id }))}
+          options={sourceOptions.length > 0 ? sourceOptions : NOT_FOUND_OPTIONS}
           onChange={value => settingsStorage.setItem('sourceSelection', value)}
           onSelection={(selected, values) => {
             sourceSelection = selected;
@@ -30,7 +34,7 @@ const SettingsPage = ({ settings, settingsStorage }) => {
           <Select
             label={`Calendar`}
             settingsKey="calendarSelection"
-            options={calendars.map(item => ({ name: item.title, value: item.id }))}
+            options={calendarOptions.length > 0 ? calendarOptions : NOT_FOUND_OPTIONS}
             onChange={value => settingsStorage.setItem('calendarSelection', value)}
           />
         </Section>
