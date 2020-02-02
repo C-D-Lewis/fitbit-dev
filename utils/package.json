@@ -12,25 +12,22 @@
     "build-app": "babel src/app --out-dir app",
     "build-companion": "babel src/companion --out-dir companion",
     "build": "npm run build-app && npm run build-companion",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "author": "Chris Lewis",
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
-    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
     "@babel/preset-env": "^7.8.3"
   },
   "babel": {
     "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      "@babel/plugin-transform-modules-commonjs"
+      [
+        "@babel/env", {
+          "modules": false
+        }
+      ]
     ]
-  },
-  "dependencies": {
-    "@babel/polyfill": "^7.8.3"
   }
 }
