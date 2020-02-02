@@ -18,10 +18,9 @@ export const sendMessage = data => messaging.peerSocket.send(data);
  * @param {string} [fileName] - Optional explicit file name.
  * @returns {Promise}
  */
-export const sendFile = async (data, fileName = 'data.json') => {
-  const res = await outbox.enqueue(fileName, cbor.encode(data));
-  console.log(`File '${fileName}' enqueued`);
-};
+export const sendFile = (data, fileName = 'data.json') =>
+  outbox.enqueue(fileName, cbor.encode(data))
+    .then((res) => console.log(`File '${fileName}' enqueued`));
 
 /**
  * Setup handlers for messaging and file-transfer events.
