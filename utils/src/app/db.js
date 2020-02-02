@@ -14,6 +14,10 @@ const save = () => writeFileSync(dbPath, data, 'json');
  * @param {string} appName - App name, used to save data for this app.
  */
 export const init = (appName) => {
+  if (!appName) {
+    throw new Error('Please specify the app name!');
+  }
+  
   dbPath = `${appName}.json`;
 
   try {
