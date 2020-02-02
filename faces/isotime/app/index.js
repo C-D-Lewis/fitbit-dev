@@ -1,6 +1,5 @@
-import { UI, DB } from '@chris-lewis/fitbit-utils/app';
+import { Comm, UI, DB } from '@chris-lewis/fitbit-utils/app';
 import clock from 'clock';
-import messaging from 'messaging';
 
 const APP_NAME = 'Isotime';
 const DB_KEY_COLOR = 'color';
@@ -72,6 +71,7 @@ const onMessage = (event) => {
 
 const main = () => {
   console.log('Isotime app');
+
   DB.init(APP_NAME);
   chosenColor = loadColor();
 
@@ -79,7 +79,7 @@ const main = () => {
   clock.ontick = event => updateTime(event.date);
   updateTime(new Date());
 
-  messaging.peerSocket.onmessage = onMessage;
+  Comm.setup({ message: onMessage });
 };
 
 main();
