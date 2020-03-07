@@ -11,9 +11,11 @@ let active = false;
 export const setup = (handlers) => {
   if (!display.aodAvailable) {
     console.error('AoD is not supported');
+    return;
   }
   if (!me.permissions.granted('access_aod')) {
     console.error('access_aod permission not granted');
+    return;
   }
 
   display.aodAllowed = true;
