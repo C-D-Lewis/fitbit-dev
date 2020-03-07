@@ -1,10 +1,12 @@
 import { display } from 'display';
 import { me } from 'appbit';
 
+let active = false;
+
 /**
  * Handle Always on Display on/off events.
  *
- * @param {Object} handlers - containing onAodStarted() and onAodEnded().
+ * @param {Object} handlers - containing onStart() and onEnd().
  */
 export const setup = (handlers) => {
   if (!display.aodAvailable) {
@@ -17,10 +19,19 @@ export const setup = (handlers) => {
   display.aodAllowed = true;
   display.addEventListener('change', () => {
     if (!display.aodActive && display.on) {
-      handlers.onAodEnded();
+      handlers.onEnd();
+      active = false;
       return;
     }
 
-    handlers.onAodStarted();
+    handlers.onStart();
+    active = true;
   });
 };
+
+/**
+ * See if AoD mode is active right now.
+ *
+ * @returns {boolean} true if the display is on in AoD mode.
+ */
+export const isActive = () => active;
