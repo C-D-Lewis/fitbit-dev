@@ -1,10 +1,13 @@
-import { UI } from '@chris-lewis/fitbit-utils/app';
+import { UI, AOD } from '@chris-lewis/fitbit-utils/app';
 import clock from 'clock';
 
 const Colors = {
   day: '#ffdc7d',
   night: '#0d2478',
 };
+
+const arcBg = UI.get('arc_bg');
+const arcMinutes = UI.get('arc_minutes');
 
 /**
  * Pad a number with a zero if required.
@@ -33,8 +36,7 @@ const onTick = (date) => {
 
   UI.setText('text_hours', zeroPad(hours));
 
-  const arcMinutes = UI.get('arc_minutes');
-  arcMinutes.sweepAngle = Math.floor((minutes / 60) * 360)
+  arcMinutes.sweepAngle = Math.floor((minutes / 60) * 360);
   arcMinutes.style.fill = getArcFill(hours);
 };
 
@@ -46,6 +48,17 @@ const main = () => {
   clock.ontick = event => onTick(event.date);
 
   onTick(new Date());
+
+  AOD.setup({
+    onStart: () => {
+      UI.setVisible(arcBg, false);
+      arcMinutes.arcWidth = 10;
+    },
+    onEnd: () => {
+      UI.setVisible(arcBg, true);
+      arcMinutes.arcWidth = 25;
+    },
+  });
 };
 
 main();
