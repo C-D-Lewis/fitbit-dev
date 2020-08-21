@@ -1,4 +1,4 @@
-import document from 'document';
+const document = require('document');
 
 /**
  * Get an element by 'id'
