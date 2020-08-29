@@ -1,0 +1,25 @@
+<svg viewport-fill="black">
+  <arc id="arc_bg"
+    x="8%" y="8%"
+    width="84%" height="84%"
+    fill="#131313"
+    arc-width="25"
+    start-angle="0"
+    sweep-angle="360" />
+  <arc id="arc_minutes"
+    x="8%" y="8%"
+    width="84%" height="84%"
+    fill="white"
+    arc-width="25"
+    start-angle="0"
+    sweep-angle="240" />
+  <text id="text_hours"
+        x="50%" y="50%+50"
+        fill="white"
+        font-size="150"
+        font-family="Tungsten-Medium"
+        text-anchor="middle"
+        text-length="2">
+    00
+  </text>
+</svg>

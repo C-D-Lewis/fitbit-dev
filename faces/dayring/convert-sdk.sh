@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Script to build a FitBit project using both SDK 4 and 5 for appropriate devices.
+# Script to convert a FitBit project between SDK 4 and SDK 5.
+# Usage: ./convert-sdk.sh 5
 
-# SDK 5:
-function build_sdk_5 {
+function convert_sdk_5 {
   # Rename resources/widgets.gui >> resources/widget.defs
   mv resources/widgets.gui resources/widget.defs
   # Substitute in resources/widget.defs 'widgets_common.gui' for 'system_widget.defs'
@@ -14,17 +14,11 @@ function build_sdk_5 {
   cd -
   # Copy package-sdk5.json to package.json
   cp package-sdk5.json package.json
-  # 'npm i' and 'npx fitbit-build'
+  # Install dependencies
   npm i
-  npx fitbit-build
-  # Move 'build/app.fba' to 'app-sdk5.fba'
-  mv build/app.fba app-sdk5.fba
-  # Remove package.json
-  rm package.json
 }
 
-# SDK 4:
-function build_sdk_4 {
+function convert_sdk_4 {
   # Rename resources/widget.defs >> resources/widgets.gui
   mv resources/widget.defs resources/widgets.gui
   # Substitute in resources/widgets.gui 'system_widget.defs' for 'widgets_common.gui'
@@ -35,15 +29,15 @@ function build_sdk_4 {
   cd -
   # Copy package-sdk4.json to package.json
   cp package-sdk4.json package.json
-  # 'npm i' and 'npx fitbit-build'
+  # Install dependencies
   npm i
-  npx fitbit-build
-  # Move 'build/app.fba' to 'app-sdk4.fba'
-  mv build/app.fba app-sdk4.fba
-  # Remove package.json
-  rm package.json
 }
 
-# The codebase is primarily the latest SDK, so build that last
-build_sdk_4
-build_sdk_5
+VERSION=$1
+if [[ "$VERSION" == "4" ]]; then
+  convert_sdk_4
+elif [[ "$VERSION" == "5" ]]; then
+  convert_sdk_5
+else
+  echo "Invalid version parameter"
+fi
