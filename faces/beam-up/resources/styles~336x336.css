@@ -1,0 +1,28 @@
+.background {
+  viewport-fill: black;
+}
+
+.bar {
+  y: 190;
+  height: 8;
+  fill: white;
+  pointer-events: visible;
+}
+
+.time-digit {
+  y: 130;
+  width: 53;
+  height: 53;
+  fill: white;
+}
+
+.date-digit {
+  y: 206;
+  width: 26;
+  height: 26;
+}
+
+.beam {
+  width: 53;
+  fill: white;
+}
