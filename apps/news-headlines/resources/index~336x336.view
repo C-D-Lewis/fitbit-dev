@@ -1,0 +1,60 @@
+<svg class="background">
+  <defs>
+    <symbol id="card">
+      <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
+      <text id="index" class="card-index">0/0</text>
+      <rect class="content-container" pointer-events="visible">
+        <textarea id="title" class="card-title">TITLE</textarea>
+        <textarea id="description" class="card-description">DESC</textarea>
+      </rect>
+      <rect class="card-div-line"/>
+      <text id="date" class="card-date">date</text>
+    </symbol>
+  </defs>
+
+  <!-- Loading Window -->
+  <svg id="loading-window">
+    <image href="icon.png" class="icon"/>
+    <text id="loading-text" class="loading-text">Loading</text>
+  </svg>
+
+  <!-- Main Window -->
+  <svg id="main-window" display="none">
+    <rect class="bg"/>
+
+    <use id="lines-tile-list" href="#tile-list" height="100%" width="100%">
+      <var id="align-mode" value="1" />
+
+      <use href="#tile-list-item">
+        <use id="card[0]" href="#card"/>
+      </use>
+      <use href="#tile-list-item">
+        <use id="card[1]" href="#card"/>
+      </use>
+      <use href="#tile-list-item">
+        <use id="card[2]" href="#card"/>
+      </use>
+      <use href="#tile-list-item">
+        <use id="card[3]" href="#card"/>
+      </use>
+      <use href="#tile-list-item">
+        <use id="card[4]" href="#card"/>
+      </use>
+      <use href="#tile-list-item">
+        <use id="card[5]" href="#card"/>
+      </use>
+      <use href="#tile-list-item">
+        <use id="card[6]" href="#card"/>
+      </use>
+      <use href="#tile-list-item">
+        <use id="card[7]" href="#card"/>
+      </use>
+      <use href="#tile-list-item">
+        <use id="card[8]" href="#card"/>
+      </use>
+      <use href="#tile-list-item">
+        <use id="card[9]" href="#card"/>
+      </use>
+    </use>
+  </svg>
+</svg>

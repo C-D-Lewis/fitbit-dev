@@ -1,0 +1,99 @@
+.background {
+  x: 0;
+  y: 0;
+  width: 100%;
+  height: 100%;
+  fill: #000000;
+}
+
+.icon {
+  x: 108;
+  y: 112;
+  width: 80;
+  height: 80;
+}
+
+.card-bg {
+  x: 10;
+  y: 10;
+  width: 316;
+  height: 316;
+}
+
+.card-title {
+  x: 20;
+  y: 42;
+  width: 80%;
+  height: 80%;
+  fill: #FFFFFF;
+  text-anchor: start;
+  text-length: 256;
+  font-family: Colfax-Medium;
+  font-size: 32;
+  rows: 5;
+  text-overflow: ellipsis;
+}
+
+.card-description {
+  x: 25;
+  y: 44;
+  width: 85%;
+  height: 60%;
+  fill: #FFFFFF;
+  text-anchor: start;
+  text-length: 256;
+  font-family: Colfax-Medium;
+  font-size: 24;
+  rows: 6;
+  text-overflow: ellipsis;
+}
+
+.card-dots {
+  y: 235;
+}
+
+.card-index {
+  x: 50%;
+  y: 33;
+  width: 100%;
+  height: 20%;
+  fill: #FFFFFF;
+  text-anchor: middle;
+  text-length: 8;
+  font-family: Colfax-Medium;
+  font-size: 20;
+}
+
+.card-date {
+  x: 20;
+  y: 278;
+  width: 100%;
+  height: 20%;
+  fill: #FFFFFF;
+  text-anchor: start;
+  text-length: 32;
+  font-family: Colfax-Medium;
+  font-size: 22;
+  text-overflow: ellipsis;
+}
+
+.card-div-line {
+  x: 0;
+  y: 248;
+  width: 300;
+  height: 5;
+  fill: #000000;
+}
+
+.loading-text {
+  x: 50%;
+  y: 80%; 
+  width: 100%;
+  height: 30%;
+  fill: #999999;
+  text-anchor: middle;
+  text-length: 64;
+  font-family: Colfax-Medium;
+  font-size: 30; 
+  font-weight: bold;
+}
