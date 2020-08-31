@@ -3,8 +3,8 @@
     <!-- Circle section -->
     <symbol id="line-card-circle">
       <svg>
-        <circle cx="35" cy="50%" r="28" fill="black"/>
-        <circle cx="35" cy="50%" r="21" fill="white"/>
+        <circle cx="52" cy="50%" r="42" fill="black"/>
+        <circle cx="52" cy="50%" r="32" fill="white"/>
       </svg>
     </symbol>
   </defs>
@@ -16,9 +16,9 @@
   <svg id="loading-window">
     <image href="icon.png" class="icon"/>
     <text
-      id="loading-text" x="50%" y="80%" width="100%" height="30%"
+      id="loading-text" x="50%" y="90%" width="100%" height="30%"
       fill="#999999" text-anchor="middle" text-length="64"
-      font-family="Colfax-Medium" font-size="30" font-weight="bold">Loading</text>
+      font-family="Colfax-Medium" font-size="30" font-weight="bold">Updating</text>
   </svg>
 
   <!-- Main Window -->

@@ -17,6 +17,11 @@ const Constants = {
     { id: 'waterloo-city', name: 'Waterloo & City', color: '#95CDBA' },
   ],
   layout: {
+    Ionic: {
+      nameY: 90,
+      statusY: 122,
+      reasonY: 130,
+    },
     Versa: {
       nameY: 112,
       statusY: 143,
@@ -27,10 +32,10 @@ const Constants = {
       statusY: 143,
       reasonY: 151,
     },
-    Ionic: {
-      nameY: 90,
-      statusY: 122,
-      reasonY: 130,
+    'Versa 3': {
+      nameY: 112,
+      statusY: 143,
+      reasonY: 151,
     },
   },
 };
