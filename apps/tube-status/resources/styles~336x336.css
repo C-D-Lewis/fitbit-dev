@@ -1,0 +1,64 @@
+.background {
+  viewport-fill: fb-black;
+}
+
+.line-name {
+  x: 24%;
+  y: 48%;
+  width: 100%;
+  height: 30%;
+  fill: #777777;
+  text-anchor: start;
+  text-length: 64;
+  font-family: Colfax-Medium;
+  font-size: 30;
+  font-weight: bold;
+}
+
+.line-status {
+  x: 24%;
+  y: 59%;
+  width: 100%;
+  height: 30%;
+  fill: #000000;
+  text-anchor: start;
+  text-length: 64;
+  font-family: Colfax-Medium;
+  font-size: 28;
+  font-weight: bold;
+}
+
+.line-reason {
+  x: 24%;
+  y: 62%;
+  width: 70%;
+  height: 50%;
+  fill: #999999;
+  text-anchor: start;
+  text-length: 300;
+  font-family: Colfax-Medium;
+  font-size: 20;
+  rows: 7;
+  text-overflow: ellipsis;
+}
+
+.line-icon {
+  x: 22;
+  y: 44%;
+  width: 36;
+  height: 36;
+}
+
+.line-line {
+  x: 30;
+  y: 0;
+  width: 19;
+  height: 100%;
+}
+
+.icon {
+  x: 125;
+  y: 112;
+  width: 80;
+  height: 80;
+}
