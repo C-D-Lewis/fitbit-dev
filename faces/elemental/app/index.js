@@ -11,7 +11,7 @@ const zeroPad = value => (value < 10) ? `0${value}` : value;
 const formatDateStr = date => `${MONTHS[date.getMonth()]} ${date.getDate()}`;
 
 const onTick = (date) => {
-  const timeString = `${zeroPad(date.getHours())}:${zeroPad(date.getMinutes())}`;
+  const timeString = '00:00';//`${zeroPad(date.getHours())}:${zeroPad(date.getMinutes())}`;
   UI.setText('time', timeString);
   UI.setText('date', formatDateStr(date));
 };
