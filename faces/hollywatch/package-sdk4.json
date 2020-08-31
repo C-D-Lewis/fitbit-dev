@@ -7,8 +7,10 @@
     "wipeColor": "",
     "requestedPermissions": [],
     "buildTargets": [
-      "atlas",
-      "vulcan"
+      "higgs",
+      "meson",
+      "gemini",
+      "mira"
     ],
     "i18n": {
       "en": {
@@ -17,10 +19,9 @@
     }
   },
   "devDependencies": {
-    "@chris-lewis/fitbit-utils": "^1.1.3",
-    "@fitbit/sdk": "^5.0.0-pre.5",
-    "@fitbit/sdk-cli": "^1.7.3-pre.0",
-    "@fitbit/sdk-build-targets": "file:../dayring/fitbit-sdk-build-targets-1.5.0.tgz"
+    "@chris-lewis/fitbit-utils": "^1.1.4",
+    "@fitbit/sdk": "^4.1.0",
+    "@fitbit/sdk-cli": "^1.7.1"
   },
   "scripts": {
     "build": "fitbit-build"

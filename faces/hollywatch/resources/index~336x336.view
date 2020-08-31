@@ -1,0 +1,5 @@
+<svg class="background">
+  <image href="holly.jpg" x="18" y="18" width="300" height="300"/>
+  <text id="text_time" class="text text-time" x="50%" y="10%"/>
+  <textarea id="text_quote" class="text text-quote" x="5%" y="83%"/>
+</svg>
