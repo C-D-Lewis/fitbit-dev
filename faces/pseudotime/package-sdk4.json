@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "devDependencies": {
     "@chris-lewis/fitbit-utils": "^1.1.3",
-    "@fitbit/sdk": "^5.0.0-pre.5",
-    "@fitbit/sdk-cli": "^1.7.3-pre.0",
-    "@fitbit/sdk-build-targets": "file:../dayring/fitbit-sdk-build-targets-1.5.0.tgz"
+    "@fitbit/sdk": "^4.1.0",
+    "@fitbit/sdk-cli": "^1.7.1"
   },
   "fitbit": {
     "appUUID": "fded8575-6589-4d3f-8803-64afefaaa377",
@@ -14,8 +13,10 @@
     "wipeColor": "#ffffff",
     "requestedPermissions": [],
     "buildTargets": [
-      "atlas",
-      "vulcan"
+      "higgs",
+      "meson",
+      "gemini",
+      "mira"
     ],
     "i18n": {},
     "defaultLanguage": "en-US"

@@ -1,0 +1,25 @@
+<svg viewport-fill="black">
+  <!-- Background -->
+  <rect x="19%" y="40%" width="210" height="10" fill="#222222" />
+  <rect x="19%" y="50%" width="210" height="10" fill="#222222" />
+  <rect x="19%" y="60%" width="210" height="10" fill="#222222" />
+
+  <!-- Quarter increments -->
+  <rect x="19%+53" y="40%" width="5" height="10" fill="#555555" />
+  <rect x="19%+105" y="40%" width="5" height="10" fill="#555555" />
+  <rect x="19%+157" y="40%" width="5" height="10" fill="#555555" />
+  <rect x="19%+206" y="40%" width="4" height="10" fill="#555555" />
+  <rect x="19%+53" y="50%" width="5" height="10" fill="#555555" />
+  <rect x="19%+105" y="50%" width="5" height="10" fill="#555555" />
+  <rect x="19%+157" y="50%" width="5" height="10" fill="#555555" />
+  <rect x="19%+206" y="50%" width="4" height="10" fill="#555555" />
+  <rect x="19%+53" y="60%" width="5" height="10" fill="#555555" />
+  <rect x="19%+105" y="60%" width="5" height="10" fill="#555555" />
+  <rect x="19%+157" y="60%" width="5" height="10" fill="#555555" />
+  <rect x="19%+206" y="60%" width="4" height="10" fill="#555555" />
+
+  <!-- Time -->
+  <rect id="bar_hours" x="19%" y="40%" width="210" height="10" fill="red" />
+  <rect id="bar_minutes" x="19%" y="50%" width="210" height="10" fill="yellow" />
+  <rect id="bar_seconds" x="19%" y="60%" width="210" height="10" fill="cornflowerblue" />
+</svg>
