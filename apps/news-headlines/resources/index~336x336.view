@@ -9,6 +9,7 @@
       </rect>
       <rect class="card-div-line"/>
       <text id="date" class="card-date">date</text>
+      <image id="tap-icon" class="card-tap-icon" href="./resources/gesture-tap.png"/>
     </symbol>
   </defs>
 

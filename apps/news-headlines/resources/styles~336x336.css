@@ -98,3 +98,10 @@
   font-size: 30;
   font-weight: bold;
 }
+
+.card-tap-icon {
+  x: 85%;
+  y: 70%;
+  width: 36;
+  height: 36;
+}
