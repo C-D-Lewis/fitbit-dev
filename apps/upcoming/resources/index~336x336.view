@@ -3,34 +3,25 @@
     <symbol id="card">
       <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
       <text id="index" class="card-index">0/0</text>
-      <use href="#panoramaview">
-        <use href="#panoramaview-item">
-          <textarea id="title" class="card-title">TITLE</textarea>
-        </use>
-        <use href="#panoramaview-item">
-          <textarea id="description" class="card-description">DESC</textarea>
-        </use>
-        
-        <use id="pagination-dots" href="#pagination-widget" class="card-dots">
-          <use href="#pagination-dot"/>
-          <use href="#pagination-dot"/>
-          <use href="#pagination-highlight-dot"/>
-        </use>
-      </use>
+      <rect id="content-area" pointer-events="visible">
+        <textarea id="title" class="card-title">TITLE</textarea>
+        <textarea id="description" class="card-description">DESC</textarea>
+      </rect>
       <rect class="card-div-line"/>
       <text id="time" class="card-time">time</text>
       <text id="date" class="card-date">date</text>
       <image id="icon-time" class="card-icon-time" href="./resources/time.png"/>
       <image id="icon-date" class="card-icon-date" href="./resources/date.png"/>
+      <image id="tap-icon" class="card-tap-icon" href="./resources/gesture-tap.png"/>
     </symbol>
   </defs>
-  
+
   <!-- Loading Window -->
   <svg id="loading-window">
     <image href="icon.png" class="icon"/>
-    <text id="loading-text" class="loading-text">Loading</text>  
+    <text id="loading-text" class="loading-text">Updating</text>
   </svg>
-  
+
   <!-- Main Window -->
   <svg id="main-window" display="none">
     <rect class="background"/>

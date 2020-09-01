@@ -1,6 +1,7 @@
 import { Comm, UI, DB } from '@chris-lewis/fitbit-utils/app';
 import Constants from '../common/constants';
 import { decodeDate } from './dateTimeUtils';
+import { me as device } from 'device';
 
 /** Max timeout when loading screen is waiting for companion. */
 const TIMEOUT_MS = 30000;
@@ -34,6 +35,21 @@ const mainWindowUpdate = () => {
       card.get('bg').style.fill = decodedDate === 'Today' ? Constants.colorStaleToday : Constants.colorStaleOtherDay;
     } else {
       card.get('bg').style.fill = decodedDate === 'Today' ? Constants.colorUpdatedToday : Constants.colorUpdatedOtherDay;
+    }
+
+    // On Versa 3, no panorama view is available
+    if (device.modelName === 'Versa 3') {
+      card.visibleElement = 'title';
+      card.setVisibleElement(card.visibleElement);
+
+      card.get('content-area').onclick = () => {
+        if (card.visibleElement === 'title') {
+          card.visibleElement = 'description';
+        } else {
+          card.visibleElement = 'title';
+        }
+        card.setVisibleElement(card.visibleElement);
+      }
     }
   }
 };

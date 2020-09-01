@@ -1,0 +1,72 @@
+<svg class="background">
+  <defs>
+    <symbol id="card">
+      <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
+      <text id="index" class="card-index">0/0</text>
+      <use href="#panoramaview">
+        <use href="#panoramaview-item">
+          <textarea id="title" class="card-title">TITLE</textarea>
+        </use>
+        <use href="#panoramaview-item">
+          <textarea id="description" class="card-description">DESC</textarea>
+        </use>
+
+        <use id="pagination-dots" href="#pagination-widget" class="card-dots">
+          <use href="#pagination-dot"/>
+          <use href="#pagination-dot"/>
+          <use href="#pagination-highlight-dot"/>
+        </use>
+      </use>
+      <rect class="card-div-line"/>
+      <text id="time" class="card-time">time</text>
+      <text id="date" class="card-date">date</text>
+      <image id="icon-time" class="card-icon-time" href="./resources/time.png"/>
+      <image id="icon-date" class="card-icon-date" href="./resources/date.png"/>
+    </symbol>
+  </defs>
+
+  <!-- Loading Window -->
+  <svg id="loading-window">
+    <image href="icon.png" class="icon"/>
+    <text id="loading-text" class="loading-text">Loading</text>
+  </svg>
+
+  <!-- Main Window -->
+  <svg id="main-window" display="none">
+    <rect class="background"/>
+    <use id="lines-tile-list" href="#tile-list" height="100%" width="100%">
+      <var id="align-mode" value="1" />
+
+      <use id="card-container[0]" href="#tile-list-item">
+        <use id="card[0]" href="#card"/>
+      </use>
+      <use id="card-container[1]" href="#tile-list-item">
+        <use id="card[1]" href="#card"/>
+      </use>
+      <use id="card-container[2]" href="#tile-list-item">
+        <use id="card[2]" href="#card"/>
+      </use>
+      <use id="card-container[3]" href="#tile-list-item">
+        <use id="card[3]" href="#card"/>
+      </use>
+      <use id="card-container[4]" href="#tile-list-item">
+        <use id="card[4]" href="#card"/>
+      </use>
+      <use id="card-container[5]" href="#tile-list-item">
+        <use id="card[5]" href="#card"/>
+      </use>
+      <use id="card-container[6]" href="#tile-list-item">
+        <use id="card[6]" href="#card"/>
+      </use>
+      <use id="card-container[7]" href="#tile-list-item">
+        <use id="card[7]" href="#card"/>
+      </use>
+      <use id="card-container[8]" href="#tile-list-item">
+        <use id="card[8]" href="#card"/>
+      </use>
+      <use id="card-container[9]" href="#tile-list-item">
+        <use id="card[9]" href="#card"/>
+      </use>
+    </use>
+  </svg>
+</svg>
