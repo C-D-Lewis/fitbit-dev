@@ -19,7 +19,7 @@
     }
   },
   "devDependencies": {
-    "@chris-lewis/fitbit-utils": "^1.1.3",
+    "@chris-lewis/fitbit-utils": "^1.1.4",
     "@fitbit/sdk": "^5.0.0-pre.5",
     "@fitbit/sdk-cli": "^1.7.3-pre.0",
     "@fitbit/sdk-build-targets": "file:../../faces/dayring/fitbit-sdk-build-targets-1.5.0.tgz"

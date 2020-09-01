@@ -1,5 +1,6 @@
 import { DB, UI, Comm } from '@chris-lewis/fitbit-utils/app';
 import Constants from '../common/constants';
+import { me as device } from 'device';
 
 const TIMEOUT_MS = 30000;
 
@@ -22,6 +23,21 @@ const initUi = () => {
         card.setText('title', item.title);
         card.setText('description', item.description);
         card.setText('date', `${item.dateTime.substring(5, 22)} GMT`);
+
+        // On Versa 3, no panorama view is available
+        if (device.modelName === 'Versa 3') {
+          card.visibleElement = 'title';
+          card.setVisibleElement(card.visibleElement);
+
+          card.get('content-area').onclick = () => {
+            if (card.visibleElement === 'title') {
+              card.visibleElement = 'description';
+            } else {
+              card.visibleElement = 'title';
+            }
+            card.setVisibleElement(card.visibleElement);
+          }
+        }
       });
     }
   });

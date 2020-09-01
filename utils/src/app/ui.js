@@ -77,20 +77,11 @@ const getChild = (element, id) => element.getElementById(id);
  *    <symbol id="card">
  *      <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
  *      <text id="index" class="card-index">0/0</text>
- *      <use href="#panoramaview">
- *        <use href="#panoramaview-item">
- *          <textarea id="title" class="card-title">TITLE</textarea>
- *        </use>
- *        <use href="#panoramaview-item">
- *          <textarea id="description" class="card-description">DESC</textarea>
- *        </use>
- *
- *       <use id="pagination-dots" href="#pagination-widget" class="card-dots">
- *          <use href="#pagination-dot"/>
- *          <use href="#pagination-dot"/>
- *          <use href="#pagination-highlight-dot"/>
- *        </use>
- *      </use>
+ *      <text id="index" class="card-index">0/0</text>
+ *      <rect pointer-events="visible">
+ *        <textarea id="title" class="card-title">TITLE</textarea>
+ *        <textarea id="description" class="card-description">DESC</textarea>
+ *      </rect>
  *      <rect class="card-div-line"/>
  *      <text id="date" class="card-date">date</text>
  *    </symbol>
@@ -111,5 +102,15 @@ export function Card(id) {
 
   this.get = function (id) {
     return getChild(this.root, id);
+  };
+
+  /**
+   * Choose whether the title or description are visible.
+   */
+  this.setVisibleElement = function (id) {
+    setVisible(this.get('title'), false);
+    setVisible(this.get('description'), false);
+
+    setVisible(this.get(id), true);
   };
 };

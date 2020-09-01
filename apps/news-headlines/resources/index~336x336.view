@@ -3,7 +3,7 @@
     <symbol id="card">
       <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
       <text id="index" class="card-index">0/0</text>
-      <rect class="content-container" pointer-events="visible">
+      <rect id="content-area" pointer-events="visible">
         <textarea id="title" class="card-title">TITLE</textarea>
         <textarea id="description" class="card-description">DESC</textarea>
       </rect>
