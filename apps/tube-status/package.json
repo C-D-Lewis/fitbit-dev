@@ -9,8 +9,7 @@
       "access_internet"
     ],
     "buildTargets": [
-      "atlas",
-      "vulcan"
+      "atlas"
     ],
     "i18n": {
       "en": {

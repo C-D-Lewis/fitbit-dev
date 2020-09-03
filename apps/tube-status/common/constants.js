@@ -37,6 +37,11 @@ const Constants = {
       statusY: 143,
       reasonY: 151,
     },
+    'Sense': {
+      nameY: 112,
+      statusY: 143,
+      reasonY: 151,
+    },
   },
 };
 
