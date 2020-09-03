@@ -36,9 +36,9 @@
 
 .card-description {
   x: 30;
-  y: 55;
+  y: 35;
   width: 85%;
-  height: 60%;
+  height: 80%;
   fill: #FFFFFF;
   text-anchor: start;
   text-length: 256;
