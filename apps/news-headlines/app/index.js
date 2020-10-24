@@ -25,16 +25,13 @@ const initUi = () => {
         card.setText('date', `${item.dateTime.substring(5, 22)} GMT`);
 
         // On Versa 3 and Sense, no panorama view is available
-        if (['Versa 3', 'Sense'].includes(device.modelName)) {
+        if (device.modelName === 'Versa 3' || device.modelName === 'Sense') {
+        console.log('step')
           card.visibleElement = 'title';
           card.setVisibleElement(card.visibleElement);
 
           card.get('content-area').onclick = () => {
-            if (card.visibleElement === 'title') {
-              card.visibleElement = 'description';
-            } else {
-              card.visibleElement = 'title';
-            }
+            card.visibleElement = card.visibleElement === 'title' ? 'description' : 'title';
             card.setVisibleElement(card.visibleElement);
           }
         }

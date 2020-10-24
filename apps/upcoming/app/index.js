@@ -38,7 +38,7 @@ const mainWindowUpdate = () => {
     }
 
     // On Versa 3 and Sense, no panorama view is available
-    if (['Versa 3', 'Sense'].includes(device.modelName)) {
+    if (device.modelName === 'Versa 3' || device.modelName === 'Sense') {
       card.visibleElement = 'title';
       card.setVisibleElement(card.visibleElement);
 
