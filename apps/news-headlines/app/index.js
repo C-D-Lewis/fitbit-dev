@@ -26,7 +26,6 @@ const initUi = () => {
 
         // On Versa 3 and Sense, no panorama view is available
         if (device.modelName === 'Versa 3' || device.modelName === 'Sense') {
-        console.log('step')
           card.visibleElement = 'title';
           card.setVisibleElement(card.visibleElement);
 
