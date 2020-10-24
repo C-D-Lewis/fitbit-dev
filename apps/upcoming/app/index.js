@@ -37,8 +37,8 @@ const mainWindowUpdate = () => {
       card.get('bg').style.fill = decodedDate === 'Today' ? Constants.colorUpdatedToday : Constants.colorUpdatedOtherDay;
     }
 
-    // On Versa 3, no panorama view is available
-    if (device.modelName === 'Versa 3') {
+    // On Versa 3 and Sense, no panorama view is available
+    if (['Versa 3', 'Sense'].includes(device.modelName)) {
       card.visibleElement = 'title';
       card.setVisibleElement(card.visibleElement);
 
