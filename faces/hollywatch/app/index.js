@@ -3,20 +3,20 @@ import clock from 'clock';
 
 const QUOTES = [
   'There\'s an emergency going on',
-  'It\'s still going on',
-  'About as late as you\'d expect',
   'Why are you asking me?',
   'Probably not serious, don\'t panic',
   'That\'s a poor IQ for a glass of water!',
-  'That\'s a load of Tottenham, that is',
   'Oh yeah, didn\'t see that',
-  'I\'ve always had a bit of a blind spot with sevens',
-  'It\'s about lunchtime, maybe half one',
+  'You want me to prove it, do you?',
+  'How \'bout a space question instead?',
+  'I may not be fast, but I get there in the end',
+  'Still, you\'ve got to laugh, haven\'t you?',
   'My IQ is 6000 - same as 6000 PE teachers',
+  'It\'s still going on',
   'Abandon shop! This is not a daffodil.',
   'Everybody\'s dead, Dave',
-  'They\'re dead, Dave.',
   'Gordon Bennett!',
+  'They\'re dead, Dave.',
 ];
 
 const textTime = UI.get('text_time');
@@ -31,8 +31,19 @@ const onTick = (event) => {
   const hours = zeroPad(today.getHours());
   const mins = zeroPad(today.getMinutes());
 
+  let quote = QUOTES[randomInt(QUOTES.length - 1)];
+  if (hours % 7 === 0 || mins % 7 === 0) {
+    quote = 'I\'ve always had a bit of a blind spot with sevens';
+  }
+  if (hours > 12 && hours < 14 && randomInt(100) > 50) {
+    quote = 'It\'s about lunchtime, maybe half one';
+  }
+  if (hours > 19 && randomInt(100) > 50) {
+    quote = 'About as late as you\'d expect';
+  }
+
   textTime.text = `Alright dudes? It's ${hours}:${mins}`;
-  textQuote.text = QUOTES[randomInt(QUOTES.length - 1)];
+  textQuote.text = quote;
 };
 
 const main = () => {
