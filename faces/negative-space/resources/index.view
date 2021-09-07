@@ -1,0 +1,20 @@
+<svg viewport-fill="black">
+  <text id="text_hours"
+    x="50%" y="50%+50"
+    fill="white"
+    font-size="150"
+    font-family="Tungsten-Medium"
+    text-anchor="middle"
+    text-length="2">
+    00
+  </text>
+  <text id="text_minutes"
+    x="50%" y="50%+50"
+    fill="black"
+    font-size="100"
+    font-family="Tungsten-Medium"
+    text-anchor="middle"
+    text-length="2">
+    00
+  </text>
+</svg>

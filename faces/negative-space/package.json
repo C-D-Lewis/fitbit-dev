@@ -1,0 +1,32 @@
+{
+  "name": "negative-space",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@chris-lewis/fitbit-utils": "^1.1.4",
+    "@fitbit/sdk": "^6.0.1",
+    "@fitbit/sdk-cli": "^1.7.3",
+    "keytar": "^7.7.0"
+  },
+  "fitbit": {
+    "appUUID": "d1013bcf-b95b-4a73-95dc-cc9ae6dd47a6",
+    "appType": "clockface",
+    "appDisplayName": "Negative Space",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "atlas",
+      "vulcan"
+    ],
+    "i18n": {
+      "en-US": {
+        "name": "Negative Space"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "scripts": {
+    "build": "fitbit-build",
+    "debug": "fitbit"
+  }
+}
