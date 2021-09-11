@@ -88,7 +88,7 @@ const setupComm = () => {
 
       // All line data arrives in one message
       lines = json;
-      console.log(`Recv: ${JSON.stringify(lines)}`);
+      // console.log(`Recv: ${JSON.stringify(lines)}`);
 
       loadingWindow.hide();
       mainWindow.update();
