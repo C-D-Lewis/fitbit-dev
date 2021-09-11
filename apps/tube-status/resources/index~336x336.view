@@ -26,7 +26,7 @@
     <use id="lines-tile-list" href="#tile-list" height="100%" width="100%">
       <var id="align-mode" value="1" />
 
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[0]">
         <rect id="lines-card-line[0]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[0]" class="line-name"/>
@@ -34,7 +34,7 @@
         <textarea id="lines-card-reason[0]" class="line-reason"/>
         <image id="lines-card-icon[0]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[1]">
         <rect id="lines-card-line[1]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[1]" class="line-name"/>
@@ -42,7 +42,7 @@
         <textarea id="lines-card-reason[1]" class="line-reason"/>
         <image id="lines-card-icon[1]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[2]">
         <rect id="lines-card-line[2]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[2]" class="line-name"/>
@@ -50,7 +50,7 @@
         <textarea id="lines-card-reason[2]" class="line-reason"/>
         <image id="lines-card-icon[2]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[3]">
         <rect id="lines-card-line[3]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[3]" class="line-name"/>
@@ -58,7 +58,7 @@
         <textarea id="lines-card-reason[3]" class="line-reason"/>
         <image id="lines-card-icon[3]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[4]">
         <rect id="lines-card-line[4]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[4]" class="line-name"/>
@@ -66,7 +66,7 @@
         <textarea id="lines-card-reason[4]" class="line-reason"/>
         <image id="lines-card-icon[4]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[5]">
         <rect id="lines-card-line[5]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[5]" class="line-name"/>
@@ -74,7 +74,7 @@
         <textarea id="lines-card-reason[5]" class="line-reason"/>
         <image id="lines-card-icon[5]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[6]">
         <rect id="lines-card-line[6]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[6]" class="line-name"/>
@@ -82,7 +82,7 @@
         <textarea id="lines-card-reason[6]" class="line-reason"/>
         <image id="lines-card-icon[6]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[7]">
         <rect id="lines-card-line[7]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[7]" class="line-name"/>
@@ -90,7 +90,7 @@
         <textarea id="lines-card-reason[7]" class="line-reason"/>
         <image id="lines-card-icon[7]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[8]">
         <rect id="lines-card-line[8]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[8]" class="line-name"/>
@@ -98,7 +98,7 @@
         <textarea id="lines-card-reason[8]" class="line-reason"/>
         <image id="lines-card-icon[8]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[9]">
         <rect id="lines-card-line[9]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[9]" class="line-name"/>
@@ -106,7 +106,7 @@
         <textarea id="lines-card-reason[9]" class="line-reason"/>
         <image id="lines-card-icon[9]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[10]">
         <rect id="lines-card-line[10]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[10]" class="line-name"/>
@@ -114,7 +114,7 @@
         <textarea id="lines-card-reason[10]" class="line-reason"/>
         <image id="lines-card-icon[10]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[11]">
         <rect id="lines-card-line[11]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[11]" class="line-name"/>
@@ -122,7 +122,7 @@
         <textarea id="lines-card-reason[11]" class="line-reason"/>
         <image id="lines-card-icon[11]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[12]">
         <rect id="lines-card-line[12]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[12]" class="line-name"/>
@@ -130,7 +130,7 @@
         <textarea id="lines-card-reason[12]" class="line-reason"/>
         <image id="lines-card-icon[12]" href="images/alert-yellow.png" class="line-icon" />
       </use>
-      <use href="#tile-list-item">
+      <use href="#tile-list-item" id="tile-list-item[13]">
         <rect id="lines-card-line[13]" class="line-line"/>
         <use href="#line-card-circle"/>
         <text id="lines-card-name[13]" class="line-name"/>
