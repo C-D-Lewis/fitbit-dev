@@ -6,7 +6,5 @@
     <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.defs" />
     <link rel="import" href="/mnt/sysassets/widgets/scrollview_widget.defs" />
     <link rel="import" href="/mnt/sysassets/widgets/tile_list_widget.defs" />
-    <link rel="import" href="/mnt/sysassets/widgets/panoramaview_widget.defs" />
-    <link rel="import" href="/mnt/sysassets/widgets/pagination_dots.defs" />
   </defs>
 </svg>

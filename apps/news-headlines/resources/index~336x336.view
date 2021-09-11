@@ -1,5 +1,7 @@
-<svg class="background">
+<svg class="app-background">
+  <!-- Defined widgets-->
   <defs>
+    <!-- Card widget -->
     <symbol id="card">
       <rect id="banner" class="card-banner">
         <text id="index" class="card-index">0/0</text>

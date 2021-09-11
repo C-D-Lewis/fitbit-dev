@@ -1,37 +1,30 @@
-<svg class="background">
+<svg class="app-background">
+  <!-- Defined widgets-->
   <defs>
+    <!-- Card widget -->
     <symbol id="card">
-      <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
-      <text id="index" class="card-index">0/0</text>
-      <use href="#panoramaview">
-        <use href="#panoramaview-item">
-          <textarea id="title" class="card-title">TITLE</textarea>
-        </use>
-        <use href="#panoramaview-item">
-          <textarea id="description" class="card-description">DESC</textarea>
-        </use>
-
-        <use id="pagination-dots" href="#pagination-widget" class="card-dots">
-          <use href="#pagination-dot"/>
-          <use href="#pagination-dot"/>
-          <use href="#pagination-highlight-dot"/>
-        </use>
-      </use>
+      <rect id="banner" class="card-banner">
+        <text id="index" class="card-index">0/0</text>
+      </rect>
+      <rect id="content-area" pointer-events="visible">
+        <textarea id="title" class="card-title">TITLE</textarea>
+        <textarea id="description" class="card-description">DESC</textarea>
+      </rect>
       <rect class="card-div-line"/>
       <text id="date" class="card-date">date</text>
+      <image id="arrow-right" class="card-arrow-right" href="./resources/arrow-right.png"/>
+      <image id="arrow-left" class="card-arrow-left" href="./resources/arrow-left.png"/>
     </symbol>
   </defs>
 
   <!-- Loading Window -->
   <svg id="loading-window">
-    <image href="icon.png" class="icon"/>
+    <image href="icon.png" class="loading-icon"/>
     <text id="loading-text" class="loading-text">Loading</text>
   </svg>
 
   <!-- Main Window -->
   <svg id="main-window" display="none">
-    <rect class="bg"/>
-
     <use id="lines-tile-list" href="#tile-list" height="100%" width="100%">
       <var id="align-mode" value="1" />
 
@@ -66,8 +59,5 @@
         <use id="card[9]" href="#card"/>
       </use>
     </use>
-
-    <rect class="left-bar"/>
-    <rect class="right-bar"/>
   </svg>
 </svg>
