@@ -1,8 +1,9 @@
 <svg class="background">
   <defs>
     <symbol id="card">
-      <image id="bg" class="card-bg" href="./resources/bg-rounded.png"/>
-      <text id="index" class="card-index">0/0</text>
+      <rect id="banner" class="card-banner">
+        <text id="index" class="card-index">0/0</text>
+      </rect>
       <rect id="content-area" pointer-events="visible">
         <textarea id="title" class="card-title">TITLE</textarea>
         <textarea id="description" class="card-description">DESC</textarea>
@@ -21,8 +22,6 @@
 
   <!-- Main Window -->
   <svg id="main-window" display="none">
-    <rect class="bg"/>
-
     <use id="lines-tile-list" href="#tile-list" height="100%" width="100%">
       <var id="align-mode" value="1" />
 

@@ -1,15 +1,22 @@
 import { Comm } from '@chris-lewis/fitbit-utils/companion'
-import * as messaging from 'messaging';
-import * as headlines from './headlines';
+import { downloadNews } from './headlines';
 
+/**
+ * Download the news headlines, then send them
+ */
 const download = () => {
   console.log('Downloading...');
-  headlines.download().then((stories) => {
-    console.log(`Total size: ${JSON.stringify(stories).length} B`);
-    Comm.sendFile({ stories });
-  });
+
+  downloadNews()
+    .then((stories) => {
+      console.log(`Total size: ${JSON.stringify(stories).length} B`);
+      Comm.sendFile({ stories });
+    });
 };
 
+/**
+ * The main function.
+ */
 const main = () => {
   console.log('News Headlines companion start');
 

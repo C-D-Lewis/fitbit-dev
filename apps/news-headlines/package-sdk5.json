@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@chris-lewis/fitbit-utils": "^1.1.4",
-    "@fitbit/sdk": "^5.0.1",
+    "@fitbit/sdk": "^6.0.2",
     "@fitbit/sdk-cli": "^1.7.3"
   },
   "scripts": {
