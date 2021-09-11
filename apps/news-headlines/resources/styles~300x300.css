@@ -42,7 +42,7 @@
   text-length: 256;
   font-family: Colfax-Medium;
   font-size: 28;
-  rows: 5;
+  rows: 6;
   text-overflow: ellipsis;
 }
 
@@ -50,13 +50,13 @@
   x: 25;
   y: 50;
   width: 85%;
-  height: 60%;
+  height: 75%;
   fill: #FFFFFF;
   text-anchor: start;
   text-length: 256;
   font-family: Colfax-Medium;
   font-size: 24;
-  rows: 6;
+  rows: 7;
   text-overflow: ellipsis;
 }
 
@@ -96,14 +96,14 @@
 
 .card-arrow-right {
   x: 85%;
-  y: 75%;
+  y: 9;
   width: 36;
   height: 36;
 }
 
 .card-arrow-left {
   x: 5%;
-  y: 75%;
+  y: 9;
   width: 36;
   height: 36;
 }
