@@ -10,13 +10,14 @@
       </rect>
       <rect class="card-div-line"/>
       <text id="date" class="card-date">date</text>
-      <image id="tap-icon" class="card-tap-icon" href="./resources/gesture-tap.png"/>
+      <image id="arrow-right" class="card-arrow-right" href="./resources/arrow-right.png"/>
+      <image id="arrow-left" class="card-arrow-left" href="./resources/arrow-left.png"/>
     </symbol>
   </defs>
 
   <!-- Loading Window -->
   <svg id="loading-window">
-    <image href="icon.png" class="icon"/>
+    <image href="icon.png" class="loading-icon"/>
     <text id="loading-text" class="loading-text">Loading</text>
   </svg>
 

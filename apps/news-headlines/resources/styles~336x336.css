@@ -6,11 +6,24 @@
   fill: #000000;
 }
 
-.icon {
-  x: 108;
+.loading-icon {
+  x: 128;
   y: 112;
   width: 80;
   height: 80;
+}
+
+.loading-text {
+  x: 50%;
+  y: 65%;
+  width: 100%;
+  height: 30%;
+  fill: #999999;
+  text-anchor: middle;
+  text-length: 64;
+  font-family: Colfax-Medium;
+  font-size: 24;
+  font-weight: bold;
 }
 
 .card-banner {
@@ -81,21 +94,15 @@
   fill: #444444;
 }
 
-.loading-text {
-  x: 50%;
-  y: 80%;
-  width: 100%;
-  height: 30%;
-  fill: #999999;
-  text-anchor: middle;
-  text-length: 64;
-  font-family: Colfax-Medium;
-  font-size: 30;
-  font-weight: bold;
+.card-arrow-right {
+  x: 85%;
+  y: 70%;
+  width: 36;
+  height: 36;
 }
 
-.card-tap-icon {
-  x: 85%;
+.card-arrow-left {
+  x: 5%;
   y: 70%;
   width: 36;
   height: 36;

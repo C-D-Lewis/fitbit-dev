@@ -4,7 +4,7 @@ import { me as device } from 'device';
 /** Download timeout */
 const TIMEOUT_MS = 30000;
 /** Stale data card color */
-const COLOR_STALE = '#777';
+const COLOR_STALE = '#666666';
 /** Fresh data card color */
 const COLOR_FRESH = '#d40000';
 
@@ -22,22 +22,25 @@ let mainWindow;
 const updateStoryCard = (item, i) => {
   const card = new UI.Card(`card[${i}]`);
 
-  // Update this card
+  // Update this card's data
   card.get('banner').style.fill = cardColor;
   card.setText('index', `${i + 1} / ${stories.length}`);
   card.setText('title', item.title);
   card.setText('description', item.description);
   card.setText('date', `${item.dateTime.substring(5, 22)} GMT`);
 
-  // On Versa 3 and Sense, no panorama view is available
-  if (device.modelName === 'Versa 3' || device.modelName === 'Sense') {
-    card.visibleElement = 'title';
-    card.setVisibleElement(card.visibleElement);
+  // Handle two pages of content with a tap
+  card.visibleElement = 'title';
+  card.setVisibleElement(card.visibleElement);
+  UI.setVisible(card.get('arrow-left'), false);
+  UI.setVisible(card.get('arrow-right'), true);
 
-    card.get('content-area').onclick = () => {
-      card.visibleElement = card.visibleElement === 'title' ? 'description' : 'title';
-      card.setVisibleElement(card.visibleElement);
-    }
+  card.get('content-area').onclick = () => {
+    const wasShowingTitle = card.visibleElement === 'title';
+    card.visibleElement = wasShowingTitle ? 'description' : 'title';
+    card.setVisibleElement(card.visibleElement);
+    UI.setVisible(card.get('arrow-left'), wasShowingTitle);
+    UI.setVisible(card.get('arrow-right'), !wasShowingTitle);
   }
 };
 
@@ -88,11 +91,9 @@ const setupComm = () => {
 
       // Save the stories  [{ title, description, dateTime }, ... ]
       stories = json.stories;
+      cardColor = COLOR_FRESH;
       DB.set('stories', JSON.stringify(stories));
       console.log(`Received ${stories.length} stories`);
-
-      // Show data is current
-      cardColor = COLOR_FRESH;
 
       // Show the stories
       loadingWindow.hide();
