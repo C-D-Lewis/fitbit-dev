@@ -50,13 +50,13 @@
   x: 25;
   y: 50;
   width: 85%;
-  height: 60%;
+  height: 80%;
   fill: #FFFFFF;
   text-anchor: start;
   text-length: 256;
   font-family: Colfax-Medium;
   font-size: 26;
-  rows: 6;
+  rows: 7;
   text-overflow: ellipsis;
 }
 
@@ -88,22 +88,22 @@
 
 .card-div-line {
   x: 10%;
-  y: 280;
+  y: 285;
   width: 80%;
   height: 3;
   fill: #444444;
 }
 
 .card-arrow-right {
-  x: 85%;
-  y: 70%;
+  x: 75%;
+  y: 10;
   width: 36;
   height: 36;
 }
 
 .card-arrow-left {
-  x: 5%;
-  y: 70%;
+  x: 15%;
+  y: 10;
   width: 36;
   height: 36;
 }
