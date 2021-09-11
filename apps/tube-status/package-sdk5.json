@@ -3,7 +3,7 @@
     "appUUID": "9de5e0b2-10b1-4241-8dcf-c4830b9c31f5",
     "appType": "app",
     "appDisplayName": "Tube Status",
-    "iconFile": "resources/icon.png",
+    "iconFile": "resources/images/icon.png",
     "wipeColor": "#3f51b5",
     "requestedPermissions": [
       "access_internet"
