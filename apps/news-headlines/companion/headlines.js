@@ -39,7 +39,7 @@ const extract = (text, beforeArr, after) => {
  * @param {string} xml - XML downloaded.
  * @returns {Array<object>} Array of stories with { title, description, dateTime }.
  */
-const getStories = (xml) => {
+const buildStories = (xml) => {
   const items = [];
   xml = xml.split('<item>');
   xml.shift();
@@ -58,8 +58,16 @@ const getStories = (xml) => {
 /**
  * Download and extract news stories.
  *
+ * @param {string} category - News category.
  * @returns {Promise<Array<object>>} List of stories.
  */
-export const downloadNews = () => fetch('https://feeds.bbci.co.uk/news/rss.xml')
-  .then(res => res.text())
-  .then(text => getStories(text).slice(0, MAX_STORIES));
+export const downloadNews = (category) => {
+  const url = category === 'headlines'
+    ? 'https://feeds.bbci.co.uk/news/rss.xml'
+    : `https://feeds.bbci.co.uk/news/${category}/rss.xml`;
+  console.log(url);
+
+  return fetch(url)
+    .then(res => res.text())
+    .then(text => buildStories(text).slice(0, MAX_STORIES));
+};
