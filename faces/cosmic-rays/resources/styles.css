@@ -1,0 +1,10 @@
+.app-background {
+  width: 100%;
+  height: 100%;
+  fill: black;
+}
+
+.ray {
+  fill: white;
+  stroke-width: 4;
+}

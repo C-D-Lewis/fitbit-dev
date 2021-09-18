@@ -1,0 +1,19 @@
+<svg>
+  <!-- Background -->
+  <rect class="app-background"/>
+
+  <!-- Time display -->
+  <!-- images -->
+
+  <!-- Rays -->
+  <line id="ray[0]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+  <line id="ray[1]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+  <line id="ray[2]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+  <line id="ray[3]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+  <line id="ray[4]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+  <line id="ray[5]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+  <line id="ray[6]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+  <line id="ray[7]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+  <line id="ray[8]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+  <line id="ray[9]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+</svg>

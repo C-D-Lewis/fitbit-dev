@@ -1,26 +1,26 @@
 {
-  "name": "negative-space",
+  "name": "cosmic-rays",
   "version": "1.0.0",
   "devDependencies": {
     "@chris-lewis/fitbit-utils": "^1.1.4",
-    "@fitbit/sdk": "^6.0.1",
+    "@fitbit/sdk": "^6.0.2",
     "@fitbit/sdk-cli": "^1.7.3",
     "keytar": "^7.7.0"
   },
   "fitbit": {
     "appUUID": "d1013bcf-b95b-4a73-95dc-cc9ae6dd47a6",
     "appType": "clockface",
-    "appDisplayName": "Negative Space",
+    "appDisplayName": "Cosmic Rays",
     "iconFile": "resources/icon.png",
     "wipeColor": "",
-    "requestedPermissions": [],
+    "requestedPermissions": ["access_aod"],
     "buildTargets": [
       "atlas",
       "vulcan"
     ],
     "i18n": {
       "en-US": {
-        "name": "Negative Space"
+        "name": "Cosmic Rays"
       }
     },
     "defaultLanguage": "en-US"
