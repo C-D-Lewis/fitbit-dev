@@ -1,5 +1,4 @@
-import { display } from 'display';
-import { UI } from '@chris-lewis/fitbit-utils/app';
+import { UI, AOD } from '@chris-lewis/fitbit-utils/app';
 import Ray from './Ray';
 import clock from 'clock';
 
@@ -58,6 +57,8 @@ const onFrame = () => {
  */
 const resume = () => {
   isRunning = true;
+  rays.forEach(p => p.show());
+
   requestAnimationFrame(onFrame);
 };
 
@@ -66,6 +67,8 @@ const resume = () => {
  */
 const pause = () => {
   isRunning = false;
+
+  rays.forEach(p => p.hide());
 };
 
 /**
@@ -81,13 +84,12 @@ const main = () => {
   while (rays.length < NUM_RAYS) rays.push(new Ray(rays.length));
 
   // Setup sleeping
-  UI.onDisplayChange((isOn) => {
-    if (isOn) {
-      resume();
-      return;
-    }
+  UI.onDisplayChange(isOn => isOn ? resume() : pause());
 
-    pause();
+  // Setup AOD
+  AOD.setup({
+    onStart: () => pause(),
+    onEnd: () => resume(),
   });
 
   // Start animation

@@ -4,7 +4,7 @@ import sys
 CHAR = sys.argv[1]
 GLYPH_SIZE = 100
 FONT_COLOR = (255, 255, 255)
-OFFSET = (25, -12)
+OFFSET = (10, -12)
 
 out = Image.new('RGBA', (GLYPH_SIZE, GLYPH_SIZE), (0, 0, 0, 0))
 draw = ImageDraw.Draw(out)

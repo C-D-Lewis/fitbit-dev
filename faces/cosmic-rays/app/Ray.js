@@ -65,4 +65,18 @@ export default class Ray {
 
     if (this.line.x2 < 0 && !this.isResetting) this.reset();
   }
+
+  /**
+   * Hide the ray.
+   */
+  hide () {
+    this.line.style.fill = '#000000';
+  }
+
+  /**
+   * Show the ray.
+   */
+  show () {
+    this.line.style.fill = 'white';
+  }
 }
