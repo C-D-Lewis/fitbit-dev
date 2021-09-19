@@ -2,7 +2,7 @@
   "name": "cosmic-rays",
   "version": "1.0.0",
   "devDependencies": {
-    "@chris-lewis/fitbit-utils": "^1.1.5",
+    "@chris-lewis/fitbit-utils": "^1.1.4",
     "@fitbit/sdk": "^6.0.2",
     "@fitbit/sdk-cli": "^1.7.3",
     "keytar": "^7.7.0"
@@ -13,7 +13,8 @@
     "appDisplayName": "Cosmic Rays",
     "iconFile": "resources/icon.png",
     "wipeColor": "",
-    "requestedPermissions": [],
+    "requestedPermissions": [
+    ],
     "buildTargets": [
       "atlas",
       "vulcan"

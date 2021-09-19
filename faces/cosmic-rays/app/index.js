@@ -1,3 +1,5 @@
+import { display } from 'display';
+import { UI } from '@chris-lewis/fitbit-utils/app';
 import Ray from './Ray';
 import clock from 'clock';
 
@@ -17,6 +19,14 @@ const rays = [];
 const zeroPad = value => (value < 10) ? `0${value}` : value;
 
 /**
+ * Get path to image file.
+ *
+ * @param {number} i - Value.
+ * @returns {string} Path to file.
+ */
+const getDigitPath = i => `font/${i}.png`;
+
+/**
  * On each clock tick.
  *
  * @para {Date} date - The current time as a Date.
@@ -25,9 +35,12 @@ const onTick = (date) => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
 
-  // TODO: Font as images
-  // UI.setText('text_hours', zeroPad(hours));
-  // UI.setText('text_minutes', zeroPad(minutes));
+  // Update time
+  const [h0, h1, , m0, m1] = `${zeroPad(hours)}:${zeroPad(minutes)}`.split('');
+  UI.get('h0').href = getDigitPath(h0);
+  UI.get('h1').href = getDigitPath(h1);
+  UI.get('m0').href = getDigitPath(m0);
+  UI.get('m1').href = getDigitPath(m1);
 };
 
 /**
@@ -59,12 +72,25 @@ const pause = () => {
  * The main function.
  */
 const main = () => {
+  // Setup clock
   clock.granularity = 'minutes';
   clock.ontick = event => onTick(event.date);
   onTick(new Date());
 
+  // Setup rays
   while (rays.length < NUM_RAYS) rays.push(new Ray(rays.length));
 
+  // Setup sleeping
+  UI.onDisplayChange((isOn) => {
+    if (isOn) {
+      resume();
+      return;
+    }
+
+    pause();
+  });
+
+  // Start animation
   resume();
 };
 

@@ -2,9 +2,6 @@
   <!-- Background -->
   <rect class="app-background"/>
 
-  <!-- Time display -->
-  <!-- images -->
-
   <!-- Rays -->
   <line id="ray[0]" class="ray" x1="0" y1="0" x2="0" y2="0" />
   <line id="ray[1]" class="ray" x1="0" y1="0" x2="0" y2="0" />
@@ -16,4 +13,10 @@
   <line id="ray[7]" class="ray" x1="0" y1="0" x2="0" y2="0" />
   <line id="ray[8]" class="ray" x1="0" y1="0" x2="0" y2="0" />
   <line id="ray[9]" class="ray" x1="0" y1="0" x2="0" y2="0" />
+
+  <!-- Time display -->
+  <image id="h0" class="digit h0" />
+  <image id="h1" class="digit h1" />
+  <image id="m0" class="digit m0" />
+  <image id="m1" class="digit m1" />
 </svg>

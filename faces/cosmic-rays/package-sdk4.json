@@ -2,10 +2,9 @@
   "name": "cosmic-rays",
   "version": "1.0.0",
   "devDependencies": {
-    "@chris-lewis/fitbit-utils": "^1.1.5",
-    "@fitbit/sdk": "^6.0.2",
-    "@fitbit/sdk-cli": "^1.7.3",
-    "keytar": "^7.7.0"
+    "@chris-lewis/fitbit-utils": "^1.1.4",
+    "@fitbit/sdk": "^4.3.2",
+    "@fitbit/sdk-cli": "^1.7.1"
   },
   "fitbit": {
     "appUUID": "d1013bcf-b95b-4a73-95dc-cc9ae6dd47a6",
@@ -13,10 +12,13 @@
     "appDisplayName": "Cosmic Rays",
     "iconFile": "resources/icon.png",
     "wipeColor": "",
-    "requestedPermissions": [],
+    "requestedPermissions": [
+    ],
     "buildTargets": [
-      "atlas",
-      "vulcan"
+      "higgs",
+      "meson",
+      "gemini",
+      "mira"
     ],
     "i18n": {
       "en-US": {

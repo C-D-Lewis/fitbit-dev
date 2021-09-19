@@ -1,4 +1,5 @@
-const document = require('document');
+import { display } from 'display';
+import * as document from 'document';
 
 /**
  * Get an element by 'id'
@@ -113,4 +114,13 @@ export function Card(id) {
 
     setVisible(this.get(id), true);
   };
+};
+
+/**
+ * When the display state changes.
+ *
+ * @param {Function} cb - Callback to be called.
+ */
+export const onDisplayChange = cb => {
+  display.addEventListener('change', () => cb(display.on));
 };
