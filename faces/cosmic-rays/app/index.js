@@ -70,9 +70,8 @@ const resume = () => {
  * Pause the animation.
  */
 const pause = () => {
-  isRunning = false;
-
   rays.forEach(p => p.hide());
+  isRunning = false;
 };
 
 /**
