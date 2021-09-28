@@ -29,28 +29,33 @@ export default class Ray {
 
     this.line = UI.get(`ray[${index}]`);
 
-    this.reset();
+    // Handed in index.resume
+    // this.reset();
   }
 
   /**
    * Begin the Ray's movement again.
    */
   reset () {
+    this.hide();
     this.isResetting = true;
 
     const delay = Math.round(Math.random() * DELAY_RANGE_MS[1]) + DELAY_RANGE_MS[0];
     setTimeout(() => {
+      // Even ray spacing
       let nextX1 = X_MOD + 1;
       while (nextX1 % X_MOD !== 0) {
         nextX1 = Math.round(Math.random() * 1.5 * this.displaySize) + X_MIN;
       }
 
+      // Set the new start position
       this.line.x1 = nextX1;
       this.line.y1 = 0;
       this.line.x2 = this.line.x1 + RAY_LENGTH;
       this.line.y2 = this.line.y1 - RAY_LENGTH;
 
       this.isResetting = false;
+      this.show();
     }, delay);
   }
 
@@ -67,16 +72,25 @@ export default class Ray {
   }
 
   /**
+   * Set the new ray color.
+   *
+   * @param {string} color - CSS color.
+   */
+  setColor (color) {
+    this.line.style.fill = color;
+  }
+
+  /**
    * Hide the ray.
    */
   hide () {
-    this.line.style.fill = '#000000';
+    UI.setVisible(this.line, false);
   }
 
   /**
    * Show the ray.
    */
   show () {
-    this.line.style.fill = 'white';
+    UI.setVisible(this.line, true);
   }
 }

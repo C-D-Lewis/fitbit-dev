@@ -1,6 +1,7 @@
-import { UI, AOD } from '@chris-lewis/fitbit-utils/app';
-import Ray from './Ray';
 import clock from 'clock';
+import { UI, AOD, DB, Comm } from '@chris-lewis/fitbit-utils/app';
+import Ray from './Ray';
+import { Themes, DB_KEY_THEME } from './constants';
 
 /** Number of rays in the .view file */
 const NUM_RAYS = 10;
@@ -48,6 +49,7 @@ const onTick = (date) => {
 const onFrame = () => {
   if (!isRunning) return;
 
+  // Update the animation
   rays.forEach(p => p.update());
   requestAnimationFrame(onFrame);
 };
@@ -57,7 +59,9 @@ const onFrame = () => {
  */
 const resume = () => {
   isRunning = true;
-  rays.forEach(p => p.show());
+
+  // Reset all rays to prevent them all appearing at once
+  rays.forEach(p => p.reset());
 
   requestAnimationFrame(onFrame);
 };
@@ -69,6 +73,35 @@ const pause = () => {
   isRunning = false;
 
   rays.forEach(p => p.hide());
+};
+
+/**
+ * Apply a stored theme.
+ */
+const applyTheme = () => {
+  let chosenTheme = DB.get(DB_KEY_THEME);
+  if (!chosenTheme) {
+    chosenTheme = 'classic';
+    DB.set(DB_KEY_THEME, chosenTheme);
+  }
+
+  const theme = Themes[chosenTheme];
+  rays.forEach(p => p.setColor(theme.foreground()));
+  // TODO: Solve the 8-bit PNG magic mystery :ghost:
+  // UI.get('app-background').style.fill = theme.background;
+  // UI.get('h0').style.fill = theme.foreground;
+  // UI.get('h1').style.fill = theme.foreground;
+  // UI.get('m0').style.fill = theme.foreground;
+  // UI.get('m1').style.fill = theme.foreground;
+};
+
+/**
+ * When a message is received.
+ */
+const onMessage = (event) => {
+  DB.set(DB_KEY_THEME, event.data.theme);
+
+  applyTheme();
 };
 
 /**
@@ -88,14 +121,19 @@ const main = () => {
 
   // Setup AOD
   AOD.setup({
-    onStart: () => pause(),
-    onEnd: () => resume(),
+    onStart: pause,
+    onEnd: resume,
   });
+
+  // Setup comm for settings sync
+  Comm.setup({ message: onMessage });
+
+  // Load theme choice
+  DB.init('cosmic-rays');
+  applyTheme();
 
   // Start animation
   resume();
 };
 
 main();
-
-// TODO: AOD freeze rays

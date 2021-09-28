@@ -1,6 +1,6 @@
 <svg>
   <!-- Background -->
-  <rect class="app-background"/>
+  <rect id="app-background" />
 
   <!-- Rays -->
   <line id="ray[0]" class="ray" x1="0" y1="0" x2="0" y2="0" />

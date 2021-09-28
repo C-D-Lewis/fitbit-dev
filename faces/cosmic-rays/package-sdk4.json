@@ -29,6 +29,7 @@
   },
   "scripts": {
     "build": "fitbit-build",
-    "debug": "fitbit"
+    "debug": "fitbit",
+    "clearCredentials": "node -e \"require('keytar').deletePassword('fitbit-sdk','production');console.log('done')\""
   }
 }
