@@ -1,0 +1,13 @@
+<svg class="background">
+  <image href="bg.png" x="0" y="0" width="336" height="336"/>
+
+  <use href="#fitfont" id="text_time">
+    <use href="#fitfont-char"/>
+    <use href="#fitfont-char"/>
+    <use href="#fitfont-char"/>
+    <use href="#fitfont-char"/>
+    <use href="#fitfont-char"/>
+  </use>
+
+  <rect class="bar" x="50" y="60%" width="200" height="36"/>
+</svg>
