@@ -2,12 +2,29 @@
   viewport-fill: black;
 }
 
+.bar {
+  fill: rgb(253,136,10);
+}
+
+.box {
+  fill: black;
+  opacity: 0.6;
+}
+
 #text_time {
-  x: 50%;
-  y: 50%;
   fill: white;
 }
 
-.bar {
-  fill: rgb(253,136,10);
+#text_class_name {
+  fill: white;
+}
+
+#img_class_portrait {
+  width: 64;
+  height: 64;
+}
+
+#img_class_icon {
+  width: 50;
+  height: 50;
 }
