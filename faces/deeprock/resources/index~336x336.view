@@ -4,7 +4,7 @@
   <!-- Class display -->
   <rect class="box" x="0" y="10" width="336" height="70" />
   <image id="img_class_icon" x="25" y="20" />
-  <use href="#fitfont" id="text_class_name" x="80" y="60">
+  <use href="#fitfont" class="text" id="text_class_name" x="85" y="60">
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
@@ -17,9 +17,15 @@
   <image id="img_class_portrait" x="240" y="12" />
 
   <!-- Time display -->
-  <rect class="bar" x="20" y="95" width="160" height="5" />
-  <rect class="box" x="20" y="100" width="160" height="60" />
-  <use href="#fitfont" id="text_time" x="30" y="151">
+  <rect class="bar" x="15" y="95" width="240" height="5" />
+  <rect class="box" x="15" y="100" width="240" height="60" />
+  <use href="#fitfont" class="text" id="text_time" x="25" y="151">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
@@ -27,4 +33,44 @@
     <use href="#fitfont-char" />
   </use>
 
+  <!-- Date display -->
+  <rect class="bar" x="15" y="175" width="280" height="5" />
+  <rect class="box" x="15" y="180" width="280" height="45" />
+  <use href="#fitfont" class="text" id="text_date" x="25" y="217">
+    <!-- DDDSDDSMMMSYYYY-->
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+
+  <!-- Steps and calories display -->
+  <rect class="box" x="0" y="240" width="336" height="50" />
+  <image id="img_steps_icon" x="25" y="250" href="steps.png" />
+  <use href="#fitfont" class="text" id="text_steps" x="105" y="277">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+  <image id="img_calories_icon" x="180" y="247" href="calories.png" />
+  <use href="#fitfont" class="text" id="text_calories" x="255" y="277">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
 </svg>

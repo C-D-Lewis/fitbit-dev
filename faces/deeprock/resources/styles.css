@@ -11,11 +11,7 @@
   opacity: 0.6;
 }
 
-#text_time {
-  fill: white;
-}
-
-#text_class_name {
+.text {
   fill: white;
 }
 
@@ -27,4 +23,14 @@
 #img_class_icon {
   width: 50;
   height: 50;
+}
+
+#img_steps_icon {
+  width: 70;
+  height: 32;
+}
+
+#img_calories_icon {
+  width: 70;
+  height: 35;
 }

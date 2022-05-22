@@ -1,15 +1,30 @@
 import { FitFont } from 'fitfont';
 import { UI } from '@chris-lewis/fitbit-utils/app';
+import { me } from 'appbit';
 import { preferences } from 'user-settings';
+import { today } from 'user-activity';
 import clock from 'clock';
 
 /** Class names, aligned with resource names */
 const CLASSES = ['Scout', 'Engineer', 'Gunner', 'Driller'];
+/** Short day names */
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+/** Short month names */
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+/** Default FitFont settings */
+const FF_DEFAULT = {
+  halign: 'start',
+  valign: 'baseline',
+  letterspacing: 0,
+};
 
-const imgClassPortrait = UI.get('img_class_portrait');
 const imgClassIcon = UI.get('img_class_icon');
-let textTime;
+const imgClassPortrait = UI.get('img_class_portrait');
 let textClassName;
+let textTime;
+let textDate;
+let textSteps;
+let textCalories;
 
 /**
  * Pad a number to two digits.
@@ -27,7 +42,7 @@ const zeroPad = i => (i >= 10) ? i : `0${i}`;
  * @param {number} hours - Hours value.
  * @returns {string} Adjusted value.
  */
-const to24h = hours => (preferences.clockDisplay === "12h") ? `${(hours % 12 || 12)}` : zeroPad(hours);
+const to24h = hours => (preferences.clockDisplay === '12h') ? `${(hours % 12 || 12)}` : zeroPad(hours);
 
 /**
  * Random integer in range 0 - max.
@@ -53,7 +68,24 @@ const onTick = (date) => {
   // Time
   const hours = to24h(date.getHours());
   const mins = zeroPad(date.getMinutes());
-  textTime.text = `${hours}:${mins}`;
+  textTime.text = `${hours}:${mins} HXT`;
+
+  // Date - Sun 22 May 2022
+  const dayName = DAYS[date.getDay()];
+  const day = date.getDate();
+  const month = MONTHS[date.getMonth()];
+  const year = date.getFullYear();
+  textDate.text = `${dayName} ${day} ${month} ${year}`.toUpperCase();
+
+  // Steps and calories
+  let stepsStr = '?';
+  let caloriesStr = '?';
+  if (me.permissions.granted('access_activity')) {
+    stepsStr = `${(today.adjusted.steps || 0)}`;
+    caloriesStr = `${(today.adjusted.calories || 0)}`;
+  }
+  textSteps.text = stepsStr;
+  textCalories.text = caloriesStr;
 };
 
 /**
@@ -65,23 +97,30 @@ const main = () => {
   clock.ontick = event => onTick(event.date);
 
   // Setup fonts
-  textTime = new FitFont({
-    id:'text_time',
-    font:'Ostrich_Sans_64',
-
-    // Optional
-    halign: 'start',    // horizontal alignment : start / middle / end
-    valign: 'baseline', // vertical alignment   : baseline / top / middle / bottom
-    letterspacing: 0    // letterspacing...
-  });
   textClassName = new FitFont({
     id:'text_class_name',
     font:'Ostrich_Sans_42',
-
-    // Optional
-    halign: 'start',
-    valign: 'baseline',
-    letterspacing: 0
+    ...FF_DEFAULT,
+  });
+  textTime = new FitFont({
+    id:'text_time',
+    font:'Ostrich_Sans_64',
+    ...FF_DEFAULT,
+  });
+  textDate = new FitFont({
+    id:'text_date',
+    font:'Ostrich_Sans_42',
+    ...FF_DEFAULT,
+  });
+  textSteps = new FitFont({
+    id:'text_steps',
+    font:'Ostrich_Sans_36',
+    ...FF_DEFAULT,
+  });
+  textCalories = new FitFont({
+    id:'text_calories',
+    font:'Ostrich_Sans_36',
+    ...FF_DEFAULT,
   });
 
   // Initial tick
