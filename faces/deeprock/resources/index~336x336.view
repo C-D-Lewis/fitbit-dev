@@ -55,7 +55,7 @@
   </use>
 
   <!-- DRG Logo -->
-  <image id="img_drg_logo" x="250" y="100" href="images/drg_logo.png" />
+  <image id="img_drg_logo" x="250" y="100" href="images/drg_logo.png" pointer-events="visible" />
 
   <!-- Date display -->
   <rect class="ui_bar" x="15" y="190" width="120" height="20" />
@@ -107,6 +107,46 @@
   </use>
   <image id="img_calories_icon" x="180" y="272" href="images/calories.png" />
   <use href="#fitfont" class="text" id="text_calories" x="255" y="302">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+
+  <!-- Salute overlay -->
+  <rect id="salute_bg" class="hidden" x="0" y="0" width="336" height="336" />
+  <image id="salute_icon" class="hidden" x="96" y="20" width="144" height="144" href="images/pickaxe.png"/>
+  <use href="#fitfont" class="text_gold hidden" id="text_salute_1" x="50" y="230">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+  <use href="#fitfont" class="text_gold hidden" id="text_salute_2" x="50" y="270">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />

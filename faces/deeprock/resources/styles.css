@@ -2,6 +2,10 @@
   viewport-fill: black;
 }
 
+.hidden {
+  display: none;
+}
+
 .ui_bar {
   fill: #ff990b;
 }
@@ -32,6 +36,10 @@
   fill: black;
 }
 
+.text_gold {
+  fill: #ff990b;
+}
+
 .label_end {
   width: 20;
   height: 20;
@@ -40,6 +48,10 @@
 .stat_icon {
   width: 20;
   height: 20;
+}
+
+.salute_icon {
+  fill: white;
 }
 
 #img_class_portrait {
@@ -60,4 +72,8 @@
 #img_drg_logo {
   width: 66;
   height: 79;
+}
+
+#salute_bg {
+  fill: black;
 }

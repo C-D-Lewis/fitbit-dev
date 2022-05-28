@@ -2,18 +2,27 @@ import { UI } from '@chris-lewis/fitbit-utils/app';
 import { me } from 'appbit';
 import { today, goals } from 'user-activity';
 import { battery } from 'power';
+import { vibration } from 'haptics';
 import clock from 'clock';
-import { BAR_MAX_WIDTH, CLASSES, DAYS, MONTHS } from './constants';
+import { BAR_MAX_WIDTH, CLASSES, DAYS, MAX_Y, MONTHS, SALUTE_CLICKS, SALUTE_LIST, SALUTE_TIMEOUT_MS, SALUTE_Y_VALUES } from './constants';
 import { randomInt, zeroPad, to24h, createFitFont } from './util';
 
 const imgClassPortrait = UI.get('img_class_portrait');
+const imgDrgLogo = UI.get('img_drg_logo');
 const rectShield = UI.get('rect_shield');
 const rectHealth = UI.get('rect_health');
+const saluteBg = UI.get('salute_bg');
+const saluteIcon = UI.get('salute_icon');
 let textClassName;
 let textTime;
 let textDate;
 let textSteps;
 let textCalories;
+let textSalute1;
+let textSalute2;
+let logoClicks = 0;
+let saluteHandle;
+let lastSaluteIndex = 0;
 
 /**
  * When a tick occurs.
@@ -55,6 +64,54 @@ const onTick = (date) => {
   textCalories.text = permission ? `${(today.adjusted.calories || 0)}` : '?';
 };
 
+const showSalute = () => {
+  // Random salute, not the same as the last one
+  let index = 0;
+  while (index === lastSaluteIndex) {
+    index = randomInt(SALUTE_LIST.length - 1);
+  }
+  lastSaluteIndex = index;
+  const [line1, line2] = SALUTE_LIST[index];
+  textSalute1.text = line1;
+  textSalute2.text = line2;
+
+  // Show
+  vibration.start('alert');
+  UI.setVisible(saluteBg, true);
+  UI.setVisible(saluteIcon, true);
+  UI.setVisible(textSalute1, true);
+  UI.setVisible(textSalute2, true);
+
+  // Hide
+  setTimeout(() => {
+    vibration.stop();
+    UI.setVisible(saluteBg, false);
+    UI.setVisible(saluteIcon, false);
+    UI.setVisible(textSalute1, false);
+    UI.setVisible(textSalute2, false);
+  }, 2000);
+}
+
+/**
+ * When the DRG logo is clicked, maybe trigger a salute
+ */
+const onLogoClick = () => {
+  logoClicks +=1;
+
+  // Will expire soon
+  clearTimeout(saluteHandle);
+  saluteHandle = setTimeout(() => {
+    logoClicks = 0;
+    saluteHandle = null;
+  }, SALUTE_TIMEOUT_MS);
+
+  // Not yet
+  if (logoClicks < SALUTE_CLICKS) return;
+
+  // Trigger salute
+  showSalute();
+};
+
 /**
  * The main function.
  */
@@ -69,11 +126,15 @@ const main = () => {
   textDate = createFitFont('text_date', 42);
   textSteps = createFitFont('text_steps', 36);
   textCalories = createFitFont('text_calories', 36);
-
   const textTimeLabel = createFitFont('text_time_label', 21);
-  const textDateLabel = createFitFont('text_date_label', 21);
   textTimeLabel.text = 'MISSION TIME';
+  const textDateLabel = createFitFont('text_date_label', 21);
   textDateLabel.text = 'MISSION DATE';
+  textSalute1 = createFitFont('text_salute_1', 42);
+  textSalute2 = createFitFont('text_salute_2', 42);
+
+  // Salue handler
+  imgDrgLogo.onclick = onLogoClick;
 
   // Initial tick
   onTick(new Date());
