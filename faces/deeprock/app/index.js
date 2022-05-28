@@ -1,22 +1,9 @@
-import { FitFont } from 'fitfont';
 import { UI } from '@chris-lewis/fitbit-utils/app';
 import { me } from 'appbit';
-import { preferences } from 'user-settings';
 import { today } from 'user-activity';
 import clock from 'clock';
-
-/** Class names, aligned with resource names */
-const CLASSES = ['Scout', 'Engineer', 'Gunner', 'Driller'];
-/** Short day names */
-const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-/** Short month names */
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-/** Default FitFont settings */
-const FF_DEFAULT = {
-  halign: 'start',
-  valign: 'baseline',
-  letterspacing: 0,
-};
+import { CLASSES, DAYS, MONTHS } from './constants';
+import { randomInt, zeroPad, to24h, createFitFont } from './util';
 
 const imgClassIcon = UI.get('img_class_icon');
 const imgClassPortrait = UI.get('img_class_portrait');
@@ -25,33 +12,6 @@ let textTime;
 let textDate;
 let textSteps;
 let textCalories;
-
-/**
- * Pad a number to two digits.
- * TODO: Move to utils.
- *
- * @param {number} i - Value to pad.
- * @returns {string} Padded number.
- */
-const zeroPad = i => (i >= 10) ? i : `0${i}`;
-
-/**
- * Get hours according to user preference.
- * TODO: Move to utils.
- *
- * @param {number} hours - Hours value.
- * @returns {string} Adjusted value.
- */
-const to24h = hours => (preferences.clockDisplay === '12h') ? `${(hours % 12 || 12)}` : zeroPad(hours);
-
-/**
- * Random integer in range 0 - max.
- * TODO: Move to utils.
- *
- * @param {number} max - Maximum value, inclusive.
- * @returns {number} Random number.
- */
-const randomInt = max => Math.round(Math.random() * max);
 
 /**
  * When a tick occurs.
@@ -78,28 +38,10 @@ const onTick = (date) => {
   textDate.text = `${dayName} ${day} ${month} ${year}`.toUpperCase();
 
   // Steps and calories
-  let stepsStr = '?';
-  let caloriesStr = '?';
-  if (me.permissions.granted('access_activity')) {
-    stepsStr = `${(today.adjusted.steps || 0)}`;
-    caloriesStr = `${(today.adjusted.calories || 0)}`;
-  }
-  textSteps.text = stepsStr;
-  textCalories.text = caloriesStr;
+  const permission = me.permissions.granted('access_activity');
+  textSteps.text = permission ? `${(today.adjusted.steps || 0)}` : '?';
+  textCalories.text = permission ? `${(today.adjusted.calories || 0)}` : '?';
 };
-
-/**
- * Create new FitFont.
- *
- * @param {string} id - FitFont container ID.
- * @param {number} size - Font size.
- * @returns {object} FitFont instance.
- */
-const createFitFont = (id, size) => new FitFont({
-  id,
-  font:`fonts/Ostrich_Sans_${size}`,
-  ...FF_DEFAULT,
-});
 
 /**
  * The main function.
