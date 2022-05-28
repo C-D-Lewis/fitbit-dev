@@ -102,11 +102,23 @@ const main = () => {
     font:'Ostrich_Sans_42',
     ...FF_DEFAULT,
   });
+  const textTimeLabel = new FitFont({
+    id:'text_time_label',
+    font:'Ostrich_Sans_21',
+    ...FF_DEFAULT,
+  });
+  textTimeLabel.text = 'MISSION TIME';
   textTime = new FitFont({
     id:'text_time',
     font:'Ostrich_Sans_64',
     ...FF_DEFAULT,
   });
+  const textDateLabel = new FitFont({
+    id:'text_date_label',
+    font:'Ostrich_Sans_21',
+    ...FF_DEFAULT,
+  });
+  textDateLabel.text = 'MISSION DATE';
   textDate = new FitFont({
     id:'text_date',
     font:'Ostrich_Sans_42',

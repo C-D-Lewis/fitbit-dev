@@ -3,7 +3,7 @@
 }
 
 .bar {
-  fill: rgb(253,136,10);
+  fill: #ff990b;
 }
 
 .box {
@@ -13,6 +13,15 @@
 
 .text {
   fill: white;
+}
+
+.text_black {
+  fill: black;
+}
+
+.label_end {
+  width: 20;
+  height: 20;
 }
 
 #img_class_portrait {
@@ -33,4 +42,9 @@
 #img_calories_icon {
   width: 70;
   height: 35;
+}
+
+#img_drg_logo {
+  width: 66;
+  height: 79;
 }
