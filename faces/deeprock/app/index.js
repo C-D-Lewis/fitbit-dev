@@ -5,7 +5,6 @@ import clock from 'clock';
 import { CLASSES, DAYS, MONTHS } from './constants';
 import { randomInt, zeroPad, to24h, createFitFont } from './util';
 
-const imgClassIcon = UI.get('img_class_icon');
 const imgClassPortrait = UI.get('img_class_portrait');
 let textClassName;
 let textTime;
@@ -22,7 +21,6 @@ const onTick = (date) => {
   // Class
   const index = randomInt(CLASSES.length - 1);
   imgClassPortrait.href = `images/${CLASSES[index]}_portrait.png`
-  imgClassIcon.href = `images/${CLASSES[index]}_icon.png`;
   textClassName.text = CLASSES[index].toUpperCase();
 
   // Time
@@ -52,7 +50,7 @@ const main = () => {
   clock.ontick = event => onTick(event.date);
 
   // Setup fonts
-  textClassName = createFitFont('text_class_name', 42);
+  textClassName = createFitFont('text_class_name', 21);
   textTime = createFitFont('text_time', 64);
   textDate = createFitFont('text_date', 42);
   textSteps = createFitFont('text_steps', 36);
