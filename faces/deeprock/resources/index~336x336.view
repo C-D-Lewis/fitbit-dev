@@ -3,7 +3,7 @@
 
   <!-- Class display -->
   <rect class="box" x="0" y="10" width="336" height="75" />
-  <image id="img_class_portrait" x="25" y="12" />
+  <image id="img_class_portrait" x="25" y="17" />
   <use href="#fitfont" class="text" id="text_class_name" x="95" y="31">
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
@@ -14,8 +14,12 @@
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
   </use>
-  <image class="stat_icon" x="93" y="38" href="images/shield.png" />
-  <image class="stat_icon" x="93" y="60" href="images/health.png" />
+  <image class="stat_icon" x="93" y="36" href="images/shield.png" />
+  <image class="stat_icon" x="93" y="59" href="images/health.png" />
+  <rect class="bar_bg" x="117" y="38" width="190" height="14" />
+  <rect id="rect_shield" class="shield_bar" x="117" y="38" width="190" height="14" />
+  <rect class="bar_bg" x="117" y="60" width="190" height="18" />
+  <rect id="rect_health" class="health_bar" x="117" y="60" width="190" height="18" />
 
   <!-- Time display -->
   <rect class="ui_bar" x="15" y="95" width="120" height="20" />

@@ -13,3 +13,6 @@ export const FF_DEFAULT = {
   valign: 'baseline',
   letterspacing: 0,
 };
+
+/** Bar health/shield width */
+export const BAR_MAX_WIDTH = 190;

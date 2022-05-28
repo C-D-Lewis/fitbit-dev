@@ -14,6 +14,11 @@
   fill: #00a7bc;
 }
 
+.bar_bg {
+  fill: #000000;
+  opacity: 0.6;
+}
+
 .box {
   fill: black;
   opacity: 0.6;
