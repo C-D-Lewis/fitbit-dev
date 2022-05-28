@@ -29,7 +29,7 @@ const onTick = (date) => {
   // Health - step goal percent (if a goal has been set)
   const permission = me.permissions.granted('access_activity');
   const stepCount = permission ? today.adjusted.steps : 0;
-  const stepGoal = goals.steps || stepCount;
+  const stepGoal = permission ? (goals.steps || stepCount) : 0;
   const stepProgress = stepCount < stepGoal ? (stepCount / stepGoal) : 1;
   rectHealth.width = permission
     ? Math.floor(BAR_MAX_WIDTH * stepProgress)

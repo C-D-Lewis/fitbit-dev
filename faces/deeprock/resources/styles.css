@@ -16,12 +16,12 @@
 
 .bar_bg {
   fill: #000000;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .box {
   fill: black;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .text {
