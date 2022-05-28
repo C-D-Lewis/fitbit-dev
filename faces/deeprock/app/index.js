@@ -61,8 +61,8 @@ const randomInt = max => Math.round(Math.random() * max);
 const onTick = (date) => {
   // Class
   const index = randomInt(CLASSES.length - 1);
-  imgClassPortrait.href = `${CLASSES[index]}_portrait.png`
-  imgClassIcon.href = `${CLASSES[index]}_icon.png`;
+  imgClassPortrait.href = `images/${CLASSES[index]}_portrait.png`
+  imgClassIcon.href = `images/${CLASSES[index]}_icon.png`;
   textClassName.text = CLASSES[index].toUpperCase();
 
   // Time
@@ -89,6 +89,19 @@ const onTick = (date) => {
 };
 
 /**
+ * Create new FitFont.
+ *
+ * @param {string} id - FitFont container ID.
+ * @param {number} size - Font size.
+ * @returns {object} FitFont instance.
+ */
+const createFitFont = (id, size) => new FitFont({
+  id,
+  font:`fonts/Ostrich_Sans_${size}`,
+  ...FF_DEFAULT,
+});
+
+/**
  * The main function.
  */
 const main = () => {
@@ -97,43 +110,16 @@ const main = () => {
   clock.ontick = event => onTick(event.date);
 
   // Setup fonts
-  textClassName = new FitFont({
-    id:'text_class_name',
-    font:'Ostrich_Sans_42',
-    ...FF_DEFAULT,
-  });
-  const textTimeLabel = new FitFont({
-    id:'text_time_label',
-    font:'Ostrich_Sans_21',
-    ...FF_DEFAULT,
-  });
+  textClassName = createFitFont('text_class_name', 42);
+  textTime = createFitFont('text_time', 64);
+  textDate = createFitFont('text_date', 42);
+  textSteps = createFitFont('text_steps', 36);
+  textCalories = createFitFont('text_calories', 36);
+
+  const textTimeLabel = createFitFont('text_time_label', 21);
+  const textDateLabel = createFitFont('text_date_label', 21);
   textTimeLabel.text = 'MISSION TIME';
-  textTime = new FitFont({
-    id:'text_time',
-    font:'Ostrich_Sans_64',
-    ...FF_DEFAULT,
-  });
-  const textDateLabel = new FitFont({
-    id:'text_date_label',
-    font:'Ostrich_Sans_21',
-    ...FF_DEFAULT,
-  });
   textDateLabel.text = 'MISSION DATE';
-  textDate = new FitFont({
-    id:'text_date',
-    font:'Ostrich_Sans_42',
-    ...FF_DEFAULT,
-  });
-  textSteps = new FitFont({
-    id:'text_steps',
-    font:'Ostrich_Sans_36',
-    ...FF_DEFAULT,
-  });
-  textCalories = new FitFont({
-    id:'text_calories',
-    font:'Ostrich_Sans_36',
-    ...FF_DEFAULT,
-  });
 
   // Initial tick
   onTick(new Date());

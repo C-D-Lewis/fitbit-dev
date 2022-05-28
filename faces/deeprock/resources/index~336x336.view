@@ -1,5 +1,5 @@
 <svg class="background">
-  <image href="bg.png" x="0" y="0" width="336" height="336" />
+  <image href="images/bg.png" x="0" y="0" width="336" height="336" />
 
   <!-- Class display -->
   <rect class="box" x="0" y="10" width="336" height="70" />
@@ -18,7 +18,7 @@
 
   <!-- Time display -->
   <rect class="bar" x="15" y="90" width="120" height="20" />
-  <image class="label_end" x="135" y="90" href="label_end.png" />
+  <image class="label_end" x="135" y="90" href="images/label_end.png" />
   <use href="#fitfont" class="text_black" id="text_time_label" x="20" y="109">
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
@@ -50,11 +50,11 @@
   </use>
 
   <!-- DRG Logo -->
-  <image id="img_drg_logo" x="250" y="120" href="drg_logo.png" />
+  <image id="img_drg_logo" x="250" y="100" href="images/drg_logo.png" />
 
   <!-- Date display -->
   <rect class="bar" x="15" y="185" width="120" height="20" />
-  <image class="label_end" x="135" y="185" href="label_end.png" />
+  <image class="label_end" x="135" y="185" href="images/label_end.png" />
   <use href="#fitfont" class="text_black" id="text_date_label" x="20" y="204">
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
@@ -92,7 +92,7 @@
 
   <!-- Steps and calories display -->
   <rect class="box" x="0" y="265" width="336" height="40" />
-  <image id="img_steps_icon" x="25" y="270" href="steps.png" />
+  <image id="img_steps_icon" x="25" y="270" href="images/steps.png" />
   <use href="#fitfont" class="text" id="text_steps" x="105" y="297">
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
@@ -100,7 +100,7 @@
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
   </use>
-  <image id="img_calories_icon" x="180" y="267" href="calories.png" />
+  <image id="img_calories_icon" x="180" y="267" href="images/calories.png" />
   <use href="#fitfont" class="text" id="text_calories" x="255" y="297">
     <use href="#fitfont-char" />
     <use href="#fitfont-char" />
