@@ -10,6 +10,10 @@ Common utility modules for common tasks across projects. Separated into two modu
 
 * `db.js` - simple interface for local JSON object storage.
 
+* `format.js` - String and data formatting.
+
+* `math.js` - Math operations.
+
 * `ui.js` - useful for getting/setting/manipulating UI elements.
 
 ## companion
