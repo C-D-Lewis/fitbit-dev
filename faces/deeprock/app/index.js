@@ -4,7 +4,7 @@ import { today, goals } from 'user-activity';
 import { battery } from 'power';
 import { vibration } from 'haptics';
 import clock from 'clock';
-import { BAR_MAX_WIDTH, CLASSES, DAYS, MAX_Y, MONTHS, SALUTE_CLICKS, SALUTE_LIST, SALUTE_TIMEOUT_MS, SALUTE_Y_VALUES } from './constants';
+import { BAR_MAX_WIDTH, CLASSES, DAYS, MONTHS, SALUTE_CLICKS, SALUTE_LIST, SALUTE_TIMEOUT_MS } from './constants';
 import { randomInt, zeroPad, to24h, createFitFont } from './util';
 
 const imgClassPortrait = UI.get('img_class_portrait');
@@ -12,7 +12,6 @@ const imgDrgLogo = UI.get('img_drg_logo');
 const rectShield = UI.get('rect_shield');
 const rectHealth = UI.get('rect_health');
 const saluteBg = UI.get('salute_bg');
-const saluteIcon = UI.get('salute_icon');
 let textClassName;
 let textTime;
 let textDate;
@@ -64,9 +63,12 @@ const onTick = (date) => {
   textCalories.text = permission ? `${(today.adjusted.calories || 0)}` : '?';
 };
 
+/**
+ * Display a random salute. Rock and Stone!
+ */
 const showSalute = () => {
   // Random salute, not the same as the last one
-  let index = 0;
+  let index = lastSaluteIndex;
   while (index === lastSaluteIndex) {
     index = randomInt(SALUTE_LIST.length - 1);
   }
@@ -78,17 +80,11 @@ const showSalute = () => {
   // Show
   vibration.start('alert');
   UI.setVisible(saluteBg, true);
-  UI.setVisible(saluteIcon, true);
-  UI.setVisible(textSalute1, true);
-  UI.setVisible(textSalute2, true);
 
   // Hide
   setTimeout(() => {
     vibration.stop();
     UI.setVisible(saluteBg, false);
-    UI.setVisible(saluteIcon, false);
-    UI.setVisible(textSalute1, false);
-    UI.setVisible(textSalute2, false);
   }, 2000);
 }
 
@@ -98,17 +94,12 @@ const showSalute = () => {
 const onLogoClick = () => {
   logoClicks +=1;
 
-  // Will expire soon
+  // Two taps in quick succession
   clearTimeout(saluteHandle);
-  saluteHandle = setTimeout(() => {
-    logoClicks = 0;
-    saluteHandle = null;
-  }, SALUTE_TIMEOUT_MS);
+  saluteHandle = setTimeout(() => (logoClicks = 0), SALUTE_TIMEOUT_MS);
 
-  // Not yet
   if (logoClicks < SALUTE_CLICKS) return;
 
-  // Trigger salute
   showSalute();
 };
 

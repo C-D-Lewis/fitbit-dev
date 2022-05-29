@@ -35,4 +35,7 @@ export const SALUTE_LIST = [
   [' THAT\'s IT LADS', 'ROCK AND STONE! '],
   ['   WE FIGHT FOR ', 'ROCK AND STONE! '],
   [' ROCK AND STONE ', '   IN THE HEART!'],
+  ['  ROCK AND STONE', '     TO THE BONE'],
+  ['      FOR KARL! ', ''],
+  ['  LEAVE NO DWARF', '         BEHIND!'],
 ];
