@@ -12,7 +12,7 @@ Common utility modules for common tasks across projects. Separated into two modu
 
 * `format.js` - String and data formatting.
 
-* `math.js` - Math operations.
+* `maths.js` - Maths operations.
 
 * `ui.js` - useful for getting/setting/manipulating UI elements.
 
