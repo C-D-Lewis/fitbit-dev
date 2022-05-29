@@ -1,11 +1,11 @@
-import { UI } from '@chris-lewis/fitbit-utils/app';
+import { UI, Maths, Format } from '@chris-lewis/fitbit-utils/app';
 import { me } from 'appbit';
 import { today, goals } from 'user-activity';
 import { battery } from 'power';
 import { vibration } from 'haptics';
 import clock from 'clock';
 import { BAR_MAX_WIDTH, CLASSES, DAYS, MONTHS, SALUTE_CLICKS, SALUTE_LIST, SALUTE_TIMEOUT_MS } from './constants';
-import { randomInt, zeroPad, to24h, createFitFont } from './util';
+import { createFitFont } from './util';
 
 const imgClassPortrait = UI.get('img_class_portrait');
 const imgDrgLogo = UI.get('img_drg_logo');
@@ -30,7 +30,7 @@ let lastSaluteIndex = 0;
  */
 const onTick = (date) => {
   // Class
-  const index = randomInt(CLASSES.length - 1);
+  const index = Maths.randomInt(CLASSES.length - 1);
   imgClassPortrait.href = `images/${CLASSES[index]}_portrait.png`
   textClassName.text = CLASSES[index].toUpperCase();
 
@@ -47,8 +47,8 @@ const onTick = (date) => {
   rectShield.width = Math.floor(BAR_MAX_WIDTH * (battery.chargeLevel / 100));
 
   // Time
-  const hours = to24h(date.getHours());
-  const mins = zeroPad(date.getMinutes());
+  const hours = Format.to24h(date.getHours());
+  const mins = Format.zeroPad(date.getMinutes());
   textTime.text = `${hours}:${mins} HXT`;
 
   // Date - Sun 22 May 2022
@@ -70,7 +70,7 @@ const showSalute = () => {
   // Random salute, not the same as the last one
   let index = lastSaluteIndex;
   while (index === lastSaluteIndex) {
-    index = randomInt(SALUTE_LIST.length - 1);
+    index = Maths.randomInt(SALUTE_LIST.length - 1);
   }
   lastSaluteIndex = index;
   const [line1, line2] = SALUTE_LIST[index];
