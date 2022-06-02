@@ -13,6 +13,8 @@ function convert_sdk_5 {
   # Rename resources/*.gui >> resources/*.view
   cd resources
   for f in *.gui; do mv -- "$f" "${f%.gui}.view"; done
+  # Patch name of fitfont file
+  mv fitfont.view fitfont.defs
   cd -
   # Copy package-sdk5.json to package.json
   cp package-sdk5.json package.json
