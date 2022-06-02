@@ -4,7 +4,7 @@
     "appType": "clockface",
     "appDisplayName": "Deep Rock",
     "iconFile": "resources/icon.png",
-    "wipeColor": "",
+    "wipeColor": "#ffffff",
     "requestedPermissions": [
       "access_activity"
     ],
@@ -20,7 +20,6 @@
     "defaultLanguage": "en-US"
   },
   "devDependencies": {
-    "@chris-lewis/fitbit-utils": "^1.2.1",
     "@fitbit/sdk": "~6.1.0",
     "@fitbit/sdk-cli": "^1.7.3"
   },
@@ -28,6 +27,7 @@
     "build": "fitbit-build"
   },
   "dependencies": {
-    "fitfont": "^1.3.3"
+    "fitfont": "^1.3.3",
+    "@chris-lewis/fitbit-utils": "^1.2.1"
   }
 }

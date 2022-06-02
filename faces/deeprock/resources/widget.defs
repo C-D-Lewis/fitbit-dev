@@ -4,6 +4,6 @@
     <link rel="import" href="/mnt/sysassets/system_widget.defs" />
 
     <!-- import FitFont ui file -->
-    <link rel="import" href="fitfont.gui" />
+    <link rel="import" href="fitfont.defs" />
   </defs>
 </svg>
