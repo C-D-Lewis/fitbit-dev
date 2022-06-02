@@ -39,3 +39,7 @@ export const SALUTE_LIST = [
   ['      FOR KARL! ', ''],
   ['  LEAVE NO DWARF', '         BEHIND!'],
 ];
+
+// const SALUTE_POOL = Array.from(new Set(SALUTE_LIST.reduce((acc, r) => {
+//   return [...acc, r.join('')];
+// }, '').join(''))).join('');
