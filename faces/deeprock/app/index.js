@@ -97,7 +97,6 @@ const onLogoClick = () => {
   // Two taps in quick succession
   clearTimeout(saluteHandle);
   saluteHandle = setTimeout(() => (logoClicks = 0), SALUTE_TIMEOUT_MS);
-
   if (logoClicks < SALUTE_CLICKS) return;
 
   showSalute();

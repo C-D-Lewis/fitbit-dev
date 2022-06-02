@@ -1,0 +1,162 @@
+<svg class="background">
+  <image href="images/bg.png" x="0" y="0" width="336" height="336" />
+
+  <!-- Class display -->
+  <rect class="box" x="0" y="10" width="336" height="75" />
+  <image id="img_class_portrait" x="25" y="17" />
+  <use href="#fitfont" class="text" id="text_class_name" x="95" y="31">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+  <image class="stat_icon" x="93" y="36" href="images/shield.png" />
+  <image class="stat_icon" x="93" y="59" href="images/health.png" />
+  <rect class="bar_bg" x="117" y="38" width="190" height="14" />
+  <rect id="rect_shield" class="shield_bar" x="117" y="38" width="190" height="14" />
+  <rect class="bar_bg" x="117" y="60" width="190" height="18" />
+  <rect id="rect_health" class="health_bar" x="117" y="60" width="190" height="18" />
+
+  <!-- Time display -->
+  <rect class="ui_bar" x="15" y="95" width="120" height="20" />
+  <image class="label_end" x="135" y="95" href="images/label_end.png" />
+  <use href="#fitfont" class="text_black" id="text_time_label" x="20" y="114">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+  <rect class="ui_bar" x="15" y="115" width="210" height="5" />
+  <rect class="box" x="15" y="120" width="210" height="60" />
+  <use href="#fitfont" class="text" id="text_time" x="25" y="171">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+
+  <!-- DRG Logo -->
+  <image id="img_drg_logo" x="250" y="100" href="images/drg_logo.png" pointer-events="visible" />
+
+  <!-- Date display -->
+  <rect class="ui_bar" x="15" y="190" width="120" height="20" />
+  <image class="label_end" x="135" y="190" href="images/label_end.png" />
+  <use href="#fitfont" class="text_black" id="text_date_label" x="20" y="209">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+  <rect class="ui_bar" x="15" y="210" width="250" height="5" />
+  <rect class="box" x="15" y="215" width="250" height="45" />
+  <use href="#fitfont" class="text" id="text_date" x="25" y="252">
+    <!-- DDDSDDSMMMSYYYY-->
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+
+  <!-- Steps and calories display -->
+  <rect class="box" x="0" y="270" width="336" height="40" />
+  <image id="img_steps_icon" x="25" y="275" href="images/steps.png" />
+  <use href="#fitfont" class="text" id="text_steps" x="105" y="302">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+  <image id="img_calories_icon" x="180" y="272" href="images/calories.png" />
+  <use href="#fitfont" class="text" id="text_calories" x="255" y="302">
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+    <use href="#fitfont-char" />
+  </use>
+
+  <!-- Salute overlay -->
+  <gradientRect id="salute_bg" class="hidden" x="0" y="0" width="100%" height="100%"
+    gradient-type="radial"
+    gradient-x1="50%" gradient-y1="40%"
+    gradient-x2="50%+130" gradient-y2="40%+130"
+    gradient-color1="#ff990b"
+    gradient-color2="black">
+    <image x="96" y="50" width="144" height="144" href="images/pickaxe.png"/>
+    <use href="#fitfont" class="text_gold" id="text_salute_1" x="50" y="260">
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+    </use>
+    <use href="#fitfont" class="text_gold" id="text_salute_2" x="50" y="300">
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+      <use href="#fitfont-char" />
+    </use>
+  </gradientRect>
+</svg>
