@@ -35,26 +35,15 @@ const setupUI = () => {
      */
     update: () => {
       lines.forEach((item, i) => {
-        // Verify the item is the correct line and in the same order
-        if (item.id !== linesConfig[i].id) {
-          UI.setText('loading-text', 'Data error!');
-          return;
-        }
+        console.log(JSON.stringify(item));
 
         // Set the status
         UI.setText(`lines-card-status[${i}]`, item.status);
 
         // Show the reason
-        const reason = item.reason ? item.reason : '';
+        const reason = item.reason || '';
         UI.setText(`lines-card-reason[${i}]`, reason);
-        UI.setVisible(`lines-card-icon[${i}]`, item.reason);
-
-        // Set height to save space
-        if (!reason.length) {
-          // TODO: Fix this
-          // UI.get(`tile-list-item[${i}]`).classList = 'half-height';
-          // UI.get(`tile-list-item[${i}]`).style.height = layoutConfig[device.modelName].height;
-        }
+        UI.setVisible(`lines-card-icon[${i}]`, !!item.reason);
 
         // Move views if reason exists
         if (reason) {
@@ -88,7 +77,17 @@ const setupComm = () => {
 
       // All line data arrives in one message
       lines = json;
-      // console.log(`Recv: ${JSON.stringify(lines)}`);
+
+      // Check expected order
+      let hasError = false;
+      lines.forEach((item, i) => {
+        if (item.id !== linesConfig[i].id) {
+          console.log(`Data error: ${i}`)
+          UI.setText('loading-text', 'Data error!');
+          hasError = true;
+        }
+      });
+      if (hasError) return;
 
       loadingWindow.hide();
       mainWindow.update();

@@ -33,13 +33,14 @@ const getAllLinesStatus = arr => arr.map((item) => {
  * @returns {Promise<Array<object>>}
  */
 export const downloadStatus = () => {
-  return fetch('https://api.tfl.gov.uk/line/mode/tube,dlr,overground,tflrail/status')
+  return fetch('https://api.tfl.gov.uk/line/mode/tube,dlr,overground,elizabeth-line/status')
     .then(res => res.json())
     .then((json) => {
       console.log('Download from unified API complete!');
+      // console.log(JSON.stringify(json));
 
       const payload = getAllLinesStatus(json);
-      // console.log(JSON.stringify(payload));
+      console.log(JSON.stringify(payload));
       console.log(`payload.length=${JSON.stringify(payload).length}`);
       return payload;
     });
