@@ -1,3 +1,3 @@
 # fitbit-dev
 
-My FitBit app source code.
+My FitBit app and watchface source code.
